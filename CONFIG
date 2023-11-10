@@ -1,0 +1,145 @@
+#!/bin/bash
+
+#
+# config file to include in all other scripts
+#
+
+#-----------------------------------------------------------------
+
+# General config
+USER="satoshi"
+HOME_DIR="/home/${USER}"
+DOWNLOAD_DIR="${HOME_DIR}/downloads"
+LOCAL_IP=$(ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1  -d'/')
+RELEASE_CODE=$(awk -F"[)(]+" '/VERSION=/ {print $2}' /etc/os-release)
+
+#-----------------------------------------------------------------
+
+# System config
+INSTALL_PKGS="toilet rsync curl gpg git sudo apt-transport-https nginx mariadb-server mariadb-client ca-certificates gnupg tmux lsb-release ncdu"
+APT_SOURCES_DIR="/etc/apt/sources.list.d"
+KEYRINGS_DIR="/etc/apt/keyrings"
+NODEJS_VERSION="20"
+NODEJS_LIST_FILE="${APT_SOURCES_DIR}/nodesource.list"
+NODEJS_KEYRING_FILE="${KEYRINGS_DIR}/nodesource.gpg"
+TOR_LIST_FILE="${APT_SOURCES_DIR}/tor.list"
+TOR_KEYRING_FILE="${KEYRINGS_DIR}/tor-archive-keyring.gpg"
+TORRC_CONF_FILE="/etc/tor/torrc"
+TORSOCKS_CONF_FILE="/etc/tor/torsocks.conf"
+NGINX_CONF_FILE="/etc/nginx/nginx.conf"
+NGINX_WEBROOT_DIR="/var/www/html"
+
+#-----------------------------------------------------------------
+
+# Bitcoind config
+BITCOIN_VERSION="25.1"
+BITCOIN_DOWNLOAD_DIR="${DOWNLOAD_DIR}/Bitcoin"
+BITCOIN_DIR="${HOME_DIR}/.bitcoin"
+BITCOIN_CONF_FILE="${BITCOIN_DIR}/bitcoin.conf"
+BITCOIN_LOG_FILE="${BITCOIN_DIR}/debug.log"
+BITCOIN_SERVICE="bitcoind.service"
+BITCOIN_SERVICE_FILE="/etc/systemd/system/${BITCOIN_SERVICE}"
+
+#-----------------------------------------------------------------
+
+# Fulcrum config
+FULCRUM_VERSION="1.9.5"
+FULCRUM_DOWNLOAD_DIR="${DOWNLOAD_DIR}/Fulcrum"
+FULCRUM_DIR="${HOME_DIR}/fulcrum"
+FULCRUM_DATA_DIR="${HOME_DIR}/fulcrum_db"
+FULCRUM_CONF_FILE="${FULCRUM_DIR}/fulcrum.conf"
+FULCRUM_SERVICE="fulcrum.service"
+FULCRUM_SERVICE_FILE="/etc/systemd/system/${FULCRUM_SERVICE}"
+
+#-----------------------------------------------------------------
+
+# Mempool config
+MEMPOOL_VERSION="2.5.0"
+MEMPOOL_DIR="${HOME_DIR}/mempool"
+MEMPOOL_DB="mempool"
+MEMPOOL_BACKEND_DIR="${MEMPOOL_DIR}/backend"
+MEMPOOL_FRONTEND_DIR="${MEMPOOL_DIR}/frontend"
+MEMPOOL_BACKEND_CONF="${MEMPOOL_BACKEND_DIR}/mempool-config.json"
+MEMPOOL_FRONTEND_CONF="${MEMPOOL_FRONTEND_DIR}/mempool-frontend-config.json"
+MEMPOOL_SERVICE="mempool.service"
+MEMPOOL_SERVICE_FILE="/etc/systemd/system/mempool.service"
+MEMPOOL_WEBROOT_DIR="${NGINX_WEBROOT_DIR}/mempool"
+MEMPOOL_NGINX_SSL_CONF="/etc/nginx/sites-available/mempool-ssl.conf"
+MEMPOOL_NGINX_APP_CONF="/etc/nginx/snippets/nginx-mempool.conf"
+MEMPOOL_SSL_PORT="4080"
+
+#-----------------------------------------------------------------
+
+# LND config
+LND_VERSION="0.17.1-beta.rc1"
+LND_DIR="${HOME_DIR}/.lnd"
+LND_DOWNLOAD_DIR="${DOWNLOAD_DIR}/Lnd"
+LND_CONF_FILE="${LND_DIR}/lnd.conf"
+LND_SERVICE="lnd.service"
+LND_SERVICE_FILE="/etc/systemd/system/${LND_SERVICE}"
+LND_CERT_FILE="${LND_DIR}/tls.cert"
+LND_ADMIN_MACAROON_FILE="${LND_DIR}/data/chain/bitcoin/mainnet/admin.macaroon"
+
+#-----------------------------------------------------------------
+
+# Thunderhub config
+THH_VERSION="0.13.23"
+THH_DIR="${HOME_DIR}/thunderhub"
+THH_CONF_DIR="${HOME_DIR}/.thunderhub"
+THH_ENV_CONF_FILE="${THH_DIR}/.env.local"
+THH_YAML_CONF_FILE="${THH_CONF_DIR}/thubConfig.yaml"
+THH_SERVICE="thunderhub.service"
+THH_SERVICE_FILE="/etc/systemd/system/${THH_SERVICE}"
+THH_NGINX_SSL_CONF="/etc/nginx/streams-enabled/thunderhub-ssl.conf"
+
+#-----------------------------------------------------------------
+
+# Sparrow config
+SPARROW_VERSION="1.8.0"
+SPARROW_DIR="${HOME_DIR}/.sparrow"
+SPARROW_DOWNLOAD_DIR="${DOWNLOAD_DIR}/Sparrow"
+SPARROW_CONF_FILE="${SPARROW_DIR}/config"
+SPARROW_LOG_FILE="${SPARROW_DIR}/sparrow.log"
+SPARROW_APP_DIR="/opt/Sparrow"
+SPARROW_SYM_LINK="/usr/local/bin/Sparrow"
+
+#-----------------------------------------------------------------
+
+# Bisq (headless) config
+BISQ_VERSION="1.9.14"
+BISQ_JAVA_VERSION="11"
+BISQ_DOWNLOAD_DIR="${DOWNLOAD_DIR}/Bisq"
+BISQ_APP_DIR="${HOME_DIR}/bisq"
+BISQ_DATA_DIR="${HOME_DIR}/bisq-data"
+BISQ_START_SCRIPT="${HOME_DIR}/start_bisq_xpra.sh"
+BISQ_STOP_SCRIPT="${HOME_DIR}/stop_bisq_xpra.sh"
+BISQ_LIST_FILE="${APT_SOURCES_LIST}/xpra_bisq.list"
+
+#-----------------------------------------------------------------
+
+# bash colors
+# https://www.shellhacks.com/bash-colors/
+# bash colors
+BL="\033[0;30m"   # is Blacks's ANSI color code
+R="\033[0;31m"    # is Red's ANSI color code
+G="\033[0;32m"    # is Green's ANSI color code
+BR="\033[0;33m"   # is Browns's ANSI color code
+B="\033[0;34m"    # is Blue's ANSI color code
+PU="\033[1;35m"   # is Purple's ANSI color code
+CY="\033[1;36m"   # is Cyan's ANSI color code
+LG="\033[1;37m"   # is Light Gray's ANSI color code
+
+DG="\033[1;30m"   # is D-Gray's ANSI color code
+LR="\033[1;31m"   # is L-Red's ANSI color code
+LG="\033[1;32m"   # is L-Green's ANSI color code
+Y="\033[1;33m"    # is Yellow's ANSI color code
+LB="\033[1;34m"   # is L-Brown's ANSI color code
+LP="\033[1;35m"   # is L-Purple's ANSI color code
+LC="\033[1;36m"   # is L-Cyan's ANSI color code
+WH="\033[1;37m"   # is White's ANSI color code
+
+NC="\033[0m"      # No Color
+
+#-----------------------------------------------------------------
+
+
