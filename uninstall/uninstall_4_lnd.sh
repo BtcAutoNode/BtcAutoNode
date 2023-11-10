@@ -19,67 +19,62 @@ fi
 #-----------------------------------------------------------------
 
 #
-# stop bitcoin service
+# stop lnd service
 #
 echo
-echo -e "${Y}Stop bitcoind service...${NC}"
-systemctl stop bitcoind.service
+echo -e "${Y}Stop Lnd service...${NC}"
+systemctl stop "${LND_SERVICE}"
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
 
 #
-# disable bitcoin service
+# disable Lnd service
 #
 echo
-echo -e "${Y}Disable bitcoind service...${NC}"
-systemctl disable bitcoind.service
+echo -e "${Y}Disable Lnd service...${NC}"
+systemctl disable "${LND_SERVICE}"
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
 
 #
-# delete bitcoin download dir
+# delete Lnd download dir
 #
 echo
-echo -e "${Y}Delete bitcoin download dir...${NC}"
-rm -rf "${BITCOIN_DOWNLOAD_DIR}"
+echo -e "${Y}Delete Lnd download dir...${NC}"
+rm -rf "${LND_DOWNLOAD_DIR}"
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
 
 #
-# delete .bitcoin dir
+# delete Lnd dir
 #
 echo
-echo -e "${Y}Delete bitcoin base dir (.bitcoin)...${NC}"
-rm -rf "${BITCOIN_DIR}"
+echo -e "${Y}Delete Lnd base dir...${NC}"
+rm -rf "${LND_DIR}"
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
 
 #
-# delete bitcoin service file
+# delete Lnd service file
 #
 echo
-echo -e "${Y}Delete bitcoin system service sile...${NC}"
-rm "${BITCOIN_SERVICE_FILE}"
+echo -e "${Y}Delete Lnd systemd service file...${NC}"
+rm "${LND_SERVICE_FILE}"
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
 
 #
-# delete Bitcoin apps from /usr/local/bin
+# delete Lnd apps from /usr/local/bin
 #
 echo
-echo -e "${Y}Delete Bitcoin apps from /usr/local/bin...${NC}"
-rm "/usr/local/bin/bitcoin-cli"
-rm "/usr/local/bin/bitcoin-qt"
-rm "/usr/local/bin/bitcoin-tx"
-rm "/usr/local/bin/bitcoin-util"
-rm "/usr/local/bin/bitcoin-wallet"
-rm "/usr/local/bin/bitcoind"
-rm "/usr/local/bin/test_bitcoin"
+echo -e "${Y}Delete Lnd apps from /usr/local/bin...${NC}"
+rm "/usr/local/bin/lnd"
+rm "/usr/local/bin/lncli"
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
@@ -87,3 +82,4 @@ echo -e "${G}Done.${NC}"
 echo
 echo -e "${Y}Un-installation all done!${NC}"
 echo
+

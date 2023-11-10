@@ -19,67 +19,61 @@ fi
 #-----------------------------------------------------------------
 
 #
-# stop bitcoin service
+# stop Fulcrum service
 #
 echo
-echo -e "${Y}Stop bitcoind service...${NC}"
-systemctl stop bitcoind.service
+echo -e "${Y}Stop Fulcrum service...${NC}"
+systemctl stop "${FULCRUM_SERVICE}"
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
 
 #
-# disable bitcoin service
+# disable Fulcrum service
 #
 echo
-echo -e "${Y}Disable bitcoind service...${NC}"
-systemctl disable bitcoind.service
+echo -e "${Y}Disable Fulcrum service...${NC}"
+systemctl disable "${FULCRUM_SERVICE}"
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
 
 #
-# delete bitcoin download dir
+# delete Fulcrum download dir
 #
 echo
-echo -e "${Y}Delete bitcoin download dir...${NC}"
-rm -rf "${BITCOIN_DOWNLOAD_DIR}"
+echo -e "${Y}Delete Fulcrum download dir...${NC}"
+rm -rf "${FULCRUM_DOWNLOAD_DIR}"
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
 
 #
-# delete .bitcoin dir
+# delete Fulcrum dir
 #
 echo
-echo -e "${Y}Delete bitcoin base dir (.bitcoin)...${NC}"
-rm -rf "${BITCOIN_DIR}"
+echo -e "${Y}Delete Fulcrum base dir...${NC}"
+rm -rf "${FULCRUM_DIR}"
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
 
 #
-# delete bitcoin service file
+# delete Fulcrum data dir
 #
 echo
-echo -e "${Y}Delete bitcoin system service sile...${NC}"
-rm "${BITCOIN_SERVICE_FILE}"
+echo -e "${Y}Delete Fulcrum data dir...${NC}"
+rm -rf "${FULCRUM_DATA_DIR}"
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
 
 #
-# delete Bitcoin apps from /usr/local/bin
+# delete Fulcrum service file
 #
 echo
-echo -e "${Y}Delete Bitcoin apps from /usr/local/bin...${NC}"
-rm "/usr/local/bin/bitcoin-cli"
-rm "/usr/local/bin/bitcoin-qt"
-rm "/usr/local/bin/bitcoin-tx"
-rm "/usr/local/bin/bitcoin-util"
-rm "/usr/local/bin/bitcoin-wallet"
-rm "/usr/local/bin/bitcoind"
-rm "/usr/local/bin/test_bitcoin"
+echo -e "${Y}Delete fulcrum systemd service file...${NC}"
+rm "${FULCRUM_SERVICE_FILE}"
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
@@ -87,3 +81,4 @@ echo -e "${G}Done.${NC}"
 echo
 echo -e "${Y}Un-installation all done!${NC}"
 echo
+
