@@ -1,16 +1,21 @@
-### Hi there 👋
+# BtcAutoNode
 
-<!--
-**BtcAutoNode/BtcAutoNode** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+BtcAutoNode is a set of scripts to instal/setup a bitcoin full node in a Debian 11 base server system.
+The following scripts/applications are currently availabe:
+1. Bitcoind
+2. Fulcrum
+3. Mempool
+4. Lightning Lnd
+5. Thunderbird (for managing Lnd)
+6. Sparrow Terminal/Server
+7. Bisq (headless)
 
-Here are some ideas to get you started:
+## Prerequitites
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+
+## Installation
+
+
+## Usage
+
+
