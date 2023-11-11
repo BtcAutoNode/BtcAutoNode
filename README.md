@@ -5,7 +5,7 @@ The scripts are based on the Ministry of Nodes Videos and RaspiBolt Guide.<br><b
 [Ministry of Nodes Node Box Guide 2022]<br>
 https://www.youtube.com/watch?v=9Kb7TobTNPI&list=PLCRbH-IWlcW2A_kpx2XwAMgT0rcZEZ2Cg)<br><br>
 [RaspiBolt Guide]<br>
-https://raspibolt.org/)<br>
+https://raspibolt.org/)<br><br>
 
 The following scripts/applications are currently availabe:
 1. Bitcoind
