@@ -154,7 +154,7 @@ echo
 echo -e "${Y}Build the Thunderhub application...${NC}"
 echo -e "${LB}This can take several minutes!${NC}"
 # opt out from Next.js Telemetry data collection
-npx next telemetry disable
+npx --yes next telemetry disable
 # update npm
 npm install -g npm@10.2.3
 cd "${THH_DIR}"
@@ -302,4 +302,3 @@ echo -e "${LB}Open Thunderhub page in your browser via the following URL: ${NC}"
 echo " https://${LOCAL_IP}:4001"
 echo -e "${LB}Login with your Account user and Master password.${NC}"
 echo
-
