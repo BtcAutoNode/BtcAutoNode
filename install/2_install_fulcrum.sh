@@ -292,4 +292,3 @@ echo -e " ${FULCRUM_DOWNLOAD_DIR} + - Fulcrum download directory\n" \
 echo
 
 
-
