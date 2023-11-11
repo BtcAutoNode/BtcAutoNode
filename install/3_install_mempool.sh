@@ -537,4 +537,3 @@ echo
 echo -e "${LB}Open mempool page in your browser via the following URL: ${NC}"
 echo " https://${LOCAL_IP}:4080"
 echo
-
