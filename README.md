@@ -1,4 +1,4 @@
-# BtcAutoNode
+## BtcAutoNode - Automated installation of a Bitcoin Full Node via Bash Scripts
 
 BtcAutoNode is a set of scripts to install/setup a bitcoin full node in a Debian 11 base server system.<br><br>
 The scripts are based on the Ministry of Nodes Videos and the RaspiBolt Guide.<br><br>
