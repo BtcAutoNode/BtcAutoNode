@@ -326,4 +326,3 @@ echo -e " ${BITCOIN_DOWNLOAD_DIR} + - Bitcoin download directory\n" \
         "/etc/tor/torsocks + - tor socks proxy config file" | column -t -s "+"
 echo
 
-
