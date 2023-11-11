@@ -1,6 +1,6 @@
 # BtcAutoNode
 
-BtcAutoNode is a set of scripts to instal/setup a bitcoin full node in a Debian 11 base server system.<br>
+BtcAutoNode is a set of scripts to instal/setup a bitcoin full node in a Debian 11 base server system.<br><br>
 The following scripts/applications are currently availabe:
 1. Bitcoind
 2. Fulcrum
