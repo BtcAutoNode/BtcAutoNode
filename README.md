@@ -15,7 +15,7 @@ The following scripts/applications are currently availabe:
 5. Thunderbird (for managing Lnd)
 6. Sparrow Terminal/Server
 7. Bisq (headless)
-
+<br>
 ## Prerequitites
 
 
