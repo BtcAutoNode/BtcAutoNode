@@ -327,4 +327,3 @@ echo
 echo -e "${LB}A guide for Lnd can be found here:${NC}"
 echo " https://docs.lightning.engineering/lightning-network-tools/lnd/"
 echo
-
