@@ -11,12 +11,16 @@ USER="satoshi"
 HOME_DIR="/home/${USER}"
 DOWNLOAD_DIR="${HOME_DIR}/downloads"
 LOCAL_IP=$(ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1  -d'/')
-RELEASE_CODE=$(awk -F"[)(]+" '/VERSION=/ {print $2}' /etc/os-release)
+#RELEASE_CODE=$(awk -F"[)(]+" '/VERSION=/ {print $2}' /etc/os-release)
+ARCH=$(dpkg --print-architecture)
+#ARCHITECTURE=$(lscpu | egrep "Architecture" | sed s/"          "/" "/g | cut -d ":" -f 2 | xargs)
+RELEASE_CODE=$(cat /etc/os-release | grep VERSION_CODENAME | cut -d "=" -f 2)
 
 #-----------------------------------------------------------------
 
 # System config
-INSTALL_PKGS="toilet rsync curl gpg git sudo apt-transport-https nginx mariadb-server mariadb-client ca-certificates gnupg tmux lsb-release ncdu"
+INSTALL_PKGS="toilet rsync curl gpg git sudo apt-transport-https nginx libnginx-mod-stream mariadb-server mariadb-client ca-certificates gnupg tmux lsb-release ncdu"
+# libnginx-mod-stream needed in debian12
 APT_SOURCES_DIR="/etc/apt/sources.list.d"
 KEYRINGS_DIR="/etc/apt/keyrings"
 NODEJS_VERSION="20"
@@ -141,5 +145,4 @@ WH="\033[1;37m"   # is White's ANSI color code
 NC="\033[0m"      # No Color
 
 #-----------------------------------------------------------------
-
 
