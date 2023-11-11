@@ -375,4 +375,3 @@ echo -e "${LB}Here are more information on how to find it:${NC}"
 echo " https://bisq.wiki/Data_directory"
 echo
 
-
