@@ -396,8 +396,8 @@ echo
 echo -e "${Y}Install tor from tor repositories (for newest version)...${NC}"
 echo -e "${LB}Add tor repository to ${TOR_LIST_FILE}...${NC}"
 cat > "${TOR_LIST_FILE}"<< EOF
-deb     [arch=amd64 signed-by=${TOR_KEYRING_FILE}] https://deb.torproject.org/torproject.org ${RELEASE_CODE} main
-deb-src [arch=amd64 signed-by=${TOR_KEYRING_FILE}] https://deb.torproject.org/torproject.org ${RELEASE_CODE} main
+deb     [arch=${ARCH} signed-by=${TOR_KEYRING_FILE}] https://deb.torproject.org/torproject.org ${RELEASE_CODE} main
+deb-src [arch=${ARCH} signed-by=${TOR_KEYRING_FILE}] https://deb.torproject.org/torproject.org ${RELEASE_CODE} main
 EOF
 # get gpg key
 wget -qO- https://deb.torproject.org/torproject.org/A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89.asc | gpg --dearmor | tee "${TOR_KEYRING_FILE}" >/dev/null
@@ -474,4 +474,3 @@ echo -e "${LB}For security reasons you should connect to the server via ssh keys
 echo -e "${LB}See the chapter 'Login with SSH keys' for instructions:${NC}"
 echo " https://raspibolt.org/guide/raspberry-pi/security.html#login-with-ssh-keys"
 echo
-
