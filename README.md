@@ -2,7 +2,7 @@
 
 BtcAutoNode is a set of scripts to install/setup a bitcoin full node in a Debian 11 base server system.<br><br>
 The scripts are based on the Ministry of Nodes Video and RaspiBolt Guide.<br>
-[Ministry of Nodes Node Box Guide 2022] https://www.youtube.com/watch?v=9Kb7TobTNPI&list=PLCRbH-IWlcW2A_kpx2XwAMgT0rcZEZ2Cg)
+[Ministry of Nodes Node Box Guide 2022] https://www.youtube.com/watch?v=9Kb7TobTNPI&list=PLCRbH-IWlcW2A_kpx2XwAMgT0rcZEZ2Cg)<br>
 [RaspiBolt Guide] https://raspibolt.org/)
 
 The following scripts/applications are currently availabe:
