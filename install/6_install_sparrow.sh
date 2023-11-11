@@ -249,4 +249,3 @@ echo -e "${LB}If you want to close Sparrow, enter the tmux session and select ${
 echo -e "${LB}Then ${NC}exit${LB} to close the tmux session.${NC}"
 echo
 
-
