@@ -15,7 +15,7 @@ This is not a one-click install node package with a fancy Webui (as e.g Umbrel, 
 It's more the way of following the videos or Guide and doing everything manually step by step, except that the installation is automated.<br>
 
 Predefined configs and service files are written automatically so that everything fits together.<br>
-No service/app is already started after executing the scripts. That should to be done by the user.<br>
+No service/app is already started after executing the scripts. That should be done by the user.<br>
 But each script points out important directories and files at the end of the execution.<br>
 
 It's a good idea to follow the videos and read the guide to understand what is being done and why. But also the scripts are documented and kept simple so that they are easy to follow.<br><br>
