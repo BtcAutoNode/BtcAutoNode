@@ -5,7 +5,7 @@
 #-----------------------------------------------------------------
 
 REPO_URL="https://github.com/BtcAutoNode/BtcAutoNode"
-REPO_DIR="BtcAutoNode"
+REPO_DIR="btcautonode"
 
 # bash colors
 # https://www.shellhacks.com/bash-colors/
