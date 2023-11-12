@@ -38,7 +38,7 @@ At least 4GB of Ram should be available, otherwise the mempool build process mig
 <br><br>
 
 ## Download/Installation
-Download the install.sh installer file which will install git and download/update the repository.<br>
+Download the ***install.sh*** installer file which will install git and download/update the repository.<br>
 <pre>
 wget https://raw.githubusercontent.com/BtcAutoNode/BtcAutoNode/master/install.sh
 chmod +x install.sh
@@ -54,7 +54,7 @@ cd BtcAutoNode/install
 ...
 </pre>
 <pre>
-If you want to log script output into a log file, execute the scripts like this:
+If you want to log the script output into a log file, execute the scripts like this:
 ./2_install_fulcrum.sh | tee >(ansi2txt > fulcrum.log) [using ansi2text to strip off color codes]
 ./2_install_fulcrum.sh | tee fulcrum.log [to keep colorcodes: view file with: less -R fulcrum.conf]
 </pre>
