@@ -47,7 +47,7 @@ BITCOIN_SERVICE_FILE="/etc/systemd/system/${BITCOIN_SERVICE}"
 #-----------------------------------------------------------------
 
 # Fulcrum config
-FULCRUM_VERSION="1.9.5"
+FULCRUM_VERSION="1.9.6"
 FULCRUM_DOWNLOAD_DIR="${DOWNLOAD_DIR}/Fulcrum"
 FULCRUM_DIR="${HOME_DIR}/fulcrum"
 FULCRUM_DATA_DIR="${HOME_DIR}/fulcrum_db"
