@@ -53,6 +53,11 @@ cd BtcAutoNode/install
 ./0_install_system.sh
 ...
 </pre>
+<pre>
+If you want to log standard output into a log file, execute the scripts like this:
+./2_install_fulcrum.sh | tee >(ansi2txt > fulcrum.log) (using ansi2text to strip off color codes)
+./2_install_fulcrum.sh | tee fulcrum.log (to keep colorcodes: view file with: less -R fulcrum.conf)
+</pre>
 
 ## Telegram Group
 https://t.me/BtcAutoNode
