@@ -1,6 +1,6 @@
-## BtcAutoNode - Automated installation of a Bitcoin Full Node via Bash Scripts
+# BtcAutoNode - Automated installation of a Bitcoin Full Node
 <br>
-BtcAutoNode is a set of scripts to install/setup a bitcoin full node in a Debian base server system.<br><br>
+BtcAutoNode is a set of bash scripts to install/setup a bitcoin full node in a Debian base server system.<br><br>
 
 The scripts are based on the Ministry of Nodes Videos and parts from the RaspiBolt Guide.<br><br>
 [Ministry of Nodes Node Box Guide 2022]<br>
@@ -29,18 +29,26 @@ The following scripts/applications are currently availabe:
 
 <br>
 
-### Prerequisites
+## Prerequisites
 A working Debian system is needed with access to the root user (which does the installations).<br>
 At least 4GB of Ram should be available, otherwise the mempool build process might fail (and maybe other things).<br>
 
 <br>
 
-### Download/Installation
-Download the install.sh installer file which will install git and download/update the repository.
+## Download/Installation
+Download the install.sh installer file which will install git and download/update the repository.<br>
+> wget<br>
+> chmod +x install.sh<br>
+> ./install.sh<br>
 
 <br>
 
-### Usage
+## Usage
 Cd into the newly created directory BtcAutoNode. Then cd into the install directory.<br>
-Execute scripts via ./<script_name> and follow the instructions.
+Execute scripts via ./<script_name> and follow the instructions.<br>
+> cd BtcAutoNode/install<br>
+> ./0_install_system.sh<br>
+> ...<br>
+<br>
+
 
