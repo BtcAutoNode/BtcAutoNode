@@ -45,7 +45,7 @@ echo
 echo -e "${Y}This script will download, verify and install Mempool...${NC}"
 echo
 echo -e "${LB}The following steps will be executed in the process:${NC}"
-echo "- Upgrade system to newest software (apt update / apt upgrade)"
+echo "- Upgrade system to newest software (apt-get update / apt-get upgrade)"
 echo "- Clone Thunderhub Github repository, version ${THH_VERSION}"
 echo "- Get thunderhub user account and password (by user interaction)"
 echo "- Create thunderhub environment config file ()${THH_ENV_CONF_FILE})"
@@ -69,8 +69,8 @@ clear
 ### update / upgrade system
 #
 echo
-echo -e "${Y}Updating the system via apt...${NC}"
-apt-get -q update && apt upgrade -y
+echo -e "${Y}Updating the system via apt-get...${NC}"
+apt-get -q update && apt-get upgrade -y
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
