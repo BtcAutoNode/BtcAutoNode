@@ -46,17 +46,17 @@ chmod +x install.sh
 </pre>
 
 ## Usage
-Cd into the newly created directory ***BtcAutoNode***. Then cd into the ***install*** directory.<br>
+Cd into the newly created directory ***btcautonode***. Then cd into the ***install*** directory.<br>
 Execute scripts via ***./<script_name>*** and follow the instructions.<br>
 <pre>
-cd BtcAutoNode/install
+cd btcautonode/install
 ./0_install_system.sh
 ...
 </pre>
 <pre>
 If you want to log the script output into a log file, execute the scripts like this:
 ./2_install_fulcrum.sh | tee >(ansi2txt > fulcrum.log) [using ansi2text to strip off color codes]
-./2_install_fulcrum.sh | tee fulcrum.log [to keep colorcodes: view file with: less -R fulcrum.conf]
+./2_install_fulcrum.sh | tee fulcrum.log [to keep colorcodes: view file with: less -R fulcrum.log]
 </pre>
 
 ## Telegram Group
