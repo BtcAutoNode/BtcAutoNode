@@ -4,7 +4,7 @@
 **BtcAutoNode is a set of bash scripts to install/setup a bitcoin full node in a Debian server system (Amd64).**<br>
 (Tested so far on Debian 11.7, Debian 12.2, Ubuntu 23.04)<br><br>
 
-<video>https://github-production-user-asset-6210df.s3.amazonaws.com/149917291/282331786-88902a3b-f647-467b-a023-5836f352dd3d.mp4</video>
+https://github-production-user-asset-6210df.s3.amazonaws.com/149917291/282331786-88902a3b-f647-467b-a023-5836f352dd3d.mp4
 
 <br>
 The scripts are based on the Ministry of Nodes Videos and parts from the RaspiBolt Guide.<br><br>
