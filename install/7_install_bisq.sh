@@ -45,7 +45,7 @@ echo
 echo -e "${Y}This script will download, verify and install Bisq (headless)...${NC}"
 echo
 echo -e "${LB}The following steps will be executed in the process:${NC}"
-echo "- Upgrade system to newest software (apt update / apt upgrade)"
+echo "- Upgrade system to newest software (apt-get update / apt-get upgrade)"
 echo "- Add xpra repository and install xpra via apt"
 echo "- Install Java, version ${BISQ_JAVA_VERSION}"
 echo "- Create Bisq download dir (${BISQ_DOWNLOAD_DIR})"
@@ -74,8 +74,8 @@ clear
 ### update / upgrade system
 #
 echo
-echo -e "${Y}Updating the system via apt...${NC}"
-apt-get -q update && apt upgrade -y
+echo -e "${Y}Updating the system via apt-get...${NC}"
+apt-get -q update && apt-get upgrade -y
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
@@ -99,7 +99,7 @@ echo -e "${G}Done.${NC}"
 #
 echo
 echo -e "${Y}Updating system via apt with new xpra repository...${NC}"
-apt update
+apt-get update
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
@@ -109,7 +109,7 @@ echo -e "${G}Done.${NC}"
 #
 echo
 echo -e "${Y}Install XPRA...${NC}"
-apt install xpra -y
+apt-get install xpra -y
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
@@ -129,8 +129,8 @@ echo -e "${G}Done.${NC}"
 #
 echo
 echo -e "${Y}Install java ${BISQ_JAVA_VERSION} via apt...${NC}"
-#apt install default-jre default-jdk -y
-apt install openjdk-"${BISQ_JAVA_VERSION}"-jre openjdk-"${BISQ_JAVA_VERSION}"-jdk -y
+#apt-get install default-jre default-jdk -y
+apt-get install openjdk-"${BISQ_JAVA_VERSION}"-jre openjdk-"${BISQ_JAVA_VERSION}"-jdk -y
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
