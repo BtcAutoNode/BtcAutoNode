@@ -474,7 +474,7 @@ echo -e " ${TORRC_CONF_FILE} + - Tor torrc config file\n" \
         "${HOME_DIR}/.ssh + - ssh dir for user ${USER} (authorized_keys file)\n" \
         "/root/.ssh + - ssh dir for user root (authorized_keys file)" | column -t -s "+"
 echo
-echo -e "${LB}Enter 'source .bashrc' to reload the changed root profile.${NC}"
+echo -e "${LB}Enter 'source ~/.bashrc' to reload the changed root profile.${NC}"
 echo -e "${LB}You can then use 'l' for dir listings in color'.${NC}"
 echo
 echo -e "${LB}IP address of the machine: ${LOCAL_IP}${NC}"
