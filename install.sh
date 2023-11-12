@@ -66,7 +66,7 @@ git --version &>/dev/null
 GIT_AVAILABLE="$?"
 if [ "$GIT_AVAILABLE" -ne 0 ]; then
   echo -e "${Y}Git not available...installing via apt-get...${NC}"
-  apt install git -y
+  apt-get install git -y
 else
   echo -e "${Y}Git already available${NC}"
 fi
