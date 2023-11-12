@@ -7,6 +7,15 @@
 #-----------------------------------------------------------------
 
 #
+### check if CONFIG file is there, otherwise exit
+#
+if [[ ! -f CONFIG || ! -s CONFIG ]] ; then
+    echo '"CONFIG" file is not there or empty, exiting.'
+    exit
+fi
+
+#-----------------------------------------------------------------
+#
 ### Config
 #
 source CONFIG
