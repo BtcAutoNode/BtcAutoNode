@@ -27,7 +27,7 @@ It's a good idea to follow the videos and read the guide to understand what is b
 - Fulcrum
 - Mempool
 - Lightning Lnd
-- Thunderbird (for managing Lnd)
+- Thunderhub (for managing Lnd)
 - Sparrow Terminal/Server
 - Bisq (headless)
 <br><br>
