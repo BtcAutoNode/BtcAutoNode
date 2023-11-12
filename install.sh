@@ -58,17 +58,6 @@ echo
 echo -e "${LR}Press ${NC}<enter>${LR} key to continue, or ${NC}ctrl-c${LR} to exit${NC}"
 read -r
 
-
-#
-### update / upgrade system
-#
-echo
-echo -e "${Y}Updating the system via apt-get...${NC}"
-apt-get -q update && apt-get upgrade -y
-echo -e "${G}Done.${NC}"
-
-#-----------------------------------------------------------------
-
 #
 ### install git if not already available
 #
