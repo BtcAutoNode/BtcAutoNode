@@ -33,7 +33,7 @@ It's a good idea to follow the videos and read the guide to understand what is b
 <br><br>
 
 ## Prerequisites
-A working Debian system is needed with access to the root user (which does the installations).<br>
+A working Debian server base system installation is needed with access to the root user (who does the installations).<br>
 At least 4GB of Ram should be available, otherwise the mempool build process might fail (and maybe other things).
 <br><br>
 
