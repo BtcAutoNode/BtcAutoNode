@@ -228,7 +228,7 @@ npm config set registry=https://registry.npmjs.com/
 # update npm
 npm install -g npm@10.2.3
 cd "${MEMPOOL_BACKEND_DIR}"
-npm install ## --no-install-links # npm@9.4.2 and later can omit the --no-install-links
+npm install --omit=dev ## --no-install-links # npm@9.4.2 and later can omit the --no-install-links
 npm run build
 echo -e "${G}Done.${NC}"
 
@@ -274,7 +274,7 @@ echo
 echo -e "${Y}Build the frontend part of mempool...${NC}"
 echo -e "${LB}This can take quite some time!${NC}"
 cd "${MEMPOOL_FRONTEND_DIR}"
-npm install
+npm install --omit=dev
 npm run build
 echo -e "${G}Done.${NC}"
 
