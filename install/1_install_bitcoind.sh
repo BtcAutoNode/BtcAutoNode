@@ -45,7 +45,7 @@ echo
 echo -e "${Y}This script will download, verify and install Bitcoind...${NC}"
 echo
 echo -e "${LB}The following steps will be executed in the process:${NC}"
-echo "- Upgrade system to newest software (apt update / apt upgrade)"
+echo "- Upgrade system to newest software (apt-get update / apt-get upgrade)"
 echo "- Create Bitcoin download dir in users download dir ${DOWNLOAD_DIR}"
 echo "- Download Bitcoin release files, version ${BITCOIN_VERSION}"
 echo "- Verify, extract and install the release"
@@ -68,8 +68,8 @@ clear
 ### update / upgrade system
 #
 echo
-echo -e "${Y}Updating the system via apt...${NC}"
-apt-get -q update && apt upgrade -y
+echo -e "${Y}Updating the system via apt-get...${NC}"
+apt-get -q update && apt-get upgrade -y
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------

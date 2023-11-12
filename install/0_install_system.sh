@@ -44,8 +44,8 @@ echo
 echo -e "${Y}This script will update and prepare the system for the node installation...${NC}"
 echo
 echo -e "${LB}The following steps will be executed in the process:${NC}"
-echo "- Upgrade system to newest software (apt update / apt upgrade)"
-echo "- Install missing dependencies via apt. The following packages are going to be installed:"
+echo "- Upgrade system to newest software (apt-get update / apt-get upgrade)"
+echo "- Install missing dependencies via apt-get. The following packages are going to be installed:"
 echo -e "  - ${LP}${INSTALL_PKGS}${NC}"
 echo "- Install newest NodeJS and NPM (version ${NODEJS_VERSION}+)"
 echo "- Configure correct timezone (by user interaction)"
@@ -79,8 +79,8 @@ clear
 ### update / upgrade system
 #
 echo
-echo -e "${Y}Updating the system via apt...${NC}"
-apt-get -q update && apt upgrade -y
+echo -e "${Y}Updating the system via apt-get...${NC}"
+apt-get -q update && apt-get upgrade -y
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
@@ -282,7 +282,7 @@ echo -e "${Y}Add content to .bashrc file for root...${NC}"
 cat > "/root/.bashrc"<< EOF
 # list alias
 alias l='ls -alF --color'
-alias upd='apt update && apt upgrade -y'
+alias upd='apt-get update && apt-get upgrade -y'
 
 # Home dir
 set home dir
@@ -412,8 +412,8 @@ EOF
 wget -qO- https://deb.torproject.org/torproject.org/A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89.asc | gpg --dearmor | tee "${TOR_KEYRING_FILE}" >/dev/null
 # install tor and tor debian keyring
 echo -e "${LB}Update apt and install...${NC}"
-apt -q update
-apt -q install tor deb.torproject.org-keyring -y
+apt-get -q update
+apt-get -q install tor deb.torproject.org-keyring -y
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------

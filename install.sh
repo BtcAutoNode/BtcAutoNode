@@ -58,6 +58,17 @@ echo
 echo -e "${LR}Press ${NC}<enter>${LR} key to continue, or ${NC}ctrl-c${LR} to exit${NC}"
 read -r
 
+
+#
+### update / upgrade system
+#
+echo
+echo -e "${Y}Updating the system via apt-get...${NC}"
+apt-get -q update && apt-get upgrade -y
+echo -e "${G}Done.${NC}"
+
+#-----------------------------------------------------------------
+
 #
 ### install git if not already available
 #
@@ -66,7 +77,7 @@ git --version &>/dev/null
 GIT_AVAILABLE="$?"
 if [ "$GIT_AVAILABLE" -ne 0 ]; then
   echo -e "${Y}Git not available...installing via apt-get...${NC}"
-  apt install git -y
+  apt-get install git -y
 else
   echo -e "${Y}Git already available${NC}"
 fi

@@ -45,6 +45,7 @@ echo
 echo -e "${Y}This script will install Sparrow Wallet terminal/server...${NC}"
 echo
 echo -e "${LB}The following steps will be executed in the process:${NC}"
+echo "- Upgrade system to newest software (apt-get update / apt-get upgrade)"
 echo "- Download of the release from sparrowwallet.com/download/"
 echo "- Verify the release file"
 echo "- Extract release and move extracted folder to /opt/Sparrow"
@@ -67,8 +68,8 @@ clear
 ### update / upgrade system
 #
 echo
-echo -e "${Y}Updating the system via apt...${NC}"
-apt-get -q update && apt upgrade -y
+echo -e "${Y}Updating the system via apt-get...${NC}"
+apt-get -q update && apt-get upgrade -y
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------

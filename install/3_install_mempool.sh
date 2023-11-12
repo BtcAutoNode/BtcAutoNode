@@ -45,7 +45,7 @@ echo
 echo -e "${Y}This script will download, verify and install Mempool...${NC}"
 echo
 echo -e "${LB}The following steps will be executed in the process:${NC}"
-echo "- Upgrade system to newest software (apt update / apt upgrade)"
+echo "- Upgrade system to newest software (apt-get update / apt-get upgrade)"
 echo "- Clone Mempool Github repository, version ${MEMPOOL_VERSION}"
 echo "- Generate mysql password, create mempool db and grant priviledges"
 echo "- Query rpcuser / rpcpass for backend config (by user interaction)"
@@ -74,8 +74,8 @@ clear
 ### update / upgrade system
 #
 echo
-echo -e "${Y}Updating the system via apt...${NC}"
-apt-get -q update && apt upgrade -y
+echo -e "${Y}Updating the system via apt-get...${NC}"
+apt-get -q update && apt-get upgrade -y
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
