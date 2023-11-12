@@ -37,18 +37,23 @@ At least 4GB of Ram should be available, otherwise the mempool build process mig
 
 ## Download/Installation
 Download the install.sh installer file which will install git and download/update the repository.<br>
-> wget<br>
-> chmod +x install.sh<br>
-> ./install.sh<br>
-
+```
+wget https://github.com/BtcAutoNode/BtcAutoNode/blob/readme_updates/install.sh
+chmod +x install.sh
+./install.sh
+```
 <br>
 
 ## Usage
 Cd into the newly created directory BtcAutoNode. Then cd into the install directory.<br>
 Execute scripts via ./<script_name> and follow the instructions.<br>
-> cd BtcAutoNode/install<br>
-> ./0_install_system.sh<br>
-> ...<br>
+```
+cd BtcAutoNode/install
+```
+```
+./0_install_system.sh
+```
+...<br>
 <br>
 
 
