@@ -19,7 +19,7 @@ RELEASE_CODE=$(cat /etc/os-release | grep VERSION_CODENAME | cut -d "=" -f 2)
 #-----------------------------------------------------------------
 
 # System config
-INSTALL_PKGS="toilet rsync curl gpg git sudo apt-transport-https nginx libnginx-mod-stream mariadb-server mariadb-client ca-certificates gnupg tmux lsb-release ncdu"
+INSTALL_PKGS="toilet rsync curl gpg git sudo apt-transport-https nginx libnginx-mod-stream mariadb-server mariadb-client ca-certificates gnupg tmux lsb-release ncdu jq"
 # libnginx-mod-stream needed in debian12
 APT_SOURCES_DIR="/etc/apt/sources.list.d"
 KEYRINGS_DIR="/etc/apt/keyrings"
