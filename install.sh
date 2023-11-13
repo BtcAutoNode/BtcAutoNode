@@ -105,6 +105,7 @@ fi
 #
 ln -sf "../CONFIG" "${REPO_DIR}/install/CONFIG"
 ln -sf "../CONFIG" "${REPO_DIR}/uninstall/CONFIG"
+ln -sf "../CONFIG" "${REPO_DIR}/upgrade/CONFIG"
 
 #-----------------------------------------------------------------
 
