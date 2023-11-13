@@ -90,6 +90,16 @@ echo -e "${G}Done.${NC}"
 #-----------------------------------------------------------------
 
 #
+### get the latest release from github and checkout git there
+#
+echo
+echo -e "${Y}Get latest release and git checkout at this release...${NC}"
+latestrelease="v${THH_VERSION}"
+git -c advice.detachedHead=false checkout "${latestrelease}"
+echo -e "${G}Done.${NC}"
+
+#-----------------------------------------------------------------
+#
 ### request admin password from user again for the config
 #
 echo
