@@ -75,7 +75,7 @@ MEMPOOL_SSL_PORT="4080"
 #-----------------------------------------------------------------
 
 # LND config
-LND_VERSION="0.17.1-beta.rc1"
+LND_VERSION="0.17.0-beta"
 LND_DIR="${HOME_DIR}/.lnd"
 LND_DOWNLOAD_DIR="${DOWNLOAD_DIR}/Lnd"
 LND_CONF_FILE="${LND_DIR}/lnd.conf"
