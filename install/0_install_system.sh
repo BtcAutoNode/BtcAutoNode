@@ -28,6 +28,9 @@ source CONFIG
 if [ "$EUID" -ne 0 ]; then
   echo -e "${R}Please run the installation script as root!${NC}"
   exit
+else
+  # set PATH env var for sbin and bin dirs (su root fails the installation)
+  export PATH=/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin
 fi
 
 #-----------------------------------------------------------------
