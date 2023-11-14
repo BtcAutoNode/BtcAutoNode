@@ -257,7 +257,8 @@ echo -e "${Y}Create bitcoind systemd service file...${NC}"
 cat > "${BITCOIN_SERVICE_FILE}"<< EOF
 [Unit]
 Description=Bitcoin daemon
-After=network.target
+After=network-online.target
+Wants=network-online.target
 
 [Service]
 
