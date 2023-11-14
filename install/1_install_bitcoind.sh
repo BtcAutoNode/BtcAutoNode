@@ -175,21 +175,21 @@ dbcache=450
 # Connections
 rpcport=8332
 rpcauth=<rpc user>:<auth hash>
-rpcbind=0.0.0.0
-rpcallowip=0.0.0.0
+rpcbind=127.0.0.1
+rpcallowip=127.0.0.1
 
-zmqpubrawblock=tcp://0.0.0.0:28332
-zmqpubrawtx=tcp://0.0.0.0:28333
-zmqpubhashblock=tcp://0.0.0.0:8433
-zmqpubhashblock=tcp://0.0.0.0:28334
-zmqpubsequence=tcp://0.0.0.0:28335
+zmqpubrawblock=tcp://127.0.0.1:28332
+zmqpubrawtx=tcp://127.0.0.1:28333
+zmqpubhashblock=tcp://127.0.0.1:8433
+zmqpubhashblock=tcp://127.0.0.1:28334
+zmqpubsequence=tcp://127.0.0.1:28335
 
 whitelist=127.0.0.1
 
 # Network / tor
 proxy=127.0.0.1:9050
 listen=1
-bind=0.0.0.0
+bind=127.0.0.1
 onlynet=onion
 
 # Don't let bitcoin core get peers using clearnet dns servers
