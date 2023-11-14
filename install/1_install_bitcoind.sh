@@ -163,8 +163,7 @@ echo
 echo -e "${Y}Create and configure bitcoind config file...${NC}"
 cat > "${BITCOIN_CONF_FILE}"<< EOF
 #
-# Bitcoin config file
-# Example config: 
+# Bitcoind config file
 #
 
 # Bitcoin daemon
