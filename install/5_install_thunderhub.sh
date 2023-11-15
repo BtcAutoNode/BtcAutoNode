@@ -171,7 +171,7 @@ echo -e "${LB}This can take several minutes!${NC}"
 # opt out from Next.js Telemetry data collection
 npx --yes next telemetry disable
 # update npm
-npm install -g npm@10.2.3
+npm install -g npm@10.2.4
 cd "${THH_DIR}"
 npm install
 npm run build
