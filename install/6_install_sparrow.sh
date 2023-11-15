@@ -122,8 +122,8 @@ else
   exit
 fi
 # download some gpg keys
-wget -O pgp_keys.asc https://keybase.io/craigraw/pgp_keys.asc || true
-# import into gpg
+wget -O pgp_keys.asc https://keybase.io/craigraw/pgp_keys.asc
+# import into gpg || true
 gpg --import -q pgp_keys.asc
 gpg --verify sparrow-"${SPARROW_VERSION}"-manifest.txt.asc 2>&1 >/dev/null | grep 'Good signature'
 if [ "$?" != 0 ]; then
