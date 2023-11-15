@@ -118,6 +118,8 @@ read -r
 echo
 echo -e "${Y}Update the Thunderhub application...${NC}"
 echo -e "${LB}This can take several minutes!${NC}"
+# update npm
+npm install -g npm@10.2.4
 cd "${THH_DIR}"
 npm run update
 echo -e "${G}Done.${NC}"
