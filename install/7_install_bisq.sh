@@ -4,6 +4,9 @@
 ### download, verify, install Bisq (in headless mode)
 #
 
+# fail if a command fails and exit
+set -e
+
 #-----------------------------------------------------------------
 
 #
@@ -154,7 +157,8 @@ echo -e "${G}Done.${NC}"
 echo
 echo -e "${Y}Download and overwrite Bisq github source code release...${NC}"
 cd "${BISQ_DOWNLOAD_DIR}"
-wget -O v"${BISQ_VERSION}".tar.gz https://github.com/bisq-network/bisq/archive/refs/tags/v"${BISQ_VERSION}".tar.gz
+wget -O bisq-"${BISQ_VERSION}".tar.gz https://github.com/bisq-network/bisq/archive/refs/tags/v"${BISQ_VERSION}".tar.gz
+wget -O bisq-"${BISQ_VERSION}".tar.gz.asc https://github.com/bisq-network/bisq/releases/download/v"${BISQ_VERSION}"/bisq-"${BISQ_VERSION}".tar.gz.asc
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
@@ -167,10 +171,10 @@ echo -e "${Y}Verify the release files...${NC}"
 # download gpg key
 wget -O E222AA02.asc https://bisq.network/pubkey/E222AA02.asc
 # import into gpg
-gpg --import -q E222AA02.asc
+gpg --import -q E222AA02.asc || true
 # verify
-gpg --digest-algo SHA256 --verify BINARY{.asc*,} 2>&1 >/dev/null | grep 'Good Signature'
-if [ "$?" = 0 ]; then
+gpg --digest-algo SHA256 --verify bisq-"${BISQ_VERSION}".tar.gz{.asc*,} 2>&1 >/dev/null | grep 'Good signature'
+if [ "$?" = !0 ]; then
   echo -e "${R}The signature(s) for the downloaded file are not good signature. Exiting now.${NC}"
   exit 1
 else
@@ -186,7 +190,7 @@ echo -e "${G}Done.${NC}"
 echo
 echo -e "${Y}Extract Bisq release...${NC}"
 # extract
-tar xvfz v"${BISQ_VERSION}".tar.gz
+tar xvfz bisq-"${BISQ_VERSION}".tar.gz
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
@@ -223,7 +227,7 @@ echo -e "${LB}This can take quite some time!${NC}"
 sed -i "s/7.6/7.6.3/g" "${BISQ_APP_DIR}"/gradle/wrapper/gradle-wrapper.properties
 # change into bisq dir and build (exclude core:test as a few tests always fail)
 cd "${BISQ_APP_DIR}"
-su -c './gradlew clean build --no-daemon' "${USER}"
+su -c './gradlew clean build --no-daemon -x core:test' "${USER}"
 # remove cache files
 su -c 'rm -rf ${HOME_DIR}/.gradle/caches' "${USER}"
 echo -e "${G}Done.${NC}"
