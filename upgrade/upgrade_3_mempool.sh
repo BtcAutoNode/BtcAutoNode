@@ -62,7 +62,7 @@ read -r
 echo
 echo -e "${Y}Check Github version and compare to running version...${NC}"
 latest_version=$(curl -sL https://api.github.com/repos/mempool/mempool/releases/latest | grep tag_name | head -1 | cut -d '"' -f4 | cut -c2-)
-running_version=$(cat ${MEMPOOL_BACKEND_DIR}/package.json | jq -r ".version")
+running_version=$(cat "${MEMPOOL_BACKEND_DIR}"/package.json | jq -r ".version")
 echo "Latest version on Github : $latest_version"
 echo "Current version running  : $running_version"
 echo
