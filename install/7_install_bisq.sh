@@ -200,6 +200,7 @@ echo -e "${G}Done.${NC}"
 #
 echo
 echo -e "${Y}Move extracted Bisq dir to ${USER} home dir...${NC}"
+rm -rf "${BISQ_APP_DIR}"
 mv bisq-"${BISQ_VERSION}"/ "${BISQ_APP_DIR}"
 echo -e "${G}Done.${NC}"
 
@@ -224,7 +225,7 @@ echo
 echo -e "${Y}Build Bisq from repository sources (as user ${USER})...${NC}"
 echo -e "${LB}This can take quite some time!${NC}"
 # change gradle version (otherwise the build fails building the 1st time (2nd works then))
-sed -i "s/7.6/7.6.3/g" "${BISQ_APP_DIR}"/gradle/wrapper/gradle-wrapper.properties
+sed -i "s/gradle-7.6-/gradle-7.6.3-/g" "${BISQ_APP_DIR}"/gradle/wrapper/gradle-wrapper.properties
 # change into bisq dir and build (exclude core:test as a few tests always fail)
 cd "${BISQ_APP_DIR}"
 su -c './gradlew clean build --no-daemon -x core:test' "${USER}"
