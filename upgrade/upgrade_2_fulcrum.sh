@@ -81,7 +81,7 @@ else
   echo -e "${G}New version ${latest_version} available...possible to upgrade${NC}"
 fi
 # replace so existing commands can be used
-FULCRUM_VERSION="{$latest_version}"
+FULCRUM_VERSION="${latest_version}"
 #echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
