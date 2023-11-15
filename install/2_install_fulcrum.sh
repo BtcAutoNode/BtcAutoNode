@@ -129,7 +129,7 @@ wget -O calinkey.txt https://raw.githubusercontent.com/Electron-Cash/keys-n-hash
 # import into gpg
 gpg --import -q calinkey.txt || true
 # verify
-gpg --verify Fulcrum-"${FULCRUM_VERSION}"-sha256sums.txt.asc 2>&1 >/dev/null | grep 'Good Signature'
+gpg --verify Fulcrum-"${FULCRUM_VERSION}"-sha256sums.txt.asc 2>&1 >/dev/null | grep 'Good signature'
 if [ "$?" != 0 ]; then
   echo -e "${R}The signature(s) for the downloaded file are not good signature. Exiting now.${NC}"
   exit 1
