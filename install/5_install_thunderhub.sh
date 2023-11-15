@@ -4,6 +4,9 @@
 ### download, verify, install Thunderhub (Lnd manager in web browser)
 #
 
+# fail if a command fails and exit
+set -e
+
 #-----------------------------------------------------------------
 
 #
