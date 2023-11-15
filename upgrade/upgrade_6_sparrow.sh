@@ -89,7 +89,7 @@ SPARROW_VERSION="${latest_version}"
 #
 ### check if sparrow is still active (exit if so)
 #
-sparrow_proc=$(pidof Sparrow)
+sparrow_proc=$(pidof Sparrow) || true
 if [ ! -z "$sparrow_proc" ]; then
   echo -e "${R}Sparrow still running...exiting!${NC}"
   echo
