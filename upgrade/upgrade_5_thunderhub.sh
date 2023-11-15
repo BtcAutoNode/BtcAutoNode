@@ -122,7 +122,7 @@ echo -e "${LB}This can take several minutes!${NC}"
 git config --global --add safe.directory "${THH_DIR}"
 cd "${THH_DIR}"
 git fetch
-git checkout "v${latest_version}"
+git checkout "v${THH_VERSION}"
 # update npm
 npm install -g npm@10.2.4
 npm run build
