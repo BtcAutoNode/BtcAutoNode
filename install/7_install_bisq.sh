@@ -323,7 +323,7 @@ echo -e "${G}Done.${NC}"
 #
 echo
 echo -e "${Y}Add user ${USER} to group lpadmin...${NC}"
-usermod -a -G lpadmin "${USER}"
+usermod -a -G lpadmin "${USER}" || true
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
