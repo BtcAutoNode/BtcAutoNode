@@ -4,6 +4,9 @@
 ### prepare system / install dependencies / create user etc...
 #
 
+# fail if a command fails and exit
+set -e
+
 #-----------------------------------------------------------------
 
 #
