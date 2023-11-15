@@ -4,6 +4,9 @@
 ### downdload, verify, install Sparrow Wallet terminal/server
 #
 
+# fail if a command fails and exit
+set -e
+
 #-----------------------------------------------------------------
 
 #
@@ -119,11 +122,11 @@ else
   exit
 fi
 # download some gpg keys
-wget -O pgp_keys.asc https://keybase.io/craigraw/pgp_keys.asc
+wget -O pgp_keys.asc https://keybase.io/craigraw/pgp_keys.asc || true
 # import into gpg
 gpg --import -q pgp_keys.asc
-gpg --verify sparrow-"${SPARROW_VERSION}"-manifest.txt.asc 2>&1 >/dev/null | grep 'Good Signature'
-if [ "$?" = 0 ]; then
+gpg --verify sparrow-"${SPARROW_VERSION}"-manifest.txt.asc 2>&1 >/dev/null | grep 'Good signature'
+if [ "$?" != 0 ]; then
   echo -e "${R}The signature(s) for the downloaded file are not good signature. Exiting now.${NC}"
   exit 1
 else
