@@ -69,8 +69,8 @@ echo
 echo -e "${Y}Check Github version and compare to running version...${NC}"
 latest_version=$(curl -sL https://github.com/apotdevin/thunderhub/releases/latest | grep "<title>Release" | cut -d ' ' -f 4 | cut -c2-)
 running_version=$(cat ${THH_DIR}/package.json | jq -r ".version")
-echo "Latest version on Github : $latest_version"
-echo "Current version running  : $running_version"
+echo "Latest version on Github : ${latest_version}"
+echo "Current version running  : ${running_version}"
 echo
 if [ "$latest_version" = "$running_version" ]; then
   echo -e "${R}No new version available...exiting${NC}"
@@ -80,7 +80,7 @@ else
   echo -e "${G}New version ${latest_version} available...possible to upgrade${NC}"
 fi
 # replace so existing commands can be used
-THH_VERSION="$latest_version"
+THH_VERSION="${latest_version}"
 #echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
