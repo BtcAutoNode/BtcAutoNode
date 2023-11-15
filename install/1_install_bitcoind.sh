@@ -202,6 +202,8 @@ dns=0
 # Optimizations
 maxconnections=30
 # maxuploadtarget=5000
+# enable compact-filters BIP158 service, so that BIP157 can be used
+blockfilterindex=1
 # serve compact block filters to peers per BIP157 (default: 0)
 peerblockfilters=1
 # accept transaction replace-by-fee without requiring replaceability
