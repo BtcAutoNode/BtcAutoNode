@@ -118,6 +118,8 @@ read -r
 echo
 echo -e "${Y}Update the Thunderhub application...${NC}"
 echo -e "${LB}This can take several minutes!${NC}"
+# for the warning that repo is owned by someone else
+git config --global --add safe.directory ${THH_DIR}
 # update npm
 npm install -g npm@10.2.4
 cd "${THH_DIR}"
