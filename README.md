@@ -51,6 +51,7 @@ chmod +x install.sh
 </pre>
 
 ## Usage
+Login as ***root*** user.<br>
 Cd into the newly created directory ***btcautonode***. Then cd into the ***install*** directory (or upgrade or uninstall).<br>
 Execute scripts via ***./<script_name>*** and follow the instructions.<br>
 <pre>
