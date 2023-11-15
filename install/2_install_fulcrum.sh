@@ -4,6 +4,9 @@
 ### download, verify, install Fulcrum (electrum server)
 #
 
+# fail if a command fails and exit
+set -e
+
 #-----------------------------------------------------------------
 
 #
@@ -124,10 +127,10 @@ fi
 # download gpg key
 wget -O calinkey.txt https://raw.githubusercontent.com/Electron-Cash/keys-n-hashes/master/pubkeys/calinkey.txt
 # import into gpg
-gpg --import -q calinkey.txt
+gpg --import -q calinkey.txt || true
 # verify
 gpg --verify Fulcrum-"${FULCRUM_VERSION}"-sha256sums.txt.asc 2>&1 >/dev/null | grep 'Good Signature'
-if [ "$?" = 0 ]; then
+if [ "$?" != 0 ]; then
   echo -e "${R}The signature(s) for the downloaded file are not good signature. Exiting now.${NC}"
   exit 1
 else
