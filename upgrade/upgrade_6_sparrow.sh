@@ -184,7 +184,7 @@ echo
 echo -e "${Y}Upgrade all done!${NC}"
 echo
 echo -e "${LB}Start Sparrow again via:${NC}"
-echo " Creating a tmux session via: tmux new -s sparrow_server"
+echo " Create a tmux session via: tmux new -s sparrow_server"
 echo " Then use: Sparrow <enter> and open your wallets again."
 echo " Start the mixing, lock the wallets and detach via: ctrl-b, then d"
 echo
