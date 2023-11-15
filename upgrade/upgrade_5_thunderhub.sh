@@ -4,6 +4,9 @@
 ### upgrade thunderhub (if possible)
 #
 
+# fail if a command fails and exit
+set -e
+
 #-----------------------------------------------------------------
 
 #
@@ -29,6 +32,9 @@ fi
 if [ "$EUID" -ne 0 ]; then
   echo -e "${R}Please run the installation script as root!${NC}"
   exit
+else
+  # set PATH env var for sbin and bin dirs (su root fails the installation)
+  export PATH=/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin
 fi
 
 #-----------------------------------------------------------------
@@ -105,7 +111,6 @@ echo -e "${LR}Press ${NC}<enter>${LR} key to continue, or ${NC}ctrl-c${LR} to ex
 read -r
 
 #-----------------------------------------------------------------
-
 
 #
 ### update the thunderhub application

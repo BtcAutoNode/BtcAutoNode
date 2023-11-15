@@ -4,6 +4,9 @@
 ### upgrade bitcoind (if possible)
 #
 
+# fail if a command fails and exit
+set -e
+
 #-----------------------------------------------------------------
 
 #
@@ -29,6 +32,9 @@ fi
 if [ "$EUID" -ne 0 ]; then
   echo -e "${R}Please run the installation script as root!${NC}"
   exit
+else
+  # set PATH env var for sbin and bin dirs (su root fails the installation)
+  export PATH=/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin
 fi
 
 #-----------------------------------------------------------------
@@ -142,12 +148,12 @@ wget -nv -O Emzy.gpg https://raw.githubusercontent.com/bitcoin-core/guix.sigs/ma
 wget -nv -O fanquake.gpg https://raw.githubusercontent.com/bitcoin-core/guix.sigs/main/builder-keys/fanquake.gpg
 wget -nv -O guggero.gpg https://raw.githubusercontent.com/bitcoin-core/guix.sigs/main/builder-keys/guggero.gpg
 # import into gpg
-gpg --import -q Emzy.gpg
-gpg --import -q fanquake.gpg
-gpg --import -q guggero.gpg
+gpg --import -q Emzy.gpg || true
+gpg --import -q fanquake.gpg || true
+gpg --import -q guggero.gpg || true
 # verify
-gpg --verify SHA256SUMS.asc 2>&1 >/dev/null | grep 'Good Signature'
-if [ "$?" = 0 ]; then
+gpg --verify SHA256SUMS.asc 2>&1 >/dev/null | grep 'Good signature'
+if [ "$?" != 0 ]; then
   echo -e "${R}The signature(s) for the downloaded file are not good signature. Exiting now.${NC}"
   exit 1
 else

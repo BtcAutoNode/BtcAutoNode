@@ -4,6 +4,9 @@
 ### upgrade mempool (if possible)
 #
 
+# fail if a command fails and exit
+set -e
+
 #-----------------------------------------------------------------
 
 #
@@ -12,6 +15,9 @@
 if [[ ! -f CONFIG || ! -s CONFIG ]] ; then
     echo '"CONFIG" file is not there or empty, exiting.'
     exit
+else
+  # set PATH env var for sbin and bin dirs (su root fails the installation)
+  export PATH=/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin
 fi
 
 #-----------------------------------------------------------------
@@ -135,7 +141,7 @@ echo -e "${G}Done.${NC}"
 echo
 echo -e "${Y}Move frontend dist dir into the web root dir...${NC}"
 rm -rf "${NGINX_WEBROOT_DIR}"/mempool
-mv "${MEMPOOL_FRONTEND_DIR}/dist/mempool" "${NGINX_WEBROOT_DIR}"
+mv "${MEMPOOL_FRONTEND_DIR}"/dist/mempool "${NGINX_WEBROOT_DIR}"
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------

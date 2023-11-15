@@ -4,6 +4,9 @@
 ### upgrade lnd (if possible)
 #
 
+# fail if a command fails and exit
+set -e
+
 #-----------------------------------------------------------------
 
 #
@@ -29,6 +32,9 @@ fi
 if [ "$EUID" -ne 0 ]; then
   echo -e "${R}Please run the installation script as root!${NC}"
   exit
+else
+  # set PATH env var for sbin and bin dirs (su root fails the installation)
+  export PATH=/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin
 fi
 
 #-----------------------------------------------------------------
@@ -140,10 +146,10 @@ fi
 # download gpg key
 wget -O roasbeef.asc https://raw.githubusercontent.com/lightningnetwork/lnd/master/scripts/keys/roasbeef.asc
 # import into gpg
-gpg --import -q roasbeef.asc
+gpg --import -q roasbeef.asc || true
 # verify
-gpg --verify manifest-roasbeef-v"${LND_VERSION}".sig manifest-v"${LND_VERSION}".txt 2>&1 >/dev/null | grep 'Good Signature'
-if [ "$?" = 0 ]; then
+gpg --verify manifest-roasbeef-v"${LND_VERSION}".sig manifest-v"${LND_VERSION}".txt 2>&1 >/dev/null | grep 'Good signature'
+if [ "$?" != 0 ]; then
   echo -e "${R}The signature(s) for the downloaded file are not good signature. Exiting now.${NC}"
   exit 1
 else
