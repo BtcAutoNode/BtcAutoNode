@@ -266,10 +266,6 @@ After=network-online.target
 Wants=network-online.target
 
 [Service]
-
-# Service execution
-###################
-
 ExecStart=/usr/local/bin/bitcoind -daemon \\
                                   -pid=/run/bitcoind/bitcoind.pid \\
                                   -conf=/home/${USER}/.bitcoin/bitcoin.conf \\
