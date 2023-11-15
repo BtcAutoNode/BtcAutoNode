@@ -43,6 +43,7 @@ At least 4GB of Ram should be available, otherwise the mempool build process mig
 <br><br>
 
 ## Download/Installation
+As ***root*** user:<br>
 Download the ***install.sh*** installer file which will install git and download/update the repository.<br>
 <pre>
 wget https://github.com/BtcAutoNode/BtcAutoNode/raw/master/install.sh
@@ -51,7 +52,7 @@ chmod +x install.sh
 </pre>
 
 ## Usage
-Login as ***root*** user.<br>
+As ***root*** user:<br>
 Cd into the newly created directory ***btcautonode***. Then cd into the ***install*** directory (or upgrade or uninstall).<br>
 Execute scripts via ***./<script_name>*** and follow the instructions.<br>
 <pre>
