@@ -4,6 +4,9 @@
 ### download, verify, install Mempool (block explorer and visualizer)
 #
 
+# fail if a command fails and exit
+set -e
+
 #-----------------------------------------------------------------
 
 #
@@ -317,7 +320,8 @@ echo -e "${G}Done.${NC}"
 #
 echo
 echo -e "${Y}Move frontend dist dir into the web root dir...${NC}"
-mv "${MEMPOOL_FRONTEND_DIR}/dist/mempool" "${NGINX_WEBROOT_DIR}"
+rm -rf "${NGINX_WEBROOT_DIR}"/mempool
+mv "${MEMPOOL_FRONTEND_DIR}"/dist/mempool "${NGINX_WEBROOT_DIR}"
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
