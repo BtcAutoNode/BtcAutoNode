@@ -122,10 +122,9 @@ echo -e "${LB}This can take several minutes!${NC}"
 # update
 git config --global --add safe.directory "${THH_DIR}"
 cd "${THH_DIR}"
-#git fetch
-#git checkout "v${latest_version}"
 # update npm
 npm install -g npm@10.2.4
+# update thunderhub
 npm run update
 echo -e "${G}Done.${NC}"
 
