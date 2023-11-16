@@ -123,8 +123,6 @@ git config --global --add safe.directory "${MEMPOOL_DIR}"
 cd "${MEMPOOL_DIR}"
 git fetch
 git checkout "v${latest_version}"
-# update npm
-#npm install -g npm@10.2.4
 # build backend
 cd "${MEMPOOL_BACKEND_DIR}"
 npm install --omit=dev
