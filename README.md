@@ -22,7 +22,7 @@ It's more the way of following the videos or Guide and doing everything manually
 
 Predefined configs and service files are written automatically so that everything fits together.<br>
 No service/app is already started after executing the scripts. That should be done by the user.<br>
-But each script points out important directories and files at the end of the execution.<br>
+But each script points out the relevant directories and files at the end of the execution.<br>
 
 It's a good idea to follow the videos and read the guide to understand what is being done and why. But also the scripts are documented and kept simple so that they are easy to follow.<br><br>
 
@@ -62,8 +62,8 @@ cd btcautonode/install
 </pre>
 <pre>
 If you want to log the script output into a log file, execute the scripts like this:
-./2_install_fulcrum.sh | tee >(ansi2txt > fulcrum.log) [using ansi2text to strip off color codes]
-./2_install_fulcrum.sh | tee fulcrum.log [to keep color codes: view file with: less -R fulcrum.log]
+***./2_install_fulcrum.sh | tee >(ansi2txt > fulcrum.log)*** [using ansi2text to strip off color codes]
+***./2_install_fulcrum.sh | tee fulcrum.log*** [to keep color codes: view file with: less -R fulcrum.log]
 </pre>
 
 ## Telegram Group
