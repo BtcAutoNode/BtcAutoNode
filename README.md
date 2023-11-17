@@ -62,8 +62,8 @@ cd btcautonode/install
 </pre>
 <pre>
 If you want to log the script output into a log file, execute the scripts like this:
-***./2_install_fulcrum.sh | tee >(ansi2txt > fulcrum.log)*** [using ansi2text to strip off color codes]
-***./2_install_fulcrum.sh | tee fulcrum.log*** [to keep color codes: view file with: less -R fulcrum.log]
+<b>./2_install_fulcrum.sh | tee >(ansi2txt > fulcrum.log)</b> [using ansi2text to strip off color codes]
+<b>./2_install_fulcrum.sh | tee fulcrum.log</b> [to keep color codes: view file with: less -R fulcrum.log]
 </pre>
 
 ## Telegram Group
