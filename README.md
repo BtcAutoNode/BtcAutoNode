@@ -10,9 +10,11 @@ https://github.com/BtcAutoNode/BtcAutoNode/assets/149917291/eb77011b-1f47-447f-a
 
 <br>
 The scripts are based on the Ministry of Nodes Videos and parts from the RaspiBolt Guide.<br><br>
-**[Ministry of Nodes Node Box Guide 2022]**<br>
+
+***[Ministry of Nodes Node Box Guide 2022]***<br>
 https://www.youtube.com/watch?v=9Kb7TobTNPI&list=PLCRbH-IWlcW2A_kpx2XwAMgT0rcZEZ2Cg<br><br>
-**[RaspiBolt Guide]**<br>
+
+***[RaspiBolt Guide]***<br>
 https://raspibolt.org/<br><br>
 
 The intention was to make it easier/faster to get a full node up and running (especially for beginners).<br>
