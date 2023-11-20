@@ -121,6 +121,15 @@ BISQ_LIST_FILE="${APT_SOURCES_LIST}/xpra_bisq.list"
 
 #-----------------------------------------------------------------
 
+# Glances (system monitor) config
+GLANCES_VERSION="3.4.0.2"
+GLANCES_APP_DIR="/usr/local/bin"
+GLANCES_SERVICE="glances.service"
+GLANCES_SERVICE_FILE="/etc/systemd/system/${GLANCES_SERVICE}"
+GLANCES_NGINX_SSL_CONF="/etc/nginx/streams-enabled/glances-ssl.conf"
+
+#-----------------------------------------------------------------
+
 # bash colors
 # https://www.shellhacks.com/bash-colors/
 # bash colors
