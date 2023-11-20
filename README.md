@@ -37,6 +37,7 @@ It's a good idea to follow the videos and read the guide to understand what is b
 - Thunderhub (for managing Lnd)
 - Sparrow Terminal/Server
 - Bisq (headless)
+- Glances (system monitoring tool)
 <br><br>
 
 ## Prerequisites
