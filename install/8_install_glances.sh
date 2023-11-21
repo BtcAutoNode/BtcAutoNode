@@ -99,6 +99,16 @@ rm -f /tmp/install_glances.sh
 #-----------------------------------------------------------------
 
 #
+### nginx Glances app config dir
+#
+echo
+echo -e "${Y}Create nginx Glances streams-enabled dir...${NC}"
+mkdir -p /etc/nginx/streams-enabled
+echo -e "${G}Done.${NC}"
+
+#-----------------------------------------------------------------
+
+#
 ### create Glances service file for web service
 #
 echo
