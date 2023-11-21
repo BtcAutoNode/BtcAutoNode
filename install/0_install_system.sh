@@ -381,6 +381,17 @@ echo -e "${G}Done.${NC}"
 #-----------------------------------------------------------------
 
 #
+### create nginx snippets and streams-enabled dirs
+#
+echo
+echo -e "${Y}Create nginx snippets and streams-enabled dirs...${NC}"
+mkdir -p "${NGINX_SNIPPETS_DIR}"
+mkdir -p "${NGINX_STREAMS_DIR}"
+echo -e "${G}Done.${NC}"
+
+#-----------------------------------------------------------------
+
+#
 ### check nginx config
 #
 echo

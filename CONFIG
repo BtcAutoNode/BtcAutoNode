@@ -31,6 +31,8 @@ TOR_KEYRING_FILE="${KEYRINGS_DIR}/tor-archive-keyring.gpg"
 TORRC_CONF_FILE="/etc/tor/torrc"
 TORSOCKS_CONF_FILE="/etc/tor/torsocks.conf"
 NGINX_CONF_FILE="/etc/nginx/nginx.conf"
+NGINX_SNIPPETS_DIR="/etc/nginx/snippets/"
+NGINX_STREAMS_DIR="/etc/nginx/streams-enabled/"
 NGINX_WEBROOT_DIR="/var/www/html"
 
 #-----------------------------------------------------------------
@@ -69,7 +71,7 @@ MEMPOOL_SERVICE="mempool.service"
 MEMPOOL_SERVICE_FILE="/etc/systemd/system/mempool.service"
 MEMPOOL_WEBROOT_DIR="${NGINX_WEBROOT_DIR}/mempool"
 MEMPOOL_NGINX_SSL_CONF="/etc/nginx/sites-available/mempool-ssl.conf"
-MEMPOOL_NGINX_APP_CONF="/etc/nginx/snippets/nginx-mempool.conf"
+MEMPOOL_NGINX_APP_CONF="${NGINX_SNIPPETS_DIR}/nginx-mempool.conf"
 MEMPOOL_SSL_PORT="4080"
 
 #-----------------------------------------------------------------
@@ -94,7 +96,7 @@ THH_ENV_CONF_FILE="${THH_DIR}/.env.local"
 THH_YAML_CONF_FILE="${THH_CONF_DIR}/thubConfig.yaml"
 THH_SERVICE="thunderhub.service"
 THH_SERVICE_FILE="/etc/systemd/system/${THH_SERVICE}"
-THH_NGINX_SSL_CONF="/etc/nginx/streams-enabled/thunderhub-ssl.conf"
+THH_NGINX_SSL_CONF="${NGINX_STREAMS_DIR}/thunderhub-ssl.conf"
 
 #-----------------------------------------------------------------
 
