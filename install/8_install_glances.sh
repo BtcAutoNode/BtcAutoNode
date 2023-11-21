@@ -87,14 +87,27 @@ wget -qO /tmp/install_glances.sh https://raw.githubusercontent.com/nicolargo/gla
 chmod +x /tmp/install_glances.sh
 echo -e "${G}Done.${NC}"
 
+#--------------------------------------------------------PIP_BREAK_SYSTEM_PACKAGES 1---------
+
+#
+###set environment variable for the pip externally-managed-environment error
+#
+echo
+echo -e "${Y}Set environment variable for pip externally-managed-environment error...${NC}"
+export PIP_BREAK_SYSTEM_PACKAGES=1
+echo -e "${G}Done.${NC}"
+
 #-----------------------------------------------------------------
 
 #
 ### installation via install script
 #
+echo
+echo -e "${Y}Install Glances via installer script...${NC}"
 . /tmp/install_glances.sh
 # delete install script after installation
 rm -f /tmp/install_glances.sh
+echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
 
