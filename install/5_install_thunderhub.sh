@@ -238,7 +238,7 @@ echo -e "${G}Done.${NC}"
 ### nginx Thunderhub app config snippet
 #
 echo
-echo -e "${Y}Create nginx Thunderhub Nginx streams-enabled dir...${NC}"
+echo -e "${Y}Create nginx Thunderhub streams-enabled dir...${NC}"
 mkdir -p /etc/nginx/streams-enabled
 echo -e "${G}Done.${NC}"
 
