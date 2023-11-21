@@ -492,7 +492,6 @@ echo -e "${G}Done.${NC}"
 #
 echo
 echo -e "${Y}Create nginx mempool app config snippet...${NC}"
-mkdir -p /etc/nginx/snippets
 cp "${MEMPOOL_DIR}/nginx-mempool.conf" "${MEMPOOL_NGINX_APP_CONF}"
 # change root path to NGINX_WEBROOT_DIR
 sed -i 's/root.*/root \/var\/www\/html\/mempool\/browser;/g' "${MEMPOOL_NGINX_APP_CONF}"
