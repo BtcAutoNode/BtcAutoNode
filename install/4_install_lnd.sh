@@ -114,7 +114,7 @@ echo -e "${G}Done.${NC}"
 echo
 echo -e "${Y}Verify the release files...${NC}"
 # checksum
-sha256sum --ignore-missing --check manifest-v${LND_VERSION}.txt
+sha256sum --ignore-missing --check manifest-v"${LND_VERSION}".txt
 if [ "$?" -eq 0 ]; then
   echo -e "${G}Verification of release checksum in checksum file: OK${NC}"
 else
