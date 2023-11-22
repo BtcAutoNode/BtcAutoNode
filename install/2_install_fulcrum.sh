@@ -117,7 +117,8 @@ echo -e "${G}Done.${NC}"
 echo
 echo -e "${Y}Verify the release files...${NC}"
 # checksum
-sha256sum --ignore-missing --check Fulcrum-"${FULCRUM_VERSION}"-sha256sums.txt
+##sha256sum --ignore-missing --check Fulcrum-"${FULCRUM_VERSION}"-sha256sums.txt
+cat Fulcrum-"${FULCRUM_VERSION}"-sha256sums.txt | grep Fulcrum-"${FULCRUM_VERSION}"-x86_64-linux.tar.gz | sha256sum --ignore-missing --check
 if [ "$?" -eq 0 ]; then
   echo -e "${G}Verification of release checksum in checksum file: OK${NC}"
 else
