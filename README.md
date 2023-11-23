@@ -30,16 +30,16 @@ But each script points out the relevant directories and files at the end of the 
 
 It's a good idea to follow the videos and read the guide to understand what is being done and why. But also the scripts are documented and kept simple so that they are easy to follow.<br><br>
 
-**The following scripts/applications are currently availabe:**
+**The following individual scripts/applications are currently availabe:**
 - System preparation (update, dependencies, user,...)
-- Bitcoind
-- Fulcrum
-- Mempool
-- Lightning Lnd
-- Thunderhub (for managing Lnd)
-- Sparrow Terminal/Server
-- Bisq (headless)
-- Glances (system monitoring tool)
+- ***Bitcoin Core Node*** - Validate Blocks and Transactions
+- ***Fulcrum*** - Electrum SPV Server and Indexer
+- ***Mempool*** - Visualizer, Explorer and API Service
+- ***LND*** - Lightning Network Daemon Node
+- ***Thunderhub*** - Lightning Node Manager
+- ***Sparrow*** - Server/Terminal (for headless platforms)
+- ***Bisq*** - DEX Network (for headless platforms)
+- ***Glances*** - An Eye on your System (system monitor)
 <br><br>
 
 ## Prerequisites
