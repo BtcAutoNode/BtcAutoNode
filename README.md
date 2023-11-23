@@ -1,4 +1,6 @@
-# BtcAutoNode - Automated installation of a Bitcoin Full Node and useful apps
+
+# BtcAutoNode - Automated installation of a Bitcoin Full Node and useful Apps
+
 <br>
 
 **BtcAutoNode is a set of bash scripts to install/setup a bitcoin full node in a Debian server system (Amd64).**<br>
