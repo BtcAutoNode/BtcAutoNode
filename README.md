@@ -1,5 +1,5 @@
 
-# BtcAutoNode - Automated installation of a Bitcoin Full Node and useful Apps
+# BtcAutoNode - Easy Automated Installation of a Bitcoin Full Node and useful Apps via Scripts
 
 <br>
 
