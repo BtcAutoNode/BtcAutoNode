@@ -104,9 +104,9 @@ cd "${FULCRUM_DOWNLOAD_DIR}"
 wget -O Fulcrum-"${FULCRUM_VERSION}"-x86_64-linux.tar.gz \
         https://github.com/cculianu/Fulcrum/releases/download/v"${FULCRUM_VERSION}"/Fulcrum-"${FULCRUM_VERSION}"-x86_64-linux.tar.gz
 wget -O Fulcrum-"${FULCRUM_VERSION}"-sha256sums.txt.asc \
-        https://github.com/cculianu/Fulcrum/releases/download/v"${FULCRUM_VERSION}"/Fulcrum-"${FULCRUM_VERSION}"-sha256sums.txt.asc
+        https://github.com/cculianu/Fulcrum/releases/download/v"${FULCRUM_VERSION}"/Fulcrum-"${FULCRUM_VERSION}"-shasums.txt.asc
 wget -O Fulcrum-"${FULCRUM_VERSION}"-sha256sums.txt \
-        https://github.com/cculianu/Fulcrum/releases/download/v"${FULCRUM_VERSION}"/Fulcrum-"${FULCRUM_VERSION}"-sha256sums.txt
+        https://github.com/cculianu/Fulcrum/releases/download/v"${FULCRUM_VERSION}"/Fulcrum-"${FULCRUM_VERSION}"-shasums.txt
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
@@ -118,7 +118,7 @@ echo
 echo -e "${Y}Verify the release files...${NC}"
 # checksum
 ##sha256sum --ignore-missing --check Fulcrum-"${FULCRUM_VERSION}"-sha256sums.txt
-cat Fulcrum-"${FULCRUM_VERSION}"-sha256sums.txt | grep Fulcrum-"${FULCRUM_VERSION}"-x86_64-linux.tar.gz | sha256sum --ignore-missing --check
+cat Fulcrum-"${FULCRUM_VERSION}"-shasums.txt | grep Fulcrum-"${FULCRUM_VERSION}"-x86_64-linux.tar.gz | sha256sum --ignore-missing --check
 if [ "$?" -eq 0 ]; then
   echo -e "${G}Verification of release checksum in checksum file: OK${NC}"
 else
@@ -130,7 +130,7 @@ wget -O calinkey.txt https://raw.githubusercontent.com/Electron-Cash/keys-n-hash
 # import into gpg
 gpg --import -q calinkey.txt || true
 # verify
-gpg --verify Fulcrum-"${FULCRUM_VERSION}"-sha256sums.txt.asc 2>&1 >/dev/null | grep 'Good signature'
+gpg --verify Fulcrum-"${FULCRUM_VERSION}"-shasums.txt.asc 2>&1 >/dev/null | grep 'Good signature'
 if [ "$?" != 0 ]; then
   echo -e "${R}The signature(s) for the downloaded file are not good signature. Exiting now.${NC}"
   exit 1
