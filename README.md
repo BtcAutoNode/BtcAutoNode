@@ -59,7 +59,7 @@ chmod +x install.sh
 ## Usage
 As ***root*** user:<br>
 Cd into the newly created directory ***btcautonode***. Then cd into the ***install*** directory (or upgrade or uninstall).<br>
-Execute scripts via ***./<script_name>*** and follow the instructions.<br>
+Execute scripts via ***./<script_name>*** and follow the instructions (Start with the 0_install_system.sh script!).<br>
 <pre>
 cd btcautonode/install
 ./0_install_system.sh
