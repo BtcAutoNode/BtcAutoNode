@@ -31,8 +31,8 @@ TOR_KEYRING_FILE="${KEYRINGS_DIR}/tor-archive-keyring.gpg"
 TORRC_CONF_FILE="/etc/tor/torrc"
 TORSOCKS_CONF_FILE="/etc/tor/torsocks.conf"
 NGINX_CONF_FILE="/etc/nginx/nginx.conf"
-NGINX_SNIPPETS_DIR="/etc/nginx/snippets/"
-NGINX_STREAMS_DIR="/etc/nginx/streams-enabled/"
+NGINX_SNIPPETS_DIR="/etc/nginx/snippets"
+NGINX_STREAMS_DIR="/etc/nginx/streams-enabled"
 NGINX_WEBROOT_DIR="/var/www/html"
 
 #-----------------------------------------------------------------
