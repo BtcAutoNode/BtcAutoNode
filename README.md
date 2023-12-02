@@ -64,6 +64,8 @@ Execute scripts via ***./<script_name>*** and follow the instructions (Start wit
 <pre>
 cd btcautonode/install
 ./0_install_system.sh
+./1_install_bitcoind.sh
+./2_install_fulcrum.sh
 ...
 </pre>
 <pre>
