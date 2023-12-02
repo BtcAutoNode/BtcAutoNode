@@ -132,6 +132,15 @@ GLANCES_NGINX_SSL_CONF="/etc/nginx/streams-enabled/glances-ssl.conf"
 
 #-----------------------------------------------------------------
 
+# BTC RPC Explorer config
+EXPLORER_VERSION="3.4.0"
+EXPLORER_DIR="${HOME_DIR}/btc-rpc-explorer"
+EXPLORER_CONF_FILE="${EXPLORER_DIR}/.env"
+EXPLORER_SERVICE="explorer.service"
+EXPLORER_SERVICE_FILE="/etc/systemd/system/${EXPLORER_SERVICE}"
+EXPLORER_NGINX_SSL_CONF="${NGINX_STREAMS_DIR}/explorer-ssl.conf"
+
+#-----------------------------------------------------------------
 # bash colors
 # https://www.shellhacks.com/bash-colors/
 # bash colors
