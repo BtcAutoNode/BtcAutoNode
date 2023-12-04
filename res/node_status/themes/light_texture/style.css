@@ -1,0 +1,36 @@
+body {
+    background: #FFF url("triangles_pattern.png");
+    color: #666;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+}
+
+h1 {
+    text-align: center;
+    margin: 5%;
+    font-size: 50pt;
+    font-weight: 100;
+}
+
+table {
+    margin: auto;
+}
+
+.title {
+    font-weight: bold;
+}
+
+.foot {
+    text-align: center;
+    color: #444;
+}
+
+footer {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 20px 0;
+}
+
+footer > span,
+footer > a {
+    color: #00FFFF;
+}
