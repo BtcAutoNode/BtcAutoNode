@@ -15,6 +15,9 @@ set -e
 if [[ ! -f CONFIG || ! -s CONFIG ]] ; then
     echo '"CONFIG" file is not there or empty, exiting.'
     exit
+else
+  # set PATH env var for sbin and bin dirs (su root fails the installation)
+  export PATH=/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin
 fi
 
 #-----------------------------------------------------------------
