@@ -89,7 +89,7 @@ LND_ADMIN_MACAROON_FILE="${LND_DIR}/data/chain/bitcoin/mainnet/admin.macaroon"
 #-----------------------------------------------------------------
 
 # Thunderhub config
-THH_VERSION="0.13.27"
+THH_VERSION="0.13.28"
 THH_DIR="${HOME_DIR}/thunderhub"
 THH_CONF_DIR="${HOME_DIR}/.thunderhub"
 THH_ENV_CONF_FILE="${THH_DIR}/.env.local"
