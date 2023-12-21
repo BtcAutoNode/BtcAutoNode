@@ -126,6 +126,7 @@ echo -e "${LB}This can take several minutes!${NC}"
 git config --global --add safe.directory "${THH_DIR}"
 cd "${THH_DIR}"
 # update thunderhub
+git -c advice.detachedHead=false checkout "${latestrelease}"
 npm run update
 echo -e "${G}Done.${NC}"
 
