@@ -133,6 +133,7 @@ echo
 echo -e "${Y}Extract release, move content to the Sparrow app dir in the Persistent dir...${NC}"
 tar xfz sparrow-"${SPARROW_VERSION}"-x86_64.tar.gz
 # move files into Sparrow application dir
+rm -rf "${SPARROW_APP_DIR}"/*
 mv "${DOWNLOAD_DIR}"/Sparrow/* "${SPARROW_APP_DIR}"
 rmdir "${DOWNLOAD_DIR}"/Sparrow/
 echo -e "${G}Done.${NC}"
