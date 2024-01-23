@@ -125,7 +125,7 @@ fi
 rm -rf guix.sigs
 git clone https://github.com/bitcoin-core/guix.sigs
 # import into gpg
-gpg --import guix.sigs/builder-keys/* || true
+gpg --import -q guix.sigs/builder-keys/* || true
 # verify
 gpg --verify SHA256SUMS.asc
 if [ "$?" != 0 ]; then
