@@ -173,7 +173,7 @@ wget -O E222AA02.asc https://bisq.network/pubkey/E222AA02.asc
 # import into gpg
 gpg --import -q E222AA02.asc || true
 # verify
-gpg --digest-algo SHA256 --verify bisq-"${BISQ_VERSION}".tar.gz{.asc*,} 2>&1 >/dev/null | grep 'Good signature'
+gpg --digest-algo SHA256 --verify bisq-"${BISQ_VERSION}".tar.gz{.asc*,}
 if [ "$?" = !0 ]; then
   echo -e "${R}The signature(s) for the downloaded file are not good signature. Exiting now.${NC}"
   exit 1
