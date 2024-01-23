@@ -122,6 +122,7 @@ else
 fi
 # download the repo with the builder keys
 # info: https://bitcoincore.org/en/download/
+rm -rf guix.sigs
 git clone https://github.com/bitcoin-core/guix.sigs
 # import into gpg
 gpg --import guix.sigs/builder-keys/* || true
