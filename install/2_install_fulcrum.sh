@@ -232,11 +232,13 @@ echo
 echo -e "${Y}Create fulcrum banner file...${NC}"
 cat > "${FULCRUM_DIR}"/banner.txt<< EOF
 
- mmmmmm        ""#
- #      m   m    #     mmm    m mm  m   m  mmmmm 
- #mmmmm #   #    #    #"  "   #"  " #   #  # # # 
- #      #   #    #    #       #     #   #  # # # 
- #      "mm"#    "mm  "#mm"   #     "mm"#  # # # 
+#######
+#       #    # #       ####  #####  #    # #    # 
+#       #    # #      #    # #    # #    # ##  ## 
+#####   #    # #      #      #    # #    # # ## # 
+#       #    # #      #      #####  #    # #    # 
+#       #    # #      #    # #   #  #    # #    # 
+#        ####  ######  ####  #    #  ####  #    #
 
 server version: \${SERVER_VERSION}
 bitcoind version: \${DAEMON_VERSION}
