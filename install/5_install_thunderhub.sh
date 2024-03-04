@@ -48,7 +48,7 @@ clear
 ### Check if user really wants to install...or exit
 #
 echo
-echo -e "${Y}This script will download, verify and install Mempool...${NC}"
+echo -e "${Y}This script will download, verify and install Thunderhub...${NC}"
 echo
 echo -e "${LB}The following steps will be executed in the process:${NC}"
 echo "- Upgrade system to newest software (apt-get update / apt-get upgrade)"
