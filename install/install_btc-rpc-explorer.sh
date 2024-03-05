@@ -176,6 +176,8 @@ echo -e "${Y}Build the Explorer application...${NC}"
 echo -e "${LB}This can take several minutes!${NC}"
 # install/build
 cd "${EXPLORER_DIR}"
+# update npm (based on warnings)
+npm install -g npm@${NPM_UPD_VER}
 npm install
 echo -e "${G}Done.${NC}"
 
