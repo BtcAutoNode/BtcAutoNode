@@ -172,6 +172,8 @@ echo -e "${LB}This can take several minutes!${NC}"
 npx --yes next telemetry disable
 # install/build
 cd "${THH_DIR}"
+# update npm (based on warnings)
+npm install -g npm@${NPM_UPD_VER}
 npm install
 npm run build
 echo -e "${G}Done.${NC}"
