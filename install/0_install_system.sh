@@ -121,8 +121,8 @@ echo "deb [signed-by=${NODEJS_KEYRING_FILE}] https://deb.nodesource.com/node_$NO
 echo -e "${LB}Update apt and install...${NC}"
 apt-get -q update
 apt-get -q --reinstall install nodejs -y
-# update npm (based on warning message)
-npm install -g npm@10.2.5
+# update npm (based on warnings)
+npm install -g npm@${NPM_UPD_VER}
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
