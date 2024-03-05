@@ -208,8 +208,8 @@ cat > "${MEMPOOL_BACKEND_CONF}"<< EOF
     "LOGGER_UPDATE_INTERVAL": 30
   },
   "LND": {
-    "TLS_CERT_PATH": "/home/satoshi/.lnd/tls.cert",
-    "MACAROON_PATH": "/home/satoshi/.lnd/data/chain/bitcoin/mainnet/readonly.macaroon",
+    "TLS_CERT_PATH": "${LND_DIR}/tls.cert",
+    "MACAROON_PATH": "${LND_DIR}/data/chain/bitcoin/mainnet/readonly.macaroon",
     "REST_API_URL": "https://127.0.0.1:8080",
     "TIMEOUT": 10000
   },
