@@ -26,6 +26,7 @@ KEYRINGS_DIR="/etc/apt/keyrings"
 NODEJS_VERSION="20"
 NODEJS_LIST_FILE="${APT_SOURCES_DIR}/nodesource.list"
 NODEJS_KEYRING_FILE="${KEYRINGS_DIR}/nodesource.gpg"
+NPM_UPD_VER="10.5.0"
 TOR_LIST_FILE="${APT_SOURCES_DIR}/tor.list"
 TOR_KEYRING_FILE="${KEYRINGS_DIR}/tor-archive-keyring.gpg"
 TORRC_CONF_FILE="/etc/tor/torrc"
@@ -141,6 +142,21 @@ EXPLORER_SERVICE_FILE="/etc/systemd/system/${EXPLORER_SERVICE}"
 EXPLORER_NGINX_SSL_CONF="${NGINX_STREAMS_DIR}/explorer-ssl.conf"
 
 #-----------------------------------------------------------------
+
+# Bitfeed config
+BITFEED_VERSION="2.3.4"
+BITFEED_PKGS="erlang-dev elixir"
+BITFEED_DIR="${HOME_DIR}/bitfeed"
+BITFEED_BACKEND_DIR="${BITFEED_DIR}/server"
+BITFEED_FRONTEND_DIR="${BITFEED_DIR}/client"
+BITFEED_SERVICE="bitfeed.service"
+BITFEED_WEBROOT_DIR="${NGINX_WEBROOT_DIR}/bitfeed"
+BITFEED_SERVICE_FILE="/etc/systemd/system/${BITFEED_SERVICE}"
+BITFEED_NGINX_SSL_CONF="/etc/nginx/sites-available/bitfeed-ssl.conf"
+BITFEED_SSL_PORT="4041"
+
+#-----------------------------------------------------------------
+
 # bash colors
 # https://www.shellhacks.com/bash-colors/
 # bash colors
