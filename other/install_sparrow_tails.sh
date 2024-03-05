@@ -9,6 +9,12 @@
 #
 # Download/copy this script into the Persistent directory and execute from there as user amnesia.
 #
+#   As user amnesia:
+#   cd /home/amnesia/Persistent
+#   wget https://raw.githubusercontent.com/BtcAutoNode/BtcAutoNode/master/other/install_sparrow_tails.sh
+#   chmod +x install_sparrow_tails.sh
+#   ./install_sparrow_tails.sh
+#
 
 #------------------------------------------------------
 # config
