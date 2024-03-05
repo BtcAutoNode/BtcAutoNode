@@ -40,7 +40,9 @@ It's a good idea to follow the videos and read the guide to understand what is b
 - ***Sparrow*** - Server/Terminal (for headless platforms)
 - ***Bisq*** - DEX Network (for headless platforms)
 - ***Glances*** - An Eye on your System (system monitor)
+- 
 - ***BTC RPC Explorer*** - Self-Hosted Bitcoin explorer for blockchain and full node
+- ***Bitfeed*** - A live visualization of Bitcoin network activity and blockchain explorer
 <br><br>
 
 ## Prerequisites
