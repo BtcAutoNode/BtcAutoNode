@@ -127,6 +127,8 @@ git config --global --add safe.directory "${THH_DIR}"
 cd "${THH_DIR}"
 # update thunderhub
 git -c advice.detachedHead=false checkout "${latestrelease}"
+# update npm (based on warnings)
+npm install -g npm@${NPM_UPD_VER}
 npm run update
 echo -e "${G}Done.${NC}"
 
