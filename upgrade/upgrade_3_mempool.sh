@@ -125,6 +125,8 @@ git fetch
 git checkout "v${latest_version}"
 # build backend
 cd "${MEMPOOL_BACKEND_DIR}"
+# update npm (based on warnings)
+npm install -g npm@${NPM_UPD_VER}
 npm install --omit=dev
 npm run build
 # build frontend
