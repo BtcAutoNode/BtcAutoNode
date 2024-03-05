@@ -233,6 +233,9 @@ echo -e "${LB}This can take several minutes!${NC}"
 npm config set registry=https://registry.npmjs.com/
 # install/build
 cd "${MEMPOOL_BACKEND_DIR}"
+# update npm (based on warnings)
+npm install -g npm@${NPM_UPD_VER}
+# build
 npm install --omit=dev ## --no-install-links # npm@9.4.2 and later can omit the --no-install-links
 npm run build
 echo -e "${G}Done.${NC}"
