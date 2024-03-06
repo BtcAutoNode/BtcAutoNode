@@ -27,11 +27,44 @@ fi
 
 #-----------------------------------------------------------------
 
+# clear screen
+clear
+
+#-----------------------------------------------------------------
+
+#
+### Check if user really wants to uninstall...or exit
+#
+echo
+echo -e "${Y}This script will uninstall all files/folders of the Sparrow installation...${NC}"
+echo
+echo -e "${LB}The following steps will be executed in the process:${NC}"
+echo "- Kill tmux sparrow session (sparrow_server)"
+echo "- Delete sparrow download dir (${SPARROW_DOWNLOAD_DIR})"
+echo "- Delete sparrow base dir (${SPARROW_DIR})"
+echo "- Delete sparrow app dir (${SPARROW_APP_DIR})"
+echo "- Delete sparrow symlink (${SPARROW_SYM_LINK})"
+echo
+echo -e "${LR}Press ${NC}<enter>${LR} key to continue, or ${NC}ctrl-c${LR} to exit${NC}"
+read -r
+
+#-----------------------------------------------------------------
+
+#
+### kill tmux sparrow session
+#
+echo
+echo -e "${Y}Kill tmux Sparrow session (sparrow_server)...${NC}"
+su -c 'tmux kill-session -t sparrow_server' ${USER}
+echo -e "${G}Done.${NC}"
+
+#-----------------------------------------------------------------
+
 #
 ### delete sparrow download dir
 #
 echo
-echo -e "${Y}Delete sparrow download dir...${NC}"
+echo -e "${Y}Delete Sparrow download dir (${SPARROW_DOWNLOAD_DIR})...${NC}"
 rm -rf "${SPARROW_DOWNLOAD_DIR}"
 echo -e "${G}Done.${NC}"
 
@@ -41,7 +74,7 @@ echo -e "${G}Done.${NC}"
 ### delete sparrow base dir
 #
 echo
-echo -e "${Y}Delete user sparrow base dir...${NC}"
+echo -e "${Y}Delete Sparrow base dir (${SPARROW_DIR})...${NC}"
 rm -rf "${SPARROW_DIR}"
 echo -e "${G}Done.${NC}"
 
@@ -51,7 +84,7 @@ echo -e "${G}Done.${NC}"
 ### delete sparrow application directory
 #
 echo
-echo -e "${Y}Delete sparrow application dir in /opt...${NC}"
+echo -e "${Y}Delete Sparrow app dir (${SPARROW_APP_DIR})...${NC}"
 rm -rf "${SPARROW_APP_DIR}"
 echo -e "${G}Done.${NC}"
 
@@ -61,13 +94,12 @@ echo -e "${G}Done.${NC}"
 ### delete sparrow symlink in /urs/local/bin
 #
 echo
-echo -e "${Y}Delete sparrow symbolic link in /usr/local/bin...${NC}"
-rm -rf "${SPARROW_SYM_LINK}"
+echo -e "${Y}Delete Sparrow symbolic link (${SPARROW_SYM_LINK})...${NC}"
+rm -f "${SPARROW_SYM_LINK}"
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
 
 echo
-echo -e "${Y}Un-installation all done!${NC}"
+echo -e "${Y}Uninstallation all done!${NC}"
 echo
-
