@@ -106,17 +106,6 @@ echo -e "${G}Done.${NC}"
 #-----------------------------------------------------------------
 
 #
-### request rpcuser and rpcpass from user again for the config
-#
-echo
-echo -e "${LR}Please enter your ${NC}rpcuser${LR} used in bitcoind script and press the ${NC}<enter>${LR} key (for config):${NC}"
-read -r RPCUSER
-echo -e "${LR}Please enter your ${NC}rpcpass${LR} used in bitcoind script and press the ${NC}<enter>${LR} key (for config):${NC}"
-read -r RPCPASS
-
-#-----------------------------------------------------------------
-
-#
 ### request user to enter a password for the web access (for config)
 #
 echo
@@ -142,9 +131,9 @@ BTCEXP_PORT=3002
 
 BTCEXP_BITCOIND_HOST=127.0.0.1
 BTCEXP_BITCOIND_PORT=8332
-BTCEXP_BITCOIND_USER=${RPCUSER}
-BTCEXP_BITCOIND_PASS=${RPCPASS}
-BTCEXP_BITCOIND_COOKIE=~/.bitcoin/.cookie
+#BTCEXP_BITCOIND_USER=<rpcuser>
+#BTCEXP_BITCOIND_PASS=<rpcpass>
+BTCEXP_BITCOIND_COOKIE=${BITCOIN_DIR}/.cookie
 BTCEXP_BITCOIND_RPC_TIMEOUT=5000
 
 BTCEXP_ADDRESS_API=electrum
