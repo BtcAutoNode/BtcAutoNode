@@ -27,67 +27,89 @@ fi
 
 #-----------------------------------------------------------------
 
+# clear screen
+clear
+
+#-----------------------------------------------------------------
+
 #
-# stop Fulcrum service
+### Check if user really wants to uninstall...or exit
 #
 echo
-echo -e "${Y}Stop Fulcrum service...${NC}"
+echo -e "${Y}This script will uninstall all files/folders of the Fulcrum installation...${NC}"
+echo
+echo -e "${LB}The following steps will be executed in the process:${NC}"
+echo "- Stop fulcrum systemd service (${FULCRUM_SERVICE})"
+echo "- Disable fulcrum systemd service (${FULCRUM_SERVICE})"
+echo "- Delete fulcrum systemd service file (${FULCRUM_SERVICE_FILE})"
+echo "- Delete fulcrum download dir (${FULCRUM_DOWNLOAD_DIR})"
+echo "- Delete fulcrum base dir (${FULCRUM_DIR})"
+echo "- Delete fulcrum data dir (${FULCRUM_DATA_DIR})"
+echo
+echo -e "${LR}Press ${NC}<enter>${LR} key to continue, or ${NC}ctrl-c${LR} to exit${NC}"
+read -r
+
+#-----------------------------------------------------------------
+
+#
+# stop fulcrum service
+#
+echo
+echo -e "${Y}Stop Fulcrum service (${FULCRUM_SERVICE})...${NC}"
 systemctl stop "${FULCRUM_SERVICE}"
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
 
 #
-# disable Fulcrum service
+# disable fulcrum service
 #
 echo
-echo -e "${Y}Disable Fulcrum service...${NC}"
+echo -e "${Y}Disable Fulcrum service (${FULCRUM_SERVICE})...${NC}"
 systemctl disable "${FULCRUM_SERVICE}"
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
 
 #
-# delete Fulcrum download dir
+# delete fulcrum service file
 #
 echo
-echo -e "${Y}Delete Fulcrum download dir...${NC}"
+echo -e "${Y}Delete fulcrum systemd service file (${FULCRUM_SERVICE_FILE})...${NC}"
+rm -f "${FULCRUM_SERVICE_FILE}"
+echo -e "${G}Done.${NC}"
+
+#-----------------------------------------------------------------
+#
+# delete fulcrum download dir
+#
+echo
+echo -e "${Y}Delete Fulcrum download dir (${FULCRUM_DOWNLOAD_DIR})...${NC}"
 rm -rf "${FULCRUM_DOWNLOAD_DIR}"
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
 
 #
-# delete Fulcrum dir
+# delete fulcrum base dir
 #
 echo
-echo -e "${Y}Delete Fulcrum base dir...${NC}"
+echo -e "${Y}Delete Fulcrum base dir (${FULCRUM_DIR})...${NC}"
 rm -rf "${FULCRUM_DIR}"
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
 
 #
-# delete Fulcrum data dir
+# delete fulcrum data dir
 #
 echo
-echo -e "${Y}Delete Fulcrum data dir...${NC}"
+echo -e "${Y}Delete Fulcrum data dir (${FULCRUM_DATA_DIR})...${NC}"
 rm -rf "${FULCRUM_DATA_DIR}"
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
 
-#
-# delete Fulcrum service file
-#
 echo
-echo -e "${Y}Delete fulcrum systemd service file...${NC}"
-rm "${FULCRUM_SERVICE_FILE}"
-echo -e "${G}Done.${NC}"
-
-#-----------------------------------------------------------------
-
+echo -e "${Y}Uninstallation all done!${NC}"
 echo
-echo -e "${Y}Un-installation all done!${NC}"
-echo
-
