@@ -179,6 +179,8 @@ echo
 echo -e "${Y}Clean npm caches from build...${NC}"
 # clean the npm cache and delete npm cache dir
 npm cache clean --force
+rm -rf "$(npm get cache)"
+rm -rf /root/.cache/node-gyp
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
