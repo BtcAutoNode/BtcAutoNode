@@ -91,7 +91,10 @@ if [ ! -d "${REPO_DIR}" ] ; then
     git clone "${REPO_URL}" "${REPO_DIR}"
 else
     echo -e "${Y}Updating the repository in ${REPO_DIR}${NC}"
-    git -C "$REPO_DIR" pull --ff-only
+    cd $REPO_DIR
+    git fetch --all
+    git reset --hard origin/master
+    cd ..
 fi
 
 #-----------------------------------------------------------------
