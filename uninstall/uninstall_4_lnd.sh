@@ -27,11 +27,35 @@ fi
 
 #-----------------------------------------------------------------
 
+# clear screen
+clear
+
+#-----------------------------------------------------------------
+
+#
+### Check if user really wants to uninstall...or exit
+#
+echo
+echo -e "${Y}This script will uninstall all files/folders of the LND installation...${NC}"
+echo
+echo -e "${LB}The following steps will be executed in the process:${NC}"
+echo "- Stop lnd systemd service (${LND_SERVICE})"
+echo "- Disable lnd systemd service (${LND_SERVICE})"
+echo "- Delete lnd systemd service file (${LND_SERVICE_FILE})"
+echo "- Delete lnd download dir (${LND_DOWNLOAD_DIR})"
+echo "- Delete lnd base dir (${LND_DIR})"
+echo "- Delete lnd app binaries from /usr/local/bin"
+echo
+echo -e "${LR}Press ${NC}<enter>${LR} key to continue, or ${NC}ctrl-c${LR} to exit${NC}"
+read -r
+
+#-----------------------------------------------------------------
+
 #
 # stop lnd service
 #
 echo
-echo -e "${Y}Stop Lnd service...${NC}"
+echo -e "${Y}Stop Lnd service (${LND_SERVICE})...${NC}"
 systemctl stop "${LND_SERVICE}"
 echo -e "${G}Done.${NC}"
 
@@ -41,17 +65,26 @@ echo -e "${G}Done.${NC}"
 # disable Lnd service
 #
 echo
-echo -e "${Y}Disable Lnd service...${NC}"
+echo -e "${Y}Disable Lnd service (${LND_SERVICE})...${NC}"
 systemctl disable "${LND_SERVICE}"
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
 
 #
+# delete Lnd service file
+#
+echo
+echo -e "${Y}Delete Lnd systemd service file (${LND_SERVICE_FILE})...${NC}"
+rm -f "${LND_SERVICE_FILE}"
+echo -e "${G}Done.${NC}"
+
+#-----------------------------------------------------------------
+#
 # delete Lnd download dir
 #
 echo
-echo -e "${Y}Delete Lnd download dir...${NC}"
+echo -e "${Y}Delete Lnd download dir (${LND_DOWNLOAD_DIR})...${NC}"
 rm -rf "${LND_DOWNLOAD_DIR}"
 echo -e "${G}Done.${NC}"
 
@@ -61,18 +94,8 @@ echo -e "${G}Done.${NC}"
 # delete Lnd dir
 #
 echo
-echo -e "${Y}Delete Lnd base dir...${NC}"
+echo -e "${Y}Delete Lnd base dir (${LND_DIR})...${NC}"
 rm -rf "${LND_DIR}"
-echo -e "${G}Done.${NC}"
-
-#-----------------------------------------------------------------
-
-#
-# delete Lnd service file
-#
-echo
-echo -e "${Y}Delete Lnd systemd service file...${NC}"
-rm "${LND_SERVICE_FILE}"
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
@@ -82,13 +105,12 @@ echo -e "${G}Done.${NC}"
 #
 echo
 echo -e "${Y}Delete Lnd apps from /usr/local/bin...${NC}"
-rm "/usr/local/bin/lnd"
-rm "/usr/local/bin/lncli"
+rm -f "/usr/local/bin/lnd"
+rm -f "/usr/local/bin/lncli"
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
 
 echo
-echo -e "${Y}Un-installation all done!${NC}"
+echo -e "${Y}Uninstallation all done!${NC}"
 echo
-
