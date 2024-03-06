@@ -50,7 +50,7 @@ BITCOIN_SERVICE_FILE="/etc/systemd/system/${BITCOIN_SERVICE}"
 #-----------------------------------------------------------------
 
 # Fulcrum config
-FULCRUM_VERSION="1.9.8"
+FULCRUM_VERSION="1.10.0"
 FULCRUM_DOWNLOAD_DIR="${DOWNLOAD_DIR}/Fulcrum"
 FULCRUM_DIR="${HOME_DIR}/fulcrum"
 FULCRUM_DATA_DIR="${HOME_DIR}/fulcrum_db"
@@ -102,7 +102,7 @@ THH_NGINX_SSL_CONF="${NGINX_STREAMS_DIR}/thunderhub-ssl.conf"
 #-----------------------------------------------------------------
 
 # Sparrow config
-SPARROW_VERSION="1.8.2"
+SPARROW_VERSION="1.8.3"
 SPARROW_DIR="${HOME_DIR}/.sparrow"
 SPARROW_DOWNLOAD_DIR="${DOWNLOAD_DIR}/Sparrow"
 SPARROW_CONF_FILE="${SPARROW_DIR}/config"
