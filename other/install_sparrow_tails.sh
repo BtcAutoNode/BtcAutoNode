@@ -4,7 +4,7 @@
 # Script is used to install the desktop Sparrow Wallet app in TailsOS (Persistent directory)
 #
 #
-# The Persistent storage need to be enabled. Find information here:
+# The Persistent storage needs to be enabled. Find information here:
 #   https://tails.net/doc/persistent_storage/index.en.html
 #
 # Download/copy this script into the Persistent directory and execute from there as user amnesia.
@@ -81,7 +81,7 @@ clear
 
 #-----------------------------------------------------------------
 
-# create directories in Persistence
+# create directories in the persistent directory
 # download directory
 echo
 echo -e "${Y}Create downloads, Sparrow app and data directories in Persistent dir...${NC}"
