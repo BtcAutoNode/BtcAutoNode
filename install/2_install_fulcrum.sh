@@ -214,8 +214,12 @@ polltime = 2.0
 peering = false
 
 # Interfaces
-admin = 127.0.0.1:8000
-stats = 127.0.0.1:8080
+# This service is used by the fulcrum_admin script to issue control commands to Fulcrum.
+# e.g.: ./FulcrumAdmin -p 8000 -h
+#admin = 127.0.0.1:8000
+# The /stats endpoint is intended as a convenient way to keep track of what your server is up to, how many clients are connected, what the load it is, etc.
+# e.g. wget 127.0.0.1:8090/stats (will create a file stats with server details) / 0.0.0.0:8090 for use from web browser on other machine
+#stats = 127.0.0.1:8090
 
 # Banner path
 banner = ${FULCRUM_DIR}/banner.txt
