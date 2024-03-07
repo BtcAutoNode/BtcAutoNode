@@ -102,7 +102,7 @@ THH_NGINX_SSL_CONF="${NGINX_STREAMS_DIR}/thunderhub-ssl.conf"
 #-----------------------------------------------------------------
 
 # Sparrow config
-SPARROW_VERSION="1.8.2"
+SPARROW_VERSION="1.8.4"
 SPARROW_DIR="${HOME_DIR}/.sparrow"
 SPARROW_DOWNLOAD_DIR="${DOWNLOAD_DIR}/Sparrow"
 SPARROW_CONF_FILE="${SPARROW_DIR}/config"
