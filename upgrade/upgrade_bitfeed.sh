@@ -72,6 +72,19 @@ running_version=$(cat "${BITFEED_FRONTEND_DIR}"/package.json | jq -r ".version")
 echo "Latest version on Github : ${latest_version}"
 echo "Current version running  : ${running_version}"
 echo
+
+# check if a version string is empty . If so, exit script
+if [ "$latest_version" = "" ]; then
+  echo -e "${R}Latest version not available...exiting. Github page not reachable?${NC}"
+  echo
+  exit 1
+elif [ "$running_version" = "" ]; then
+  echo -e "${R}Current version not available...exiting. Is the app installed?${NC}"
+  echo
+  exit 1
+fi
+
+# compare
 if [ "$latest_version" = "$running_version" ]; then
   echo -e "${R}No new version available...exiting${NC}"
   echo
@@ -79,9 +92,9 @@ if [ "$latest_version" = "$running_version" ]; then
 else
   echo -e "${G}New version ${latest_version} available...possible to upgrade${NC}"
 fi
+
 # replace so existing commands can be used
 BITFEED_VERSION="${latest_version}"
-#echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
 
