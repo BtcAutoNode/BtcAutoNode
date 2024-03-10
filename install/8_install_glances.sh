@@ -136,6 +136,8 @@ After=network.target
 
 [Service]
 ExecStart=/usr/local/bin/glances -w
+User=${USER}
+Group=${USER}
 Restart=on-abort
 RemainAfterExit=yes
 
