@@ -22,31 +22,31 @@ echo
 
 BITCOIN_NAM="Bitcoin Core"
 BITCOIN_GIT=$(curl -sL https://github.com/bitcoin/bitcoin/releases/latest | grep "<title>Release" | cut -d ' ' -f 6)
-BITCOIN_LOC=$(bitcoin-cli --version | grep version | cut -d ' ' -f 6 | cut -c2-5)
+BITCOIN_LOC=$(bitcoin-cli --version 2>/dev/null | grep version | cut -d ' ' -f 6 | cut -c2-5)
 
 FULCRUM_NAM="Fulcrum"
 FULCRUM_GIT=$(curl -sL https://github.com/cculianu/Fulcrum/releases/latest | grep "<title>Release" | cut -d ' ' -f 5)
-FULCRUM_LOC=$("${FULCRUM_DIR}"/Fulcrum --version | grep Release | cut -d ' ' -f 2)
+FULCRUM_LOC=$("${FULCRUM_DIR}"/Fulcrum --version 2>/dev/null | grep Release | cut -d ' ' -f 2)
 
 MEMPOOL_NAM="Mempool"
 MEMPOOL_GIT=$(curl -sL https://api.github.com/repos/mempool/mempool/releases/latest | grep tag_name | head -1 | cut -d '"' -f4 | cut -c2-)
-MEMPOOL_LOC=$(cat "${MEMPOOL_BACKEND_DIR}"/package.json | jq -r ".version")
+MEMPOOL_LOC=$(cat "${MEMPOOL_BACKEND_DIR}"/package.json 2>/dev/null | jq -r ".version")
 
 LND_NAM="LND"
 LND_GIT=$(curl -sL https://github.com/lightningnetwork/lnd/releases/latest | grep "<title>Release" | cut -d ' ' -f 5 | cut -c2-)
-LND_LOC=$(lncli --version | cut -d ' ' -f 3)
+LND_LOC=$(lncli --version 2>/dev/null | cut -d ' ' -f 3)
 
 THH_NAM="Thunderhub"
 THH_GIT=$(curl -sL https://github.com/apotdevin/thunderhub/releases/latest | grep "<title>Release" | cut -d ' ' -f 4 | cut -c2-)
-THH_LOC=$(cat "${THH_DIR}"/package.json | jq -r ".version")
+THH_LOC=$(cat "${THH_DIR}"/package.json 2>/dev/null | jq -r ".version")
 
 SPARROW_NAM="Sparrow Server"
 SPARROW_GIT=$(curl -sL https://github.com/sparrowwallet/sparrow/releases/latest | grep "<title>Release" | cut -d ' ' -f 4)
-SPARROW_LOC=$(Sparrow --version | cut -d ' ' -f 3)
+SPARROW_LOC=$(Sparrow --version 2>/dev/null | cut -d ' ' -f 3)
 
 BISQ_NAM="Bisq"
 BISQ_GIT=$(curl -sL https://github.com/bisq-network/bisq/releases/latest | grep "<title>Release" | cut -d ' ' -f 4 | cut -c2-)
-BISQ_LOC=$("${BISQ_APP_DIR}"/desktop/build/app/bin/desktop --help | grep -e "Bisq Desktop version" | cut -d ' ' -f 4)
+BISQ_LOC=$("${BISQ_APP_DIR}"/desktop/build/app/bin/desktop --help 2>/dev/null | grep -e "Bisq Desktop version" | cut -d ' ' -f 4)
 
 GLANCES_NAM="Glances"
 # latest release
@@ -54,15 +54,15 @@ GLANCES_NAM="Glances"
 # install script installs latest tag, not release.
 # latest tag
 GLANCES_GIT=$(curl -sL "https://api.github.com/repos/nicolargo/glances/tags" | jq -r '.[0].name' | cut -c2-)
-GLANCES_LOC=$(glances --version | grep Glances | cut -d' ' -f 2 | cut -c2-)
+GLANCES_LOC=$(glances --version 2>/dev/null | grep Glances | cut -d' ' -f 2 | cut -c2-)
 
 RPCEX_NAM="BTC-RPC-Explorer"
 RPCEX_GIT=$(curl -sL https://github.com/janoside/btc-rpc-explorer/releases/latest | grep "<title>Release" | cut -d ' ' -f 4 | cut -c2-)
-RPCEX_LOC=$(cat "${EXPLORER_DIR}"/package.json | jq -r ".version")
+RPCEX_LOC=$(cat "${EXPLORER_DIR}"/package.json 2>/dev/null | jq -r ".version")
 
 BITFEED_NAM="Bitfeed"
 BITFEED_GIT=$(curl -sL https://github.com/bitfeed-project/bitfeed/releases/latest | grep "<title>Release" | cut -d ' ' -f 5 | cut -c2-)
-BITFEED_LOC=$(cat "$BITFEED_FRONTEND_DIR"/package.json | jq -r ".version")
+BITFEED_LOC=$(cat "$BITFEED_FRONTEND_DIR"/package.json 2>/dev/null | jq -r ".version")
 
 NAMS=("$BITCOIN_NAM" "$FULCRUM_NAM" "$MEMPOOL_NAM" "$LND_NAM" "$THH_NAM" "$SPARROW_NAM" "$BISQ_NAM" "$GLANCES_NAM" "$RPCEX_NAM" "$BITFEED_NAM")
 GITS=("$BITCOIN_GIT" "$FULCRUM_GIT" "$MEMPOOL_GIT" "$LND_GIT" "$THH_GIT" "$SPARROW_GIT" "$BISQ_GIT" "$GLANCES_GIT" "$RPCEX_GIT" "$BITFEED_GIT")
@@ -80,4 +80,3 @@ done
 
 echo -e "${Y}-------------------------------------------------${NC}"
 echo
-
