@@ -109,7 +109,7 @@ echo -e "${G}Done.${NC}"
 echo
 echo -e "${Y}Delete Mempool nginx files...${NC}"
 rm -f "${MEMPOOL_NGINX_SSL_CONF}"
-rm -f "${MEMPOOL_NGINX_SNIPPET}"
+rm -f "${MEMPOOL_NGINX_APP_CONF}"
 rm -f /etc/nginx/sites-enabled/mempool-ssl.conf
 echo -e "${G}Done.${NC}"
 
