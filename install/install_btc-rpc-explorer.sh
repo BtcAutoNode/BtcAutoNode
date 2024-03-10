@@ -229,8 +229,8 @@ upstream explorer {
 }
 
 server {
-        listen 4032 ssl;
-        listen [::]:4032 ssl;
+        listen ${EXPLORER_SSL_PORT} ssl;
+        listen [::]:${EXPLORER_SSL_PORT} ssl;
         proxy_pass explorer;
 }
 EOF
@@ -286,7 +286,7 @@ echo -e " ${EXPLORER_DIR} + - Explorer base directory\n" \
 echo
 echo
 echo -e "${LB}Open Explorer page in your browser via the following URL: ${NC}"
-echo " https://${LOCAL_IP}:4032"
+echo " https://${LOCAL_IP}:${EXPLORER_SSL_PORT}"
 echo -e "${LB}Login with your password (leaving username empty).${NC}"
 echo
 
