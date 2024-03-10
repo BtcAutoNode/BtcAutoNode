@@ -219,7 +219,8 @@ echo -e "${G}Done.${NC}"
 #
 echo
 echo -e "${Y}Allow user ${USER} to use systemctl cmd without password...${NC}"
-echo "${USER} ALL=(ALL) NOPASSWD: /usr/bin/systemctl" | EDITOR='tee -a' visudo
+if [ -z "$(grep '${USER} ALL=(ALL) NOPASSWD: /usr/bin/systemctl' /etc/sudoers )" ]; then echo "${USER} ALL=(ALL) NOPASSWD: /usr/bin/systemctl" | sudo EDITOR='tee -a' visudo; fi;
+if [ -z "$(grep '${USER} ALL=(ALL) NOPASSWD: /usr/bin/journalctl' /etc/sudoers )" ]; then echo "${USER} ALL=(ALL) NOPASSWD: /usr/bin/journalctl" | sudo EDITOR='tee -a' visudo; fi;
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
