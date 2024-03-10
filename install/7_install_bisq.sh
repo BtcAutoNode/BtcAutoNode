@@ -265,14 +265,14 @@ echo -e "${Y}Create start/stop scripts for user ${USER}...${NC}"
 cat > "${BISQ_START_SCRIPT}"<< EOF
 # xpra bisq start script
 
-xpra start :100 --mdns=no --bind-tcp=0.0.0.0:9876 --tcp-auth=password:value=${XPRA_PASSWORD} --ssl=on --ssl-cert="${BISQ_APP_DIR}/cert.pem" --html=on \
+xpra start :100 --mdns=no --bind-tcp=0.0.0.0:${BISQ_SSL_PORT} --tcp-auth=password:value=${XPRA_PASSWORD} --ssl=on --ssl-cert="${BISQ_APP_DIR}/cert.pem" --html=on \
 --start="${BISQ_APP_DIR}/bisq-desktop \
 --appData=${BISQ_DATA_DIR}" --no-pulseaudio --no-speaker --terminate-children=yes
 
 echo
 echo
 echo "After start the bisq application can be seen in the webbrowser with the following URL:"
-echo "https://$(ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1  -d'/'):9876"
+echo "https://$(ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1  -d'/'):${BISQ_SSL_PORT}"
 echo "Enter password provided in the installation (--> ${XPRA_PASSWORD}) and wait until Bisq starts (which can take a few minutes)."
 echo "(Only password needed, no username.)"
 echo
