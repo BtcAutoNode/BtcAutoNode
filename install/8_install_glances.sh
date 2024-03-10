@@ -157,12 +157,13 @@ cat > "${GLANCES_NGINX_SSL_CONF}"<< EOF
 #
 # Glances ssl conf, put into /etc/niginx/streams-enabled/glances-ssl.conf
 #
-upstream glancer {
+upstream glances {
   server 127.0.0.1:61208;
 }
 server {
-  listen 4002 ssl;
-  proxy_pass glancer;
+  listen ${GLANCES_SSL_PORT} ssl;
+  listen [::]:${GLANCES_SSL_PORT} ssl;
+  proxy_pass glances;
 }
 EOF
 echo -e "${G}Done.${NC}"
@@ -199,7 +200,7 @@ echo
 echo -e "${LB}Glances can be called directly from the terminal or via web page.${NC}"
 echo -e "${LB}In terminal just execute: ${NC}glances <enter>${NC}"
 echo -e "${LB}For the web page start the service (see above) and access the url via web browser:${NC}"
-echo " https://${LOCAL_IP}:4002"
+echo " https://${LOCAL_IP}:${GLANCES_SSL_PORT}"
 echo
 echo -e "${LB}Documentation can be found here (e.g.: there are some keys which can be used to change display):${NC}"
 echo " https://glances.readthedocs.io/en/latest/"
