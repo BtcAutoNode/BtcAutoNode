@@ -8,7 +8,7 @@
 #-----------------------------------------------------------------
 # source/read config from repository
 . <(curl -sL https://github.com/BtcAutoNode/BtcAutoNode/raw/master/CONFIG)
-# or if you changed anything the config, copy CONFIG to here and comment out above line and uncomment the next line
+# or if you changed anything in the config, copy CONFIG to the dir this file is in  and comment out above line and uncomment the next line
 #. CONFIG
 #-----------------------------------------------------------------
 
@@ -20,9 +20,9 @@ trap '' INT
 # Options
 #
 # menu sperator (spaces to show entries vertically. not horizontally)
-menusep="                                                                                                                                                                                         "
+menusep="                                                                                                                                                           "
 # number of rows shown from the log file
-rows="25"
+rows="30"
 
 #-------------------------------------------------------------------------------------------
 
@@ -101,7 +101,7 @@ function edit_config() {
 function show_journal (
    trap - INT
    local service=$1
-   journalctl -fu "$service" -n "$rows" -q
+   sudo journalctl -fu "$service" -n "$rows"
 )
 
 #
@@ -158,11 +158,9 @@ bitcoindmenu() {
     echo -e "${G}  Full Node Control - Bitcoind Menu" # green color
     echo -e "${G}---------------------------------------------------------"
     echo -e "${NC}Please enter your choice:" # reset color
-     echo -e "${BR}" # yellow color
+    echo -e "${BR}" # yellow color
     select reply in "${bitcoindmenuoptions[@]}";
     do
-      echo -e "${NC}" # reset color
-      echo -e "You selected: ${BR} ${reply}" # yelow color
       echo -e "${NC}" # reset color
       case $REPLY in
         1) # Start Service
@@ -220,11 +218,9 @@ fulcrummenu() {
     echo -e "${G}  Full Node Control - Fulcrum Menu" # green color
     echo -e "${G}---------------------------------------------------------"
     echo -e "${NC}Please enter your choice:" # reset color
-     echo -e "${BR}" # yellow color
+    echo -e "${BR}" # yellow color
     select reply in "${fulcrummenuoptions[@]}";
     do
-      echo -e "${NC}" # reset color
-      echo -e "You selected: ${BR} ${reply}" # yelow color
       echo -e "${NC}" # reset color
       case $REPLY in
        1) # Start Service
@@ -284,11 +280,9 @@ mempoolmenu() {
     echo -e "${G}  Full Node Control - Mempool Menu" # green color
     echo -e "${G}---------------------------------------------------------"
     echo -e "${NC}Please enter your choice:" # reset color
-     echo -e "${BR}" # yellow color
+    echo -e "${BR}" # yellow color
     select reply in "${mempoolmenuoptions[@]}";
     do
-      echo -e "${NC}" # reset color
-      echo -e "You selected: ${BR} ${reply}" # yelow color
       echo -e "${NC}" # reset color
       case $REPLY in
         1) # Start Service
@@ -313,7 +307,7 @@ mempoolmenu() {
            break
            ;;
         6) # Show Web URL
-           echo; echo -e "Web URL (CTRL-Click): \e[1;35mhttps://${LOCAL_IP}:4080/en/\e[0m"
+           echo; echo -e "Web URL (CTRL-Click): \e[1;35mhttps://${LOCAL_IP}:${MEMPOOL_SSL_PORT}/en/\e[0m"
            check_continue
            break
            ;;
@@ -352,11 +346,9 @@ lndmenu() {
     echo -e "${G}  Full Node Control - LND Menu" # green color
     echo -e "${G}---------------------------------------------------------"
     echo -e "${NC}Please enter your choice:" # reset color
-     echo -e "${BR}" # yellow color
+    echo -e "${BR}" # yellow color
     select reply in "${lndmenuoptions[@]}";
     do
-      echo -e "${NC}" # reset color
-      echo -e "You selected: ${BR} ${reply}" # yelow color
       echo -e "${NC}" # reset color
       case $REPLY in
         1) # Start Service
@@ -417,11 +409,9 @@ thunderhubmenu() {
     echo -e "${G}  Full Node Control - Thunderhub Menu" # green color
     echo -e "${G}---------------------------------------------------------"
     echo -e "${NC}Please enter your choice:" # reset color
-     echo -e "${BR}" # yellow color
+    echo -e "${BR}" # yellow color
     select reply in "${thunderhubmenuoptions[@]}";
     do
-      echo -e "${NC}" # reset color
-      echo -e "You selected: ${BR} ${reply}" # yelow color
       echo -e "${NC}" # reset color
       case $REPLY in
         1) # Start Service
@@ -446,7 +436,7 @@ thunderhubmenu() {
            break
            ;;
         6) # Show Web URL
-           echo; echo -e "Web URL (CTRL-Click): \e[1;35mhttps://${LOCAL_IP}:4001/en/\e[0m"
+           echo; echo -e "Web URL (CTRL-Click): \e[1;35mhttps://${LOCAL_IP}:${THH_SSL_PORT}\e[0m"
            check_continue
            break
            ;;
@@ -459,6 +449,254 @@ thunderhubmenu() {
            break
            ;;
 
+        q) # back to main menu
+           break 2
+           ;;
+        *) echo 'Please select an option.' >&2
+      esac
+      break
+    done
+  done
+}
+
+glancesmenu() {
+ glancesmenuoptions=(
+         "     [  1  ] -=  Start Service      =-$menusep"
+         "     [  2  ] -=  Stop Service       =-"
+         "     [  3  ] -=  Status Service     =-"
+         "     [  4  ] -=  Restart Service    =-"
+         "     [  -  ] -=  -----------------  =-"
+         "     [  5  ] -=  Tail Journal Log   =-"
+         "     [  6  ] -=  Show Web URL       =-"
+         "     [  -  ] -=  -----------------  =-"
+         "     [  q  ] -=  Back to Main Menu  =-"
+ )
+
+ while true
+  do
+    clear
+    echo; echo; echo; echo;
+    echo -e "${G}---------------------------------------------------------"
+    echo -e "${G}  Full Node Control - Glances Menu" # green color
+    echo -e "${G}---------------------------------------------------------"
+    echo -e "${NC}Please enter your choice:" # reset color
+    echo -e "${BR}" # yellow color
+    select reply in "${glancesmenuoptions[@]}";
+    do
+      echo -e "${NC}" # reset color
+      case $REPLY in
+        1) # Start Service
+           execute_service "start" "${GLANCES_SERVICE}"
+           break
+           ;;
+        2) # Stop Service
+           execute_service "stop" "${GLANCES_SERVICE}"
+           break
+           ;;
+        3) # Status Service
+           execute_service "status" "${GLANCES_SERVICE}"
+           break
+           ;;
+        4) # Restart Service
+           execute_service "restart" "${GLANCES_SERVICE}"
+           break
+           ;;
+        5) # Tail Journal Log
+           additional_info "log"
+           show_journal "${GLANCES_SERVICE}"
+           break
+           ;;
+        6) # Show Web URL
+           echo; echo -e "Web URL (CTRL-Click): \e[1;35mhttps://${LOCAL_IP}:${GLANCES_SSL_PORT}\e[0m"
+           check_continue
+           break
+           ;;
+        q) # back to main menu
+           break 2
+           ;;
+        *) echo 'Please select an option.' >&2
+      esac
+      break
+    done
+  done
+}
+
+bitfeedmenu() {
+ bitfeedmenuoptions=(
+         "     [  1  ] -=  Start Service      =-$menusep"
+         "     [  2  ] -=  Stop Service       =-"
+         "     [  3  ] -=  Status Service     =-"
+         "     [  4  ] -=  Restart Service    =-"
+         "     [  -  ] -=  -----------------  =-"
+         "     [  5  ] -=  Tail Journal Log   =-"
+         "     [  6  ] -=  Show Web URL       =-"
+         "     [  -  ] -=  -----------------  =-"
+         "     [  q  ] -=  Back to Main Menu  =-"
+ )
+
+ while true
+  do
+    clear
+    echo; echo; echo; echo;
+    echo -e "${G}---------------------------------------------------------"
+    echo -e "${G}  Full Node Control - Bitfeed Menu" # green color
+    echo -e "${G}---------------------------------------------------------"
+    echo -e "${NC}Please enter your choice:" # reset color
+    echo -e "${BR}" # yellow color
+    select reply in "${bitfeedmenuoptions[@]}";
+    do
+      echo -e "${NC}" # reset color
+      case $REPLY in
+        1) # Start Service
+           execute_service "start" "${BITFEED_SERVICE}"
+           break
+           ;;
+        2) # Stop Service
+           execute_service "stop" "${BITFEED_SERVICE}"
+           break
+           ;;
+        3) # Status Service
+           execute_service "status" "${BITFEED_SERVICE}"
+           break
+           ;;
+        4) # Restart Service
+           execute_service "restart" "${BITFEED_SERVICE}"
+           break
+           ;;
+        5) # Tail Journal Log
+           additional_info "log"
+           show_journal "${BITFEED_SERVICE}"
+           break
+           ;;
+        6) # Show Web URL
+           echo; echo -e "Web URL (CTRL-Click): \e[1;35mhttps://${LOCAL_IP}:${BITFEED_SSL_PORT}\e[0m"
+           check_continue
+           break
+           ;;
+        q) # back to main menu
+           break 2
+           ;;
+        *) echo 'Please select an option.' >&2
+      esac
+      break
+    done
+  done
+}
+
+explorermenu() {
+ explorermenuoptions=(
+         "     [  1  ] -=  Start Service      =-$menusep"
+         "     [  2  ] -=  Stop Service       =-"
+         "     [  3  ] -=  Status Service     =-"
+         "     [  4  ] -=  Restart Service    =-"
+         "     [  -  ] -=  -----------------  =-"
+         "     [  5  ] -=  Tail Journal Log   =-"
+         "     [  6  ] -=  Show Web URL       =-"
+         "     [  -  ] -=  -----------------  =-"
+         "     [  q  ] -=  Back to Main Menu  =-"
+ )
+
+ while true
+  do
+    clear
+    echo; echo; echo; echo;
+    echo -e "${G}---------------------------------------------------------"
+    echo -e "${G}  Full Node Control - RPC-Explorer Menu" # green color
+    echo -e "${G}---------------------------------------------------------"
+    echo -e "${NC}Please enter your choice:" # reset color
+    echo -e "${BR}" # yellow color
+    select reply in "${explorermenuoptions[@]}";
+    do
+      echo -e "${NC}" # reset color
+      case $REPLY in
+        1) # Start Service
+           execute_service "start" "${EXPLORER_SERVICE}"
+           break
+           ;;
+        2) # Stop Service
+           execute_service "stop" "${EXPLORER_SERVICE}"
+           break
+           ;;
+        3) # Status Service
+           execute_service "status" "${EXPLORER_SERVICE}"
+           break
+           ;;
+        4) # Restart Service
+           execute_service "restart" "${EXPLORER_SERVICE}"
+           break
+           ;;
+        5) # Tail Journal Log
+           additional_info "log"
+           show_journal "${EXPLORER_SERVICE}"
+           break
+           ;;
+        6) # Show Web URL
+           echo; echo -e "Web URL (CTRL-Click): \e[1;35mhttps://${LOCAL_IP}:${EXPLORER_SSL_PORT}\e[0m"
+           check_continue
+           break
+           ;;
+        q) # back to main menu
+           break 2
+           ;;
+        *) echo 'Please select an option.' >&2
+      esac
+      break
+    done
+  done
+}
+
+nodestatusmenu() {
+ nodestatusmenuoptions=(
+         "     [  1  ] -=  Start Service      =-$menusep"
+         "     [  2  ] -=  Stop Service       =-"
+         "     [  3  ] -=  Status Service     =-"
+         "     [  4  ] -=  Restart Service    =-"
+         "     [  -  ] -=  -----------------  =-"
+         "     [  5  ] -=  Tail Journal Log   =-"
+         "     [  6  ] -=  Show Web URL       =-"
+         "     [  -  ] -=  -----------------  =-"
+         "     [  q  ] -=  Back to Main Menu  =-"
+ )
+
+ while true
+  do
+    clear
+    echo; echo; echo; echo;
+    echo -e "${G}---------------------------------------------------------"
+    echo -e "${G}  Full Node Control - Node Status Menu" # green color
+    echo -e "${G}---------------------------------------------------------"
+    echo -e "${NC}Please enter your choice:" # reset color
+    echo -e "${BR}" # yellow color
+    select reply in "${nodestatusmenuoptions[@]}";
+    do
+      echo -e "${NC}" # reset color
+      case $REPLY in
+        1) # Start Service
+           execute_service "start" "${NODE_STAT_SERVICE}"
+           break
+           ;;
+        2) # Stop Service
+           execute_service "stop" "${NODE_STAT_SERVICE}"
+           break
+           ;;
+        3) # Status Service
+           execute_service "status" "${NODE_STAT_SERVICE}"
+           break
+           ;;
+        4) # Restart Service
+           execute_service "restart" "${NODE_STAT_SERVICE}"
+           break
+           ;;
+        5) # Tail Journal Log
+           additional_info "log"
+           show_journal "${NODE_STAT_SERVICE}"
+           break
+           ;;
+        6) # Show Web URL
+           echo; echo -e "Web URL (CTRL-Click): \e[1;35mhttps://${LOCAL_IP}:${NODE_STAT_SSL_PORT}\e[0m"
+           check_continue
+           break
+           ;;
         q) # back to main menu
            break 2
            ;;
@@ -484,21 +722,23 @@ echo -e "${G}  Full Node Control - Main Menu" # green color
 echo -e "${G}---------------------------------------------------------"
 echo -e "${NC}Please enter your choice:" # reset color
 echo -e "${LB}" # light blue color
-options=("     [  1  ]  -=   Bitcoind...     =-$menusep"
-         "     [  2  ]  -=   Fulcrum...      =-"
-         "     [  3  ]  -=   Mempool...      =-"
-         "     [  4  ]  -=   LND...          =-"
-         "     [  5  ]  -=   Thunderhub...   =-"
-         "     [  -  ]  -=   --------------  =-"
-         "     [  s  ]  -=   System Info     =-"
-         "     [  v  ]  -=   Version Check   =-"
-         "     [  -  ]  -=   --------------  =-"
-         "     [  q  ]  -=   Exit the menu   =-")
+options=("     [  1  ]  -=   Bitcoind...      =-$menusep"
+         "     [  2  ]  -=   Fulcrum...       =-"
+         "     [  3  ]  -=   Mempool...       =-"
+         "     [  4  ]  -=   LND...           =-"
+         "     [  5  ]  -=   Thunderhub...    =-"
+         "     [  6  ]  -=   Glances...       =-"
+         "     [  7  ]  -=   Bitfeed...       =-"
+         "     [  8  ]  -=   RPC-Explorer...  =-"
+         "     [  9  ]  -=   Node Status...   =-"
+         "     [  -  ]  -=   ---------------  =-"
+         "     [  s  ]  -=   System Info      =-"
+         "     [  v  ]  -=   Version Check    =-"
+         "     [  -  ]  -=   ---------------  =-"
+         "     [  q  ]  -=   Exit the menu    =-")
 
 select reply in "${options[@]}";
 do
-     echo -e "${NC}" # reset color
-     echo -e "You selected: ${BR} ${reply}" # yelow color
      echo -e "${NC}" # reset color
      case $REPLY in
          1) # bitcoind menu
@@ -519,6 +759,22 @@ do
             ;;
          5) # thunderhub menu
             thunderhubmenu
+            break
+            ;;
+         6) # glances menu
+            glancesmenu
+            break
+            ;;
+         7) # bitfeed menu
+            bitfeedmenu
+            break
+            ;;
+         8) # rpc-explorer menu
+            explorermenu
+            break
+            ;;
+         9) # node status menu
+            nodestatusmenu
             break
             ;;
          s) # sys info
