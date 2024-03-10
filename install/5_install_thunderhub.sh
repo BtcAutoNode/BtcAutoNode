@@ -246,7 +246,8 @@ upstream thunderhub {
   server 127.0.0.1:3000;
 }
 server {
-  listen 4001 ssl;
+  listen ${THH_SSL_PORT} ssl;
+  listen [::]:${THH_SSL_PORT} ssl;
   proxy_pass thunderhub;
 }
 
@@ -305,6 +306,6 @@ echo -e " ${THH_DIR} + - Thunderhub base directory\n" \
 echo
 echo
 echo -e "${LB}Open Thunderhub page in your browser via the following URL: ${NC}"
-echo " https://${LOCAL_IP}:4001"
+echo " https://${LOCAL_IP}:${THH_SSL_PORT}"
 echo -e "${LB}Login with your Account user and Master password.${NC}"
 echo
