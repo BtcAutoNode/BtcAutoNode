@@ -98,6 +98,7 @@ THH_YAML_CONF_FILE="${THH_CONF_DIR}/thubConfig.yaml"
 THH_SERVICE="thunderhub.service"
 THH_SERVICE_FILE="/etc/systemd/system/${THH_SERVICE}"
 THH_NGINX_SSL_CONF="${NGINX_STREAMS_DIR}/thunderhub-ssl.conf"
+THH_SSL_PORT="4001"
 
 #-----------------------------------------------------------------
 
@@ -121,6 +122,7 @@ BISQ_DATA_DIR="${HOME_DIR}/bisq-data"
 BISQ_START_SCRIPT="${HOME_DIR}/start_bisq_xpra.sh"
 BISQ_STOP_SCRIPT="${HOME_DIR}/stop_bisq_xpra.sh"
 BISQ_LIST_FILE="${APT_SOURCES_LIST}/xpra_bisq.list"
+BISQ_SSL_PORT="9876"
 
 #-----------------------------------------------------------------
 
@@ -130,6 +132,7 @@ GLANCES_APP_DIR="/usr/local/bin"
 GLANCES_SERVICE="glances.service"
 GLANCES_SERVICE_FILE="/etc/systemd/system/${GLANCES_SERVICE}"
 GLANCES_NGINX_SSL_CONF="/etc/nginx/streams-enabled/glances-ssl.conf"
+GLANCES_SSL_PORT="4002"
 
 #-----------------------------------------------------------------
 
@@ -140,6 +143,7 @@ EXPLORER_CONF_FILE="${EXPLORER_DIR}/.env"
 EXPLORER_SERVICE="explorer.service"
 EXPLORER_SERVICE_FILE="/etc/systemd/system/${EXPLORER_SERVICE}"
 EXPLORER_NGINX_SSL_CONF="${NGINX_STREAMS_DIR}/explorer-ssl.conf"
+EXPLORER_SSL_PORT="4032"
 
 #-----------------------------------------------------------------
 
