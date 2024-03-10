@@ -14,12 +14,8 @@ td {
     text-align: center;
 }
 
-.services {
-    margin-bottom: 2%;
-}
-
-.apps {
-    margin-bottom: 5%
+.topspacer {
+    margin-top: 3%;
 }
 
 .circle {
