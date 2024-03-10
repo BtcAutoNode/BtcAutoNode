@@ -150,10 +150,21 @@ BITFEED_DIR="${HOME_DIR}/bitfeed"
 BITFEED_BACKEND_DIR="${BITFEED_DIR}/server"
 BITFEED_FRONTEND_DIR="${BITFEED_DIR}/client"
 BITFEED_SERVICE="bitfeed.service"
-BITFEED_WEBROOT_DIR="${NGINX_WEBROOT_DIR}/bitfeed"
 BITFEED_SERVICE_FILE="/etc/systemd/system/${BITFEED_SERVICE}"
+BITFEED_WEBROOT_DIR="${NGINX_WEBROOT_DIR}/bitfeed"
 BITFEED_NGINX_SSL_CONF="/etc/nginx/sites-available/bitfeed-ssl.conf"
 BITFEED_SSL_PORT="4041"
+
+#-----------------------------------------------------------------
+
+# Node Status Server Monitor config
+NODE_STAT_PKGS="php php-fpm"
+NODE_STAT_FPM_CONF_FILE="/etc/php/7.4/fpm/pool.d/node_status.conf"
+NODE_STAT_SERVICE="node_status.service"
+NODE_STAT_SERVICE_FILE="/etc/systemd/system/${NODE_STAT_SERVICE}"
+NODE_STAT_WEBROOT_DIR="${NGINX_WEBROOT_DIR}/node_status"
+NODE_STAT_NGINX_SSL_CONF="/etc/nginx/sites-available/node_status-ssl.conf"
+NODE_STAT_SSL_PORT="4021"
 
 #-----------------------------------------------------------------
 

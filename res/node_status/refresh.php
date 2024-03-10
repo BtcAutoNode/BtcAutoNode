@@ -76,11 +76,11 @@ $uptime[1] = $uptimeExplode[$i + 1] . " " . $uptimeExplode[$i + 2]; // Set uptim
 
 ?>
 <p class="foot" align="center">Applications with Systemd Service</p>
-<table class="services">
+<table>
     <tr>
         <?php
         for ($i = 0; $i <= count($services) - 1; $i++) {
-            if ( $i == $configs['wrap'] ) { echo "</tr><tr>"; }
+            if ( $i == $configs['wrap'] ) { echo "</tr></table><table><tr>"; }
             echo '<td><div class="circle" ';
             if ($servicesstatus[$i] == "Running") {
                 echo ' style="border: 3px solid #00FF00;"';
@@ -106,12 +106,12 @@ $uptime[1] = $uptimeExplode[$i + 1] . " " . $uptimeExplode[$i + 2]; // Set uptim
         ?>
     </tr>
 </table>
-<p class="foot" align="center">Applications without Systemd Service</p>
-<table class="apps">
+<p class="foot topspacer" align="center">Applications without Systemd Service</p>
+<table>
     <tr>
         <?php
         for ($i = 0; $i <= count($apps) - 1; $i++) {
-            if ( $i == $configs['wrap'] ) { echo "</tr><tr>"; }
+            if ( $i == $configs['wrap'] ) { echo "</tr></table><table><tr>"; }
             echo '<td><div class="circle" ';
             if ($appstatus[$i] == "Running") {
                 echo ' style="border: 3px solid #00FF00;"';
@@ -134,7 +134,7 @@ $uptime[1] = $uptimeExplode[$i + 1] . " " . $uptimeExplode[$i + 2]; // Set uptim
     </tr>
 </table>
 
-<div class="foot">
+<div class="foot topspacer">
     Last update: <?php echo date('H:i:s'); echo " (" . $configs['timezone'] . ")" ?> |
     <?php
     if ($configs['activeusers'] == 1) {
