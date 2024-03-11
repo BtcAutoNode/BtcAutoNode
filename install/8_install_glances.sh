@@ -52,9 +52,13 @@ echo -e "${Y}This script will download and install Glances...${NC}"
 echo
 echo -e "${LB}The following steps will be executed in the process:${NC}"
 echo "- Upgrade system to newest software (apt-get update / apt-get upgrade)"
-echo "- Download Glances installation script and execute"
-echo "- Create systemd ${GLANCES_SERVICE} service file"
-echo "- Realod Niginx web server config(s)"
+echo "- Download Glances installation script into /tmp"
+echo "- Set env var for pip externally-managed-environment error"
+echo "- Install Glances via installation script"
+echo "- Create nginx streams-enabled dir (if not existing))"
+echo "- Create systemd ${GLANCES_SERVICE} service file for web service"
+echo "- Create nginx Glances ssl config file"
+echo "- Reload Niginx web server configs"
 echo
 echo -e "${LR}Press ${NC}<enter>${LR} key to continue, or ${NC}ctrl-c${LR} to exit${NC}"
 read -r
@@ -87,10 +91,10 @@ wget -qO /tmp/install_glances.sh https://raw.githubusercontent.com/nicolargo/gla
 chmod +x /tmp/install_glances.sh
 echo -e "${G}Done.${NC}"
 
-#--------------------------------------------------------PIP_BREAK_SYSTEM_PACKAGES 1---------
+#-----------------------------------------------------------------
 
 #
-###set environment variable for the pip externally-managed-environment error
+### set environment variable for the pip externally-managed-environment error
 #
 echo
 echo -e "${Y}Set environment variable for pip externally-managed-environment error...${NC}"
