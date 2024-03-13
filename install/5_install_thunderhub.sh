@@ -220,7 +220,7 @@ After=network.target lnd.service
 
 [Service]
 WorkingDirectory=${THH_DIR}
-ExecStart=/usr/bin/npm start
+ExecStart=/usr/bin/npm run start:prod:env
 User=${USER}
 Group=${USER}
 Restart=always
