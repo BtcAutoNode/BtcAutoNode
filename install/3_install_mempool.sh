@@ -356,7 +356,7 @@ echo -e "${Y}Create systemd service file for Mempool...${NC}"
 cat > "${MEMPOOL_SERVICE_FILE}"<< EOF
 [Unit]
 Description=mempool
-After=${BITCOIN_SERVICE_FILE}
+After=${BITCOIN_SERVICE}
 
 [Service]
 WorkingDirectory=${MEMPOOL_BACKEND_DIR}
