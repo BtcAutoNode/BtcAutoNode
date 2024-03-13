@@ -48,6 +48,7 @@ echo "- Delete bisq start/stop script files in ${HOME_DIR}"
 echo "- Delete .gradle dir in ${HOME_DIR}"
 echo "- Delete .xpra dir in ${HOME_DIR}"
 echo "- Uninstall xpra package via apt-get"
+echo "- Delete symbolic link (${BISQ_SYM_LINK})"
 echo
 echo -e "${LR}Press ${NC}<enter>${LR} key to continue, or ${NC}ctrl-c${LR} to exit${NC}"
 read -r
@@ -144,6 +145,16 @@ apt -y purge xpra
 # autoremoving packages and cleaning apt data
 echo -e "${LB}Autoremoving packages and cleaning apt data...${NC}"
 apt -y autoremove && apt -y clean
+echo -e "${G}Done.${NC}"
+
+#-----------------------------------------------------------------
+
+#
+### delete bisq symbolic link in /urs/local/bin
+#
+echo
+echo -e "${Y}Delete Bisq symbolic link (${BISQ_SYM_LINK})...${NC}"
+rm -f "${BISQ_SYM_LINK}"
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
