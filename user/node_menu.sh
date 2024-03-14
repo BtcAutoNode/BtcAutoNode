@@ -12,14 +12,10 @@
 #. CONFIG
 #-----------------------------------------------------------------
 
-
-# stop ctrl-c to exit the script
-trap '' INT
-
 #
 # Options
 #
-# menu sperator (spaces to show entries vertically. not horizontally)
+# menu separator (spaces to show entries vertically, not horizontally. change for your screen size and liking)
 menusep="                                                                                                                                                           "
 # number of rows shown from the log file
 rows="30"
@@ -39,7 +35,7 @@ function check_continue() {
 }
 
 #
-# function to handle service operations
+# function to handle systemd service operations
 #
 function execute_service() {
    local mode=$1
@@ -75,14 +71,13 @@ function execute_service() {
    echo -e "${LP} Done.${NC}" # light magenta
    check_continue
 }
-
 #
 # function to handle log file editing
 #
 function edit_config() {
    echo; echo
    # check_go_and_abort
-   echo -e "${LG}Press any key to continue / \e[91mQ\e[0m \e[92mto abort${NC}" # light green color
+   echo -e "${LG}Press any key to continue / ${LR}q${NC}to abort${NC}"
    read -n 1 -s -r input
    if [ "q" = "$input" ]; then
      echo; echo
@@ -96,29 +91,28 @@ function edit_config() {
 }
 
 #
-# function to show service journal
+# function to show systemd service journal
 #
 function show_journal (
-   trap - INT
    local service=$1
-   sudo journalctl -fu "$service" -n "$rows"
+   sudo journalctl -fu "$service" -n "$rows" | less
 )
 
 #
-# additional info for a command/option (e.g. key to leave)
+# additional info for a command/option (e.g. tell key to leave)
 #
 function additional_info()
 {
    local mode=$1
    echo; echo
    if [ $mode = "log" ]; then
-     echo -e "${LP} !! Later leave the logfile with CTRL-C !!${NC}" # light magenta
+     echo -e "${LP} !! Later leave the logfile with ${NC}CTRL-C${LP}, then ${NC}q${LP} !!${NC}" # light magenta
    fi
    check_continue
 }
 
 #
-# check version exetuting the version_check.sh script
+# check app versions calling version_check.sh script
 #
 function check_versions() {
    clear
@@ -127,7 +121,7 @@ function check_versions() {
 }
 
 #
-#
+# show system/service overview calling system_info.sh script
 #
 function sys_info() {
    clear
@@ -155,10 +149,10 @@ bitcoindmenu() {
     clear
     echo; echo; echo; echo;
     echo -e "${G}---------------------------------------------------------"
-    echo -e "${G}  Full Node Control - Bitcoind Menu" # green color
+    echo -e "${G}  Full Node Control - Bitcoind Menu"
     echo -e "${G}---------------------------------------------------------"
-    echo -e "${NC}Please enter your choice:" # reset color
-    echo -e "${BR}" # yellow color
+    echo -e "${NC}Please enter your choice:"
+    echo -e "${BR}"
     select reply in "${bitcoindmenuoptions[@]}";
     do
       echo -e "${NC}" # reset color
@@ -181,7 +175,7 @@ bitcoindmenu() {
            ;;
         5) # Tail Log File
            additional_info "log"
-           tail -n "$rows" -f "${BITCOIN_LOG_FILE}" | less -K
+           tail -n "$rows" -f "${BITCOIN_LOG_FILE}" | less
            break
            ;;
         6) # Edit Config File
@@ -215,10 +209,10 @@ fulcrummenu() {
     clear
     echo; echo; echo; echo;
     echo -e "${G}---------------------------------------------------------"
-    echo -e "${G}  Full Node Control - Fulcrum Menu" # green color
+    echo -e "${G}  Full Node Control - Fulcrum Menu"
     echo -e "${G}---------------------------------------------------------"
-    echo -e "${NC}Please enter your choice:" # reset color
-    echo -e "${BR}" # yellow color
+    echo -e "${NC}Please enter your choice:"
+    echo -e "${BR}"
     select reply in "${fulcrummenuoptions[@]}";
     do
       echo -e "${NC}" # reset color
@@ -277,10 +271,10 @@ mempoolmenu() {
     clear
     echo; echo; echo; echo;
     echo -e "${G}---------------------------------------------------------"
-    echo -e "${G}  Full Node Control - Mempool Menu" # green color
+    echo -e "${G}  Full Node Control - Mempool Menu"
     echo -e "${G}---------------------------------------------------------"
-    echo -e "${NC}Please enter your choice:" # reset color
-    echo -e "${BR}" # yellow color
+    echo -e "${NC}Please enter your choice:"
+    echo -e "${BR}"
     select reply in "${mempoolmenuoptions[@]}";
     do
       echo -e "${NC}" # reset color
@@ -343,10 +337,10 @@ lndmenu() {
     clear
     echo; echo; echo; echo;
     echo -e "${G}---------------------------------------------------------"
-    echo -e "${G}  Full Node Control - LND Menu" # green color
+    echo -e "${G}  Full Node Control - LND Menu"
     echo -e "${G}---------------------------------------------------------"
-    echo -e "${NC}Please enter your choice:" # reset color
-    echo -e "${BR}" # yellow color
+    echo -e "${NC}Please enter your choice:"
+    echo -e "${BR}"
     select reply in "${lndmenuoptions[@]}";
     do
       echo -e "${NC}" # reset color
@@ -406,10 +400,10 @@ thunderhubmenu() {
     clear
     echo; echo; echo; echo;
     echo -e "${G}---------------------------------------------------------"
-    echo -e "${G}  Full Node Control - Thunderhub Menu" # green color
+    echo -e "${G}  Full Node Control - Thunderhub Menu"
     echo -e "${G}---------------------------------------------------------"
-    echo -e "${NC}Please enter your choice:" # reset color
-    echo -e "${BR}" # yellow color
+    echo -e "${NC}Please enter your choice:"
+    echo -e "${BR}"
     select reply in "${thunderhubmenuoptions[@]}";
     do
       echo -e "${NC}" # reset color
@@ -477,10 +471,10 @@ glancesmenu() {
     clear
     echo; echo; echo; echo;
     echo -e "${G}---------------------------------------------------------"
-    echo -e "${G}  Full Node Control - Glances Menu" # green color
+    echo -e "${G}  Full Node Control - Glances Menu"
     echo -e "${G}---------------------------------------------------------"
-    echo -e "${NC}Please enter your choice:" # reset color
-    echo -e "${BR}" # yellow color
+    echo -e "${NC}Please enter your choice:"
+    echo -e "${BR}"
     select reply in "${glancesmenuoptions[@]}";
     do
       echo -e "${NC}" # reset color
@@ -539,10 +533,10 @@ bitfeedmenu() {
     clear
     echo; echo; echo; echo;
     echo -e "${G}---------------------------------------------------------"
-    echo -e "${G}  Full Node Control - Bitfeed Menu" # green color
+    echo -e "${G}  Full Node Control - Bitfeed Menu"
     echo -e "${G}---------------------------------------------------------"
-    echo -e "${NC}Please enter your choice:" # reset color
-    echo -e "${BR}" # yellow color
+    echo -e "${NC}Please enter your choice:"
+    echo -e "${BR}"
     select reply in "${bitfeedmenuoptions[@]}";
     do
       echo -e "${NC}" # reset color
@@ -601,10 +595,10 @@ explorermenu() {
     clear
     echo; echo; echo; echo;
     echo -e "${G}---------------------------------------------------------"
-    echo -e "${G}  Full Node Control - RPC-Explorer Menu" # green color
+    echo -e "${G}  Full Node Control - RPC-Explorer Menu"
     echo -e "${G}---------------------------------------------------------"
-    echo -e "${NC}Please enter your choice:" # reset color
-    echo -e "${BR}" # yellow color
+    echo -e "${NC}Please enter your choice:"
+    echo -e "${BR}"
     select reply in "${explorermenuoptions[@]}";
     do
       echo -e "${NC}" # reset color
@@ -663,10 +657,10 @@ nodestatusmenu() {
     clear
     echo; echo; echo; echo;
     echo -e "${G}---------------------------------------------------------"
-    echo -e "${G}  Full Node Control - Node Status Menu" # green color
+    echo -e "${G}  Full Node Control - Node Status Menu"
     echo -e "${G}---------------------------------------------------------"
-    echo -e "${NC}Please enter your choice:" # reset color
-    echo -e "${BR}" # yellow color
+    echo -e "${NC}Please enter your choice:"
+    echo -e "${BR}"
     select reply in "${nodestatusmenuoptions[@]}";
     do
       echo -e "${NC}" # reset color
@@ -718,10 +712,10 @@ do
 clear
 echo; echo; echo; echo;
 echo -e "${G}---------------------------------------------------------"
-echo -e "${G}  Full Node Control - Main Menu" # green color
+echo -e "${G}  Full Node Control - Main Menu"
 echo -e "${G}---------------------------------------------------------"
-echo -e "${NC}Please enter your choice:" # reset color
-echo -e "${LB}" # light blue color
+echo -e "${NC}Please enter your choice:"
+echo -e "${LB}"
 options=("     [  1  ]  -=   Bitcoind...      =-$menusep"
          "     [  2  ]  -=   Fulcrum...       =-"
          "     [  3  ]  -=   Mempool...       =-"
