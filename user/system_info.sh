@@ -64,9 +64,9 @@ SERVICE_NAME[9]="Node Stats";SERVICE_HOST[9]="localhost";SERVICE_PORT[9]="4021"
       STATUS=$((exec 3<>/dev/tcp/"$HOST"/"$PORT") &>/dev/null; echo "$?")
 
       if [ "$STATUS" = 0 ] ; then
-          OUTPUT="${LG}online ${NC} : $NAME [$PORT]"
+          OUTPUT="${G}online ${NC} : $NAME [$PORT]"
       else
-          OUTPUT="${LR}offline${NC} : $NAME [$PORT]"
+          OUTPUT="${R}offline${NC} : $NAME [$PORT]"
       fi
       echo -e "$OUTPUT"
   done
