@@ -73,8 +73,9 @@ len=${#NAMS[@]}
 for(( i=0; i<$len; i++ ))
 do
    printf " %b${NAMS[i]}%b:\n" "${LB}" "${NC}"
-   printf "   %7s [%s]\n" "Github" "${GITS[i]}"
-   printf "   %7s [%s]\n" "Install" "${LOCS[i]}"
+   if [ "${GITS[i]}" = "${LOCS[i]}" ]; then clr="${G}"; else clr="${R}"; fi
+   printf "   %7s [%b]\n" "Github" "${clr}${GITS[i]}${NC}"
+   printf "   %7s [%b]\n" "Install" "${clr}${LOCS[i]}${NC}"
    echo
 done
 
