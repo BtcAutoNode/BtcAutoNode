@@ -196,7 +196,7 @@ cat > "${MEMPOOL_BACKEND_CONF}"<< EOF
   "MAXMIND": {
     "ENABLED": false,
     "GEOLITE2_CITY": "${MEMPOOL_DIR}/GeoIP/GeoLite2-City.mmdb",
-    "GEOLITE2_ASN": "/${MEMPOOL_DIR}GeoIP/GeoLite2-ASN.mmdb",
+    "GEOLITE2_ASN": "${MEMPOOL_DIR}GeoIP/GeoLite2-ASN.mmdb",
     "GEOIP2_ISP": "${MEMPOOL_DIR}/GeoIP/GeoIP2-ISP.mmdb"
   },
   "LIGHTNING": {
