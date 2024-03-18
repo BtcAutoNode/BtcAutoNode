@@ -32,6 +32,12 @@ clear
 
 #-----------------------------------------------------------------
 
+# get php version (for later use in configs)
+# (php version is hardcodes in paths and files)
+phpver=$(php -v | head -n 1 | cut -d ' ' -f2 | cut -c1-3)
+
+#-----------------------------------------------------------------
+
 #
 ### Check if user really wants to uninstall...or exit
 #
@@ -45,7 +51,7 @@ echo "- Delete node_status systemd service file (${NODE_STAT_SERVICE_FILE})"
 echo "- Uninstall package dependencies via apt-get (${NODE_STAT_PKGS})"
 echo "- Delete node_status nginx config files (${NODE_STAT_NGINX_SSL_CONF} + sym-link)"
 echo "- Delete node_status nginx webroot dir (${NODE_STAT_WEBROOT_DIR})"
-echo "- Delete php-fpm config file (${NODE_STAT_FPM_CONF_FILE})"
+echo "- Delete php-fpm config file (/etc/php/${phpver}/fpm/pool.d/node_status.conf)"
 echo "- Restart nginx web server"
 echo
 echo -e "${LR}Press ${NC}<enter>${LR} key to continue, or ${NC}ctrl-c${LR} to exit${NC}"
@@ -121,11 +127,11 @@ echo -e "${G}Done.${NC}"
 #-----------------------------------------------------------------
 
 #
-# delete php-fpm config file (${NODE_STAT_FPM_CONF_FILE})
+# delete php-fpm config file (/etc/php/${phpver}/fpm/pool.d/node_status.conf)
 #
 echo
-echo -e "${Y}Delete node_status php-fpm config file (${NODE_STAT_FPM_CONF_FILE})...${NC}"
-rm -f "${NODE_STAT_FPM_CONF_FILE}"
+echo -e "${Y}Delete node_status php-fpm config file (/etc/php/${phpver}/fpm/pool.d/node_status.conf)...${NC}"
+rm -f "/etc/php/${phpver}/fpm/pool.d/node_status.conf"
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
@@ -143,4 +149,3 @@ echo -e "${G}Done.${NC}"
 echo
 echo -e "${Y}Uninstallation all done!${NC}"
 echo
-

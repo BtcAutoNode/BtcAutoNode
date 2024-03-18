@@ -164,7 +164,6 @@ BITFEED_SSL_PORT="4041"
 
 # Node Status Server Monitor config
 NODE_STAT_PKGS="php php-fpm"
-NODE_STAT_FPM_CONF_FILE="/etc/php/7.4/fpm/pool.d/node_status.conf"
 NODE_STAT_SERVICE="node_status.service"
 NODE_STAT_SERVICE_FILE="/etc/systemd/system/${NODE_STAT_SERVICE}"
 NODE_STAT_WEBROOT_DIR="${NGINX_WEBROOT_DIR}/node_status"
@@ -197,4 +196,3 @@ WH="\033[1;37m"   # is White's ANSI color code
 NC="\033[0m"      # No Color
 
 #-----------------------------------------------------------------
-
