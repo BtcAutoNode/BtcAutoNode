@@ -94,6 +94,12 @@ echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
 
+# get php version (for later use in configs)
+# (php version is hardcodes in paths and files)
+phpver=$(php -v | head -n 1 | cut -d ' ' -f2 | cut -c1-3)
+
+#-----------------------------------------------------------------
+
 #
 ### copy the content of the res/node_status directory into web root dir (/var/www/html)
 #
@@ -175,7 +181,7 @@ server {
 
          location ~ \.php$ {
             fastcgi_split_path_info ^(.+\.php)(/.+)$;
-            fastcgi_pass unix:/var/run/php7.4-fpm-node_status-site.sock;
+            fastcgi_pass unix:/var/run/php${phpver}-fpm-node_status-site.sock;
             fastcgi_index index.php;
             include fastcgi.conf;
     }
@@ -190,13 +196,13 @@ echo -e "${G}Done.${NC}"
 ### write php-fpm config file (${NODE_STAT_FPM_CONF_FILE})
 #
 echo
-echo -e "${Y}Write php-fpm config file (${NODE_STAT_FPM_CONF_FILE})...${NC}"
-cat > "${NODE_STAT_FPM_CONF_FILE}"<< EOF
+echo -e "${Y}Write php-fpm config file (/etc/php/${phpver}/fpm/pool.d/node_status.conf)...${NC}"
+cat > /etc/php/${phpver}/fpm/pool.d/node_status.conf<< EOF
 
 [node_status]
 user = www-data
 group = www-data
-listen = /var/run/php7.4-fpm-node_status-site.sock
+listen = /var/run/php${phpver}-fpm-node_status-site.sock
 listen.owner = www-data
 listen.group = www-data
 listen.mode = 0666
@@ -220,7 +226,7 @@ echo -e "${G}Done.${NC}"
 #
 echo
 echo -e "${Y}Restart php-fpm service...${NC}"
-systemctl restart php7.4-fpm.service
+systemctl restart php${phpver}-fpm.service
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
@@ -268,7 +274,7 @@ echo -e " ${NODE_STAT_WEBROOT_DIR} + - node_status nginx web root dir\n" \
         "+\n" \
         "${NODE_STAT_SERVICE_FILE} + - node_status systemd service file\n" \
         "+\n" \
-        "${NODE_STAT_FPM_CONF_FILE} + - node_status php-fpm config file\n" \
+        "/etc/php/${phpver}/fpm/pool.d/node_status.conf + - node_status php-fpm config file\n" \
         "+\n" \
         "${NODE_STAT_NGINX_SSL_CONF} + - node_status nginx ssl config\n" | column -t -s "+"
 echo
@@ -276,4 +282,3 @@ echo
 echo -e "${LB}Open node_status page in your browser via the following URL: ${NC}"
 echo " https://${LOCAL_IP}:${NODE_STAT_SSL_PORT}"
 echo
-
