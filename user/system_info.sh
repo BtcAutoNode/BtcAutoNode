@@ -55,6 +55,7 @@ SERVICE_NAME[6]="Glances   ";SERVICE_HOST[6]="localhost";SERVICE_PORT[6]="61208"
 SERVICE_NAME[7]="Explorer  ";SERVICE_HOST[7]="localhost";SERVICE_PORT[7]="3002"
 SERVICE_NAME[8]="Bitfeed   ";SERVICE_HOST[8]="localhost";SERVICE_PORT[8]="9999"
 SERVICE_NAME[9]="Node Stats";SERVICE_HOST[9]="localhost";SERVICE_PORT[9]="4021"
+SERVICE_NAME[10]="LN-Visual ";SERVICE_HOST[10]="localhost";SERVICE_PORT[10]="5647"
   for ID in "${!SERVICE_NAME[@]}"
     do
       NAME="${SERVICE_NAME[$ID]}"
