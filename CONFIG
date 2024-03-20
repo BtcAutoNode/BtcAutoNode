@@ -86,6 +86,7 @@ LND_SERVICE="lnd.service"
 LND_SERVICE_FILE="/etc/systemd/system/${LND_SERVICE}"
 LND_CERT_FILE="${LND_DIR}/tls.cert"
 LND_ADMIN_MACAROON_FILE="${LND_DIR}/data/chain/bitcoin/mainnet/admin.macaroon"
+LND_READONLY_MACAROON_FILE="${LND_DIR}/data/chain/bitcoin/mainnet/readonly.macaroon"
 
 #-----------------------------------------------------------------
 
@@ -169,6 +170,21 @@ NODE_STAT_SERVICE_FILE="/etc/systemd/system/${NODE_STAT_SERVICE}"
 NODE_STAT_WEBROOT_DIR="${NGINX_WEBROOT_DIR}/node_status"
 NODE_STAT_NGINX_SSL_CONF="/etc/nginx/sites-available/node_status-ssl.conf"
 NODE_STAT_SSL_PORT="4021"
+
+#-----------------------------------------------------------------
+
+# Lightning Network Visualizer config
+LNVIS_VERSION="0.0.28"
+#LNVIS_PKGS="python make g++"
+LNVIS_DIR="${HOME_DIR}/LN-Visualizer"
+LNVIS_BACKEND_DIR="${LNVIS_DIR}/api"
+LNVIS_FRONTEND_DIR="${LNVIS_DIR}"
+LNVIS_BACKEND_CONF="${LNVIS_BACKEND_DIR}/config/default.json"
+LNVIS_SERVICE="ln-visualizer.service"
+LNVIS_SERVICE_FILE="/etc/systemd/system/${LNVIS_SERVICE}"
+LNVIS_WEBROOT_DIR="${NGINX_WEBROOT_DIR}/ln-visualizer"
+LNVIS_NGINX_SSL_CONF="/etc/nginx/sites-available/ln-visualizer-ssl.conf"
+LNVIS_SSL_PORT="4071"
 
 #-----------------------------------------------------------------
 
