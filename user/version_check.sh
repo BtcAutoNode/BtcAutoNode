@@ -64,9 +64,14 @@ BITFEED_NAM="Bitfeed"
 BITFEED_GIT=$(curl -sL https://github.com/bitfeed-project/bitfeed/releases/latest | grep "<title>Release" | cut -d ' ' -f 5 | cut -c2-)
 BITFEED_LOC=$(cat "$BITFEED_FRONTEND_DIR"/package.json 2>/dev/null | jq -r ".version")
 
-NAMS=("$BITCOIN_NAM" "$FULCRUM_NAM" "$MEMPOOL_NAM" "$LND_NAM" "$THH_NAM" "$SPARROW_NAM" "$BISQ_NAM" "$GLANCES_NAM" "$RPCEX_NAM" "$BITFEED_NAM")
-GITS=("$BITCOIN_GIT" "$FULCRUM_GIT" "$MEMPOOL_GIT" "$LND_GIT" "$THH_GIT" "$SPARROW_GIT" "$BISQ_GIT" "$GLANCES_GIT" "$RPCEX_GIT" "$BITFEED_GIT")
-LOCS=("$BITCOIN_LOC" "$FULCRUM_LOC" "$MEMPOOL_LOC" "$LND_LOC" "$THH_LOC" "$SPARROW_LOC" "$BISQ_LOC" "$GLANCES_LOC" "$RPCEX_LOC" "$BITFEED_LOC")
+LNVIS_NAM="LN-Visualizer"
+LNVIS_GIT=$(curl -sL https://github.com/MaxKotlan/LN-Visualizer/releases/latest | grep "<title>Release" | cut -d ' ' -f 4 | cut -c2-)
+LNVIS_LOC=$(cat "$LNVIS_DIR"/package.json 2>/dev/null | jq -r ".version")
+
+
+NAMS=("$BITCOIN_NAM" "$FULCRUM_NAM" "$MEMPOOL_NAM" "$LND_NAM" "$THH_NAM" "$SPARROW_NAM" "$BISQ_NAM" "$GLANCES_NAM" "$RPCEX_NAM" "$BITFEED_NAM" "$LNVIS_NAM")
+GITS=("$BITCOIN_GIT" "$FULCRUM_GIT" "$MEMPOOL_GIT" "$LND_GIT" "$THH_GIT" "$SPARROW_GIT" "$BISQ_GIT" "$GLANCES_GIT" "$RPCEX_GIT" "$BITFEED_GIT" "$LNVIS_GIT")
+LOCS=("$BITCOIN_LOC" "$FULCRUM_LOC" "$MEMPOOL_LOC" "$LND_LOC" "$THH_LOC" "$SPARROW_LOC" "$BISQ_LOC" "$GLANCES_LOC" "$RPCEX_LOC" "$BITFEED_LOC" "$LNVIS_LOC")
 
 # loop over arrays and print version info
 len=${#NAMS[@]}
