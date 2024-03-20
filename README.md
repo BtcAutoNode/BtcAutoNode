@@ -44,6 +44,7 @@ It's a good idea to follow the videos and read the guide to understand what is b
 - ***BTC RPC Explorer*** - Self-Hosted Bitcoin explorer for blockchain and full node
 - ***Bitfeed*** - A live visualization of Bitcoin network activity and blockchain explorer
 - ***Node Status Monitor*** - A simple php web page showing the status of the apps
+- ***Lightning Network Visualizer*** - A graph visualization tool to draw the lightning network
 <br><br>
 
 ## Prerequisites
