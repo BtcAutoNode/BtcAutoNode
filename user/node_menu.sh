@@ -170,7 +170,7 @@ bitcoindmenu() {
            break
            ;;
         4) # Restart Service
-           execute_service"restart" "${BITCOIN_SERVICE}"
+           execute_service "restart" "${BITCOIN_SERVICE}"
            break
            ;;
         5) # Tail Log File
