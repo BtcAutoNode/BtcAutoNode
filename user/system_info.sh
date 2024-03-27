@@ -62,9 +62,7 @@ SERVICE_NAME[10]="LN-Visual ";SERVICE_HOST[10]="localhost";SERVICE_PORT[10]="564
       HOST="${SERVICE_HOST[$ID]}"
       PORT="${SERVICE_PORT[$ID]}"
 
-      STATUS=$((exec 3<>/dev/tcp/"$HOST"/"$PORT") &>/dev/null; echo "$?")
-
-      if [ "$STATUS" = 0 ] ; then
+  if (exec 3<>/dev/tcp/"$HOST"/"$PORT") &>/dev/null; then
           OUTPUT="${G}online ${NC} : $NAME [$PORT]"
       else
           OUTPUT="${R}offline${NC} : $NAME [$PORT]"
