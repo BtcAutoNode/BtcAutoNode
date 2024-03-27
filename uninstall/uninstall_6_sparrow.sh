@@ -55,7 +55,7 @@ read -r
 #
 echo
 echo -e "${Y}Kill tmux Sparrow session (sparrow_server)...${NC}"
-su -c 'tmux kill-session -t sparrow_server' ${USER}
+su -c 'tmux kill-session -t sparrow_server 2>/dev/null' "${USER}"
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
