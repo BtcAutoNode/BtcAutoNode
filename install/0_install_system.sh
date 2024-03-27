@@ -113,7 +113,7 @@ echo -e "${G}Done.${NC}"
 echo
 echo -e "${Y}Installing NodeJS/npm from their repository...${NC}"
 echo -e "${LB}Creating /etc/apt/keyrings...${NC}"
-mkdir -p ${KEYRINGS_DIR}
+mkdir -p "${KEYRINGS_DIR}"
 curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o "${NODEJS_KEYRING_FILE}"
 NODE_MAJOR="${NODEJS_VERSION}"
 echo -e "${LB}Add nodejs repository to ${NODEJS_LIST_FILE}...${NC}"
@@ -122,7 +122,7 @@ echo -e "${LB}Update apt and install...${NC}"
 apt-get -q update
 apt-get -q --reinstall install nodejs -y
 # update npm (based on warnings)
-npm install -g npm@${NPM_UPD_VER}
+npm install -g npm@"${NPM_UPD_VER}"
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
@@ -219,8 +219,8 @@ echo -e "${G}Done.${NC}"
 #
 echo
 echo -e "${Y}Allow user ${USER} to use systemctl cmd without password...${NC}"
-if [ -z "$(grep '${USER} ALL=(ALL) NOPASSWD: /usr/bin/systemctl' /etc/sudoers )" ]; then echo "${USER} ALL=(ALL) NOPASSWD: /usr/bin/systemctl" | sudo EDITOR='tee -a' visudo; fi;
-if [ -z "$(grep '${USER} ALL=(ALL) NOPASSWD: /usr/bin/journalctl' /etc/sudoers )" ]; then echo "${USER} ALL=(ALL) NOPASSWD: /usr/bin/journalctl" | sudo EDITOR='tee -a' visudo; fi;
+if ! grep -q "${USER} ALL=(ALL) NOPASSWD: /usr/bin/systemctl" /etc/sudoers; then echo "${USER} ALL=(ALL) NOPASSWD: /usr/bin/systemctl" | sudo EDITOR='tee -a' visudo; fi;
+if ! grep -q "${USER} ALL=(ALL) NOPASSWD: /usr/bin/journalctl" /etc/sudoers; then echo "${USER} ALL=(ALL) NOPASSWD: /usr/bin/journalctl" | sudo EDITOR='tee -a' visudo; fi;
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
@@ -398,8 +398,7 @@ echo -e "${G}Done.${NC}"
 #
 echo
 echo -e "${Y}Checking nginx configs...${NC}"
-nginx -t
-if [ "$?" -eq 0 ]; then
+if nginx -t; then
   echo -e "${G}Nginx configs: OK${NC}"
 else
   echo -e "${R}Nginx configs: Not OK${NC}"
