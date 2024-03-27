@@ -30,7 +30,8 @@ FULCRUM_LOC=$("${FULCRUM_DIR}"/Fulcrum --version 2>/dev/null | grep Release | cu
 
 MEMPOOL_NAM="Mempool"
 MEMPOOL_GIT=$(curl -sL https://api.github.com/repos/mempool/mempool/releases/latest | grep tag_name | head -1 | cut -d '"' -f4 | cut -c2-)
-MEMPOOL_LOC=$(cat "${MEMPOOL_BACKEND_DIR}"/package.json 2>/dev/null | jq -r ".version")
+MEMPOOL_LOC=$(jq -r ".version" "${MEMPOOL_BACKEND_DIR}"/package.json 2>/dev/null)
+
 
 LND_NAM="LND"
 LND_GIT=$(curl -sL https://github.com/lightningnetwork/lnd/releases/latest | grep "<title>Release" | cut -d ' ' -f 5 | cut -c2-)
@@ -38,7 +39,7 @@ LND_LOC=$(lncli --version 2>/dev/null | cut -d ' ' -f 3)
 
 THH_NAM="Thunderhub"
 THH_GIT=$(curl -sL https://github.com/apotdevin/thunderhub/releases/latest | grep "<title>Release" | cut -d ' ' -f 4 | cut -c2-)
-THH_LOC=$(cat "${THH_DIR}"/package.json 2>/dev/null | jq -r ".version")
+THH_LOC=$(jq -r ".version" "${THH_DIR}"/package.json 2>/dev/null)
 
 SPARROW_NAM="Sparrow Server"
 SPARROW_GIT=$(curl -sL https://github.com/sparrowwallet/sparrow/releases/latest | grep "<title>Release" | cut -d ' ' -f 4)
@@ -58,15 +59,15 @@ GLANCES_LOC=$(glances --version 2>/dev/null | grep Glances | cut -d' ' -f 2 | cu
 
 RPCEX_NAM="BTC-RPC-Explorer"
 RPCEX_GIT=$(curl -sL https://github.com/janoside/btc-rpc-explorer/releases/latest | grep "<title>Release" | cut -d ' ' -f 4 | cut -c2-)
-RPCEX_LOC=$(cat "${EXPLORER_DIR}"/package.json 2>/dev/null | jq -r ".version")
+RPCEX_LOC=$(jq -r ".version" "${EXPLORER_DIR}"/package.json 2>/dev/null)
 
 BITFEED_NAM="Bitfeed"
 BITFEED_GIT=$(curl -sL https://github.com/bitfeed-project/bitfeed/releases/latest | grep "<title>Release" | cut -d ' ' -f 5 | cut -c2-)
-BITFEED_LOC=$(cat "$BITFEED_FRONTEND_DIR"/package.json 2>/dev/null | jq -r ".version")
+BITFEED_LOC=$(jq -r ".version" "$BITFEED_FRONTEND_DIR"/package.json 2>/dev/null)
 
 LNVIS_NAM="LN-Visualizer"
 LNVIS_GIT=$(curl -sL https://github.com/MaxKotlan/LN-Visualizer/releases/latest | grep "<title>Release" | cut -d ' ' -f 4 | cut -c2-)
-LNVIS_LOC=$(cat "$LNVIS_DIR"/package.json 2>/dev/null | jq -r ".version")
+LNVIS_LOC=$(jq -r ".version" "$LNVIS_DIR"/package.json 2>/dev/null)
 
 
 NAMS=("$BITCOIN_NAM" "$FULCRUM_NAM" "$MEMPOOL_NAM" "$LND_NAM" "$THH_NAM" "$SPARROW_NAM" "$BISQ_NAM" "$GLANCES_NAM" "$RPCEX_NAM" "$BITFEED_NAM" "$LNVIS_NAM")
@@ -75,7 +76,7 @@ LOCS=("$BITCOIN_LOC" "$FULCRUM_LOC" "$MEMPOOL_LOC" "$LND_LOC" "$THH_LOC" "$SPARR
 
 # loop over arrays and print version info
 len=${#NAMS[@]}
-for(( i=0; i<$len; i++ ))
+for(( i=0; i<len; i++ ))
 do
    printf " %b${NAMS[i]}%b:\n" "${LB}" "${NC}"
    if [ "${GITS[i]}" = "${LOCS[i]}" ]; then clr="${G}"; else clr="${R}"; fi
