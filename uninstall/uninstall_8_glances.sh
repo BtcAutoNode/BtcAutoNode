@@ -88,7 +88,7 @@ echo -e "${G}Done.${NC}"
 #
 echo
 echo -e "${Y}Download Glances uninstallation script into /tmp...${NC}"
-cd "/tmp"
+cd "/tmp" || { echo "cd /tmp failed"; exit 1; }
 # glances install script
 wget -qO /tmp/uninstall_glances.sh https://raw.githubusercontent.com/nicolargo/glancesautoinstall/master/uninstall.sh
 chmod +x /tmp/uninstall_glances.sh
@@ -128,8 +128,8 @@ echo -e "${Y}Delete Glances cache/log folders...${NC}"
 # delete folders
 rm -rf /root/.cache/glances
 rm -rf /root/.local/share/glances
-rm -rf ${HOME_DIR}/.cache/glances
-rm -rf ${HOME_DIR}/.local/share/glances
+rm -rf "${HOME_DIR}"/.cache/glances
+rm -rf "${HOME_DIR}"/.local/share/glances
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
