@@ -163,7 +163,7 @@ server {
         listen ${NODE_STAT_SSL_PORT} ssl;
         listen [::]:${NODE_STAT_SSL_PORT} ssl;
         server_name  _;
-        root /var/www/html/node_status;
+        root /var/www/html;
         index index.html index.htm index.php;
 
         ssl_certificate /etc/ssl/certs/nginx-selfsigned.crt;
@@ -176,7 +176,7 @@ server {
         error_log /var/log/nginx/nodeman.error.log;
 
          location /node_status {
-            try_files $uri $uri/ /index.php$is_args$args;
+            try_files \$uri \$uri/ /index.php\$is_args\$args;
          }
 
          location ~ \.php$ {
@@ -197,7 +197,7 @@ echo -e "${G}Done.${NC}"
 #
 echo
 echo -e "${Y}Write php-fpm config file (/etc/php/${phpver}/fpm/pool.d/node_status.conf)...${NC}"
-cat > /etc/php/${phpver}/fpm/pool.d/node_status.conf<< EOF
+cat > /etc/php/"${phpver}"/fpm/pool.d/node_status.conf<< EOF
 
 [node_status]
 user = www-data
@@ -226,7 +226,7 @@ echo -e "${G}Done.${NC}"
 #
 echo
 echo -e "${Y}Restart php-fpm service...${NC}"
-systemctl restart php${phpver}-fpm.service
+systemctl restart php"${phpver}"-fpm.service
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
@@ -236,8 +236,7 @@ echo -e "${G}Done.${NC}"
 #
 echo
 echo -e "${Y}Checking nginx configs...${NC}"
-nginx -t
-if [ "$?" -eq 0 ]; then
+if nginx -t; then
   echo -e "${G}Nginx configs: OK${NC}"
 else
   echo -e "${R}Nginx configs: Not OK${NC}"
