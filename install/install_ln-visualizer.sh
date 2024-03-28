@@ -208,7 +208,7 @@ echo -e "${G}Done.${NC}"
 
 # version information in package.json is 0.0.5, not 0,0,28
 # overwrite with release version number (as used in version script)
-sed -i "s/0.0.5/${LNVIS_VERSION}/g" ${LNVIS_DIR}/package.json
+sed -i "s/0.0.5/${LNVIS_VERSION}/g" "${LNVIS_DIR}"/package.json
 #sed -i "s/0.0.5/${LNVIS_VERSION}/g" ${LNVIS_DIR}/package-lock.json
 #-----------------------------------------------------------------
 
@@ -350,8 +350,7 @@ echo -e "${G}Done.${NC}"
 #
 echo
 echo -e "${Y}Checking nginx configs...${NC}"
-nginx -t
-if [ "$?" -eq 0 ]; then
+if nginx -t; then
   echo -e "${G}Nginx configs: OK${NC}"
 else
   echo -e "${R}Nginx configs: Not OK${NC}"

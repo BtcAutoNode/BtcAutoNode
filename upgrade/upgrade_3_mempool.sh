@@ -68,7 +68,7 @@ read -r
 echo
 echo -e "${Y}Check Github version and compare to running version...${NC}"
 latest_version=$(curl -sL https://api.github.com/repos/mempool/mempool/releases/latest | grep tag_name | head -1 | cut -d '"' -f4 | cut -c2-)
-running_version=$(cat "${MEMPOOL_BACKEND_DIR}"/package.json | jq -r ".version")
+running_version=$(jq -r ".version" "${MEMPOOL_BACKEND_DIR}"/package.json)
 echo "Latest version on Github : ${latest_version}"
 echo "Current version running  : ${running_version}"
 echo
@@ -92,9 +92,6 @@ if [ "$latest_version" = "$running_version" ]; then
 else
   echo -e "${G}New version ${latest_version} available...possible to upgrade${NC}"
 fi
-
-# replace so existing commands can be used
-MEMPOOL_VERSION="${latest_version}"
 
 #-----------------------------------------------------------------
 
@@ -139,7 +136,7 @@ git checkout "v${latest_version}"
 # build backend
 cd "${MEMPOOL_BACKEND_DIR}"
 # update npm (based on warnings)
-npm install -g npm@${NPM_UPD_VER}
+npm install -g npm@"${NPM_UPD_VER}"
 npm install --omit=dev
 npm run build
 # build frontend

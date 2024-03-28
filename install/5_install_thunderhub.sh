@@ -173,7 +173,7 @@ npx --yes next telemetry disable
 # install/build
 cd "${THH_DIR}"
 # update npm (based on warnings)
-npm install -g npm@${NPM_UPD_VER}
+npm install -g npm@"${NPM_UPD_VER}"
 npm install
 npm run build
 echo -e "${G}Done.${NC}"
@@ -261,8 +261,7 @@ echo -e "${G}Done.${NC}"
 #
 echo
 echo -e "${Y}Checking nginx configs...${NC}"
-nginx -t
-if [ "$?" -eq 0 ]; then
+if nginx -t; then
   echo -e "${G}Nginx configs: OK${NC}"
 else
   echo -e "${R}Nginx configs: Not OK${NC}"

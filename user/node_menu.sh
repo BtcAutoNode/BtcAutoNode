@@ -52,19 +52,19 @@ function execute_service() {
    fi
    # service operations
    echo; echo
-   if [ $mode = "start" ]; then
+   if [ "$mode" = "start" ]; then
      echo -e "${LP} Trying to start service...${NC}" # light magenta
      sudo systemctl start "$service"
    fi
-   if [ $mode = "stop" ]; then
+   if [ "$mode" = "stop" ]; then
      echo -e "${LP} Trying to stop service...${NC}" # light magenta
      sudo systemctl stop "$service"
    fi
-   if [ $mode = "status" ]; then
+   if [ "$mode" = "status" ]; then
      echo -e "${LP} Status of service...${NC}" # light magenta
      sudo systemctl status "$service"
    fi
-   if [ $mode = "restart" ]; then
+   if [ "$mode" = "restart" ]; then
      echo -e "${LP} Trying to restart service...${NC}" # light magenta
      sudo systemctl restart "$service"
    fi
@@ -93,10 +93,10 @@ function edit_config() {
 #
 # function to show systemd service journal
 #
-function show_journal (
+function show_journal() {
    local service=$1
    sudo journalctl -fu "$service" -n "$rows" | less
-)
+}
 
 #
 # additional info for a command/option (e.g. tell key to leave)
@@ -105,7 +105,7 @@ function additional_info()
 {
    local mode=$1
    echo; echo
-   if [ $mode = "log" ]; then
+   if [ "$mode" = "log" ]; then
      echo -e "${LP} !! Later leave the logfile with ${NC}CTRL-C${LP}, then ${NC}q${LP} !!${NC}" # light magenta
    fi
    check_continue

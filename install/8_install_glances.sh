@@ -85,7 +85,7 @@ echo -e "${G}Done.${NC}"
 #
 echo
 echo -e "${Y}Download Glances installation script into /tmp...${NC}"
-cd "/tmp"
+cd "/tmp" || { echo "cd /tmp failed"; exit 1; }
 # glances install script
 wget -qO /tmp/install_glances.sh https://raw.githubusercontent.com/nicolargo/glancesautoinstall/master/install.sh
 chmod +x /tmp/install_glances.sh

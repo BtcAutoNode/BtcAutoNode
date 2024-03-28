@@ -124,13 +124,13 @@ echo -e "${G}Done.${NC}"
 #-----------------------------------------------------------------
 
 # fix base58 compile error in Debian 12 and Ubuntu 23.04
-NAME=$(cat /etc/os-release | grep ^ID= | cut -d '=' -f 2)
-VER=$(cat /etc/os-release | grep VERSION_ID | cut -d '=' -f 2)
+NAME=$(grep ^ID= /etc/os-release | cut -d '=' -f 2)
+VER=$(grep VERSION_ID /etc/os-release | cut -d '=' -f 2)
 VER=${VER#\"}               # Remove optional leading "
 VER=${VER%\"}               # remove trailing "
 #echo $NAME
 #echo $VER
-if ([ "$NAME" = "debian" ] && [ "$VER" = "12" ]) || ([ "$NAME" = "ubuntu" ] && [ "$VER" = "23.04" ]); then
+if { [ "$NAME" = "debian" ] && [ "$VER" = "12" ]; } || { [ "$NAME" = "ubuntu" ] && [ "$VER" = "23.04" ]; }; then
   #echo "true"
   sed -i.bak -e '125,131d' "${BITFEED_DIR}"/server/bitcoinex/lib/base58.ex
 fi
@@ -351,8 +351,7 @@ echo -e "${G}Done.${NC}"
 #
 echo
 echo -e "${Y}Checking nginx configs...${NC}"
-nginx -t
-if [ "$?" -eq 0 ]; then
+if nginx -t; then
   echo -e "${G}Nginx configs: OK${NC}"
 else
   echo -e "${R}Nginx configs: Not OK${NC}"

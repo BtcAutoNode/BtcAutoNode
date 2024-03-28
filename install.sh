@@ -10,24 +10,10 @@ REPO_DIR="btcautonode"
 # bash colors
 # https://www.shellhacks.com/bash-colors/
 # bash colors
-BL="\033[0;30m"   # is Blacks's ANSI color code
-R="\033[0;31m"    # is Red's ANSI color code
 G="\033[0;32m"    # is Green's ANSI color code
-BR="\033[0;33m"   # is Browns's ANSI color code
-B="\033[0;34m"    # is Blue's ANSI color code
-PU="\033[1;35m"   # is Purple's ANSI color code
-CY="\033[1;36m"   # is Cyan's ANSI color code
-LG="\033[1;37m"   # is Light Gray's ANSI color code
-
-DG="\033[1;30m"   # is D-Gray's ANSI color code
 LR="\033[1;31m"   # is L-Red's ANSI color code
-LG="\033[1;32m"   # is L-Green's ANSI color code
 Y="\033[1;33m"    # is Yellow's ANSI color code
 LB="\033[1;34m"   # is L-Brown's ANSI color code
-LP="\033[1;35m"   # is L-Purple's ANSI color code
-LC="\033[1;36m"   # is L-Cyan's ANSI color code
-WH="\033[1;37m"   # is White's ANSI color code
-
 NC="\033[0m"      # No Color
 
 #-----------------------------------------------------------------
@@ -67,13 +53,12 @@ apt-get -q update && apt-get upgrade -y
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
+
 #
 ### install git if not already available
 #
 echo
-git --version &>/dev/null
-GIT_AVAILABLE="$?"
-if [ "$GIT_AVAILABLE" -ne 0 ]; then
+if ! git --version &>/dev/null; then
   echo -e "${Y}Git not available...installing via apt-get...${NC}"
   apt-get install git -y
 else
@@ -91,10 +76,11 @@ if [ ! -d "${REPO_DIR}" ] ; then
     git clone "${REPO_URL}" "${REPO_DIR}"
 else
     echo -e "${Y}Updating the repository in ${REPO_DIR}${NC}"
-    cd "$REPO_DIR"
+    (
+    cd "$REPO_DIR" || { echo "cd repo_dir failed"; exit 1; }
     git fetch --all
     git reset --hard origin/master
-    cd ..
+    )
 fi
 
 #-----------------------------------------------------------------
@@ -154,5 +140,3 @@ echo "------------------------------------------------------------------------"
 echo
 
 #-----------------------------------------------------------------
-
-

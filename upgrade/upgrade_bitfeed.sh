@@ -68,7 +68,7 @@ read -r
 echo
 echo -e "${Y}Check Github version and compare to running version...${NC}"
 latest_version=$(curl -sL https://github.com/bitfeed-project/bitfeed/releases/latest | grep "<title>Release" | cut -d ' ' -f 5 | cut -c2-)
-running_version=$(cat "${BITFEED_FRONTEND_DIR}"/package.json | jq -r ".version")
+running_version=$(jq -r ".version" "${BITFEED_FRONTEND_DIR}"/package.json)
 echo "Latest version on Github : ${latest_version}"
 echo "Current version running  : ${running_version}"
 echo
@@ -92,9 +92,6 @@ if [ "$latest_version" = "$running_version" ]; then
 else
   echo -e "${G}New version ${latest_version} available...possible to upgrade${NC}"
 fi
-
-# replace so existing commands can be used
-BITFEED_VERSION="${latest_version}"
 
 #-----------------------------------------------------------------
 

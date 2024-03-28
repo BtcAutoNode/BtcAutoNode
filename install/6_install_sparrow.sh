@@ -114,8 +114,7 @@ echo -e "${G}Done.${NC}"
 echo
 echo -e "${Y}Verify the release files...${NC}"
 # checksum
-sha256sum --ignore-missing --check --status sparrow-"${SPARROW_VERSION}"-manifest.txt 
-if [ "$?" -eq 0 ]; then
+if sha256sum --ignore-missing --check --status sparrow-"${SPARROW_VERSION}"-manifest.txt; then
   echo -e "${G}Verification of release checksum in checksum file: OK${NC}"
 else
   echo -e "${R}Verification of release checksum: Not OK${NC}"
@@ -125,8 +124,7 @@ fi
 wget -O pgp_keys.asc https://keybase.io/craigraw/pgp_keys.asc
 # import into gpg || true
 gpg --import -q pgp_keys.asc
-gpg --verify sparrow-"${SPARROW_VERSION}"-manifest.txt.asc
-if [ "$?" != 0 ]; then
+if gpg --verify sparrow-"${SPARROW_VERSION}"-manifest.txt.asc; then
   echo -e "${R}The signature(s) for the downloaded file are not good signature. Exiting now.${NC}"
   exit 1
 else

@@ -234,7 +234,7 @@ npm config set registry=https://registry.npmjs.com/
 # install/build
 cd "${MEMPOOL_BACKEND_DIR}"
 # update npm (based on warnings)
-npm install -g npm@${NPM_UPD_VER}
+npm install -g npm@"${NPM_UPD_VER}"
 # build
 npm install --omit=dev ## --no-install-links # npm@9.4.2 and later can omit the --no-install-links
 npm run build
@@ -507,8 +507,7 @@ echo -e "${G}Done.${NC}"
 #
 echo
 echo -e "${Y}Checking nginx configs...${NC}"
-nginx -t
-if [ "$?" -eq 0 ]; then
+if nginx -t; then
   echo -e "${G}Nginx configs: OK${NC}"
 else
   echo -e "${R}Nginx configs: Not OK${NC}"

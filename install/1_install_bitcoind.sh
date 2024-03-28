@@ -113,8 +113,7 @@ echo -e "${G}Done.${NC}"
 echo
 echo -e "${Y}Verify the release files...${NC}"
 # checksum
-sha256sum --ignore-missing --check --status SHA256SUMS
-if [ "$?" -eq 0 ]; then
+if sha256sum --ignore-missing --check --status SHA256SUMS; then
   echo -e "${G}Verification of release checksum in checksum file: OK${NC}"
 else
   echo -e "${R}Verification of release checksum: Not OK${NC}"
@@ -127,8 +126,7 @@ git clone https://github.com/bitcoin-core/guix.sigs
 # import into gpg
 gpg --import -q guix.sigs/builder-keys/* || true
 # verify
-gpg --verify SHA256SUMS.asc
-if [ "$?" != 0 ]; then
+if ! gpg --verify SHA256SUMS.asc; then
   echo -e "${R}The signature(s) for the downloaded file are not good signature. Exiting now.${NC}"
   exit 1
 else

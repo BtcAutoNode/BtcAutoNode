@@ -62,7 +62,7 @@ echo "- Create systemd ${LND_SERVICE} service file"
 echo "- Change permissions for download and base dirs for user ${USER}"
 echo
 echo -e "${LR}Press ${NC}<enter>${LR} key to continue, or ${NC}ctrl-c${LR} to exit${NC}"
-read
+read -r
 
 #-----------------------------------------------------------------
 
@@ -102,8 +102,8 @@ wget -O lnd-linux-amd64-v"${LND_VERSION}".tar.gz \
         https://github.com/lightningnetwork/lnd/releases/download/v"${LND_VERSION}"/lnd-linux-amd64-v"${LND_VERSION}".tar.gz
 wget -O manifest-roasbeef-v"${LND_VERSION}".sig \
         https://github.com/lightningnetwork/lnd/releases/download/v"${LND_VERSION}"/manifest-roasbeef-v"${LND_VERSION}".sig
-wget -O manifest-v${LND_VERSION}.txt \
-        https://github.com/lightningnetwork/lnd/releases/download/v${LND_VERSION}/manifest-v${LND_VERSION}.txt
+wget -O manifest-v"${LND_VERSION}".txt \
+        https://github.com/lightningnetwork/lnd/releases/download/v"${LND_VERSION}"/manifest-v"${LND_VERSION}".txt
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
@@ -114,8 +114,7 @@ echo -e "${G}Done.${NC}"
 echo
 echo -e "${Y}Verify the release files...${NC}"
 # checksum
-sha256sum --ignore-missing --check manifest-v"${LND_VERSION}".txt
-if [ "$?" -eq 0 ]; then
+if sha256sum --ignore-missing --check manifest-v"${LND_VERSION}".txt; then
   echo -e "${G}Verification of release checksum in checksum file: OK${NC}"
 else
   echo -e "${R}Verification of release checksum: Not OK${NC}"
@@ -126,8 +125,7 @@ wget -O roasbeef.asc https://raw.githubusercontent.com/lightningnetwork/lnd/mast
 # import into gpg
 gpg --import -q roasbeef.asc || true
 # verify
-gpg --verify manifest-roasbeef-v"${LND_VERSION}".sig manifest-v"${LND_VERSION}".txt
-if [ "$?" != 0 ]; then
+if ! gpg --verify manifest-roasbeef-v"${LND_VERSION}".sig manifest-v"${LND_VERSION}".txt; then
   echo -e "${R}The signature(s) for the downloaded file are not good signature. Exiting now.${NC}"
   exit 1
 else

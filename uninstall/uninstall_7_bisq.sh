@@ -60,7 +60,7 @@ read -r
 #
 echo
 echo -e "${Y}Stop Bisq xpra server...${NC}"
-su -c ${BISQ_STOP_SCRIPT} ${USER}
+su -c "${BISQ_STOP_SCRIPT}" "${USER}"
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
@@ -70,7 +70,7 @@ echo -e "${G}Done.${NC}"
 #
 echo
 echo -e "${Y}Stop Bisq gradle server...${NC}"
-su -c ${BISQ_APP_DIR}'/./gradlew --stop' ${USER}
+su -c "${BISQ_APP_DIR}"'/./gradlew --stop' "${USER}"
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------

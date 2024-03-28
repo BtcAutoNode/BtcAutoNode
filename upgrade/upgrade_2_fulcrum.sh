@@ -153,8 +153,7 @@ echo
 echo -e "${Y}Verify the release files...${NC}"
 # checksum
 ##sha256sum --ignore-missing --check Fulcrum-"${FULCRUM_VERSION}"-sha256sums.txt
-cat Fulcrum-"${FULCRUM_VERSION}"-shasums.txt | grep Fulcrum-"${FULCRUM_VERSION}"-x86_64-linux.tar.gz | shasum --ignore-missing --check
-if [ "$?" -eq 0 ]; then
+if grep Fulcrum-"${FULCRUM_VERSION}"-x86_64-linux.tar.gz Fulcrum-"${FULCRUM_VERSION}"-shasums.txt | shasum --ignore-missing --check; then
   echo -e "${G}Verification of release checksum in checksum file: OK${NC}"
 else
   echo -e "${R}Verification of release checksum: Not OK${NC}"
@@ -165,8 +164,7 @@ wget -O calinkey.txt https://raw.githubusercontent.com/Electron-Cash/keys-n-hash
 # import into gpg
 gpg --import -q calinkey.txt || true
 # verify
-gpg --verify Fulcrum-"${FULCRUM_VERSION}"-shasums.txt.asc
-if [ "$?" != 0 ]; then
+if ! gpg --verify Fulcrum-"${FULCRUM_VERSION}"-shasums.txt.asc; then
   echo -e "${R}The signature(s) for the downloaded file are not good signature. Exiting now.${NC}"
   exit 1
 else
