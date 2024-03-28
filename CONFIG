@@ -14,7 +14,7 @@ LOCAL_IP=$(ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1
 #RELEASE_CODE=$(awk -F"[)(]+" '/VERSION=/ {print $2}' /etc/os-release)
 ARCH=$(dpkg --print-architecture)
 #ARCHITECTURE=$(lscpu | egrep "Architecture" | sed s/"          "/" "/g | cut -d ":" -f 2 | xargs)
-RELEASE_CODE=$(cat /etc/os-release | grep VERSION_CODENAME | cut -d "=" -f 2)
+RELEASE_CODE=$(grep VERSION_CODENAME /etc/os-release | cut -d "=" -f 2)
 
 #-----------------------------------------------------------------
 
@@ -129,7 +129,7 @@ BISQ_SYM_LINK="/usr/local/bin/Bisq"
 #-----------------------------------------------------------------
 
 # Glances (system monitor) config
-GLANCES_VERSION="3.4.0.2"
+GLANCES_VERSION="3.4.0.5"
 GLANCES_APP_DIR="/usr/local/bin"
 GLANCES_SERVICE="glances.service"
 GLANCES_SERVICE_FILE="/etc/systemd/system/${GLANCES_SERVICE}"
