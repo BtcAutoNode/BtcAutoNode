@@ -278,7 +278,9 @@ PIDFile=/run/bitcoind/bitcoind.pid
 Restart=on-failure
 TimeoutSec=300
 RestartSec=30
-
+TimeoutStartSec=2s
+TimeoutStopSec=600s
+      
 # Directory creation and permissions
 ####################################
 User=${USER}
