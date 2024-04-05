@@ -124,7 +124,7 @@ fi
 wget -O pgp_keys.asc https://keybase.io/craigraw/pgp_keys.asc
 # import into gpg || true
 gpg --import -q pgp_keys.asc
-if gpg --verify sparrow-"${SPARROW_VERSION}"-manifest.txt.asc; then
+if ! gpg --verify sparrow-"${SPARROW_VERSION}"-manifest.txt.asc; then
   echo -e "${R}The signature(s) for the downloaded file are not good signature. Exiting now.${NC}"
   exit 1
 else
