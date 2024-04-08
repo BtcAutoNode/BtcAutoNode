@@ -188,6 +188,18 @@ LNVIS_SSL_PORT="4071"
 
 #-----------------------------------------------------------------
 
+# Electrs config
+ELECTRS_VERSION="0.10.4"
+ELECTRS_PKGS="clang cmake build-essential"
+ELECTRS_DIR="${HOME_DIR}/electrs"
+ELECTRS_DATA_DIR="${HOME_DIR}/electrs_db"
+ELECTRS_CONF_FILE="${ELECTRS_DIR}/electrs.conf"
+ELECTRS_SERVICE="electrs.service"
+ELECTRS_SERVICE_FILE="/etc/systemd/system/${ELECTRS_SERVICE}"
+ELECTRS_NGINX_SSL_CONF="${NGINX_STREAMS_DIR}/electrs-ssl.conf"
+
+#-----------------------------------------------------------------
+
 # bash colors
 # https://www.shellhacks.com/bash-colors/
 # bash colors
