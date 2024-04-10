@@ -229,9 +229,9 @@ echo -e "${LB}This can take quite some time!${NC}"
 sed -i "s/gradle-7.6-/gradle-7.6.3-/g" "${BISQ_APP_DIR}"/gradle/wrapper/gradle-wrapper.properties
 # change into bisq dir and build (exclude core:test as a few tests always fail)
 cd "${BISQ_APP_DIR}"
-su -c "rm -rf ${HOME_DIR}/.gradle/caches" "${USER}"
+su -c "./gradlew clean build --no-daemon -x core:test" "${USER}"
 # remove cache files
-su -c 'rm -rf ${HOME_DIR}/.gradle/caches' "${USER}"
+su -c "rm -rf ${HOME_DIR}/.gradle/caches" "${USER}"
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
