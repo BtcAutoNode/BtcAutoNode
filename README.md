@@ -50,7 +50,8 @@ It's a good idea to follow the videos and read the guide to understand what is b
 
 ## Prerequisites
 A working Debian server base system installation is needed with access to the root user (who does the installations).<br>
-At least 4GB of Ram should be available, otherwise the mempool build process might fail (and maybe other things).
+At least 4GB of Ram should be available, otherwise the mempool build process might fail (and maybe other things).<br>
+(Works best with a dark gray terminal background color, like 3f3f3f or black)
 <br><br>
 
 ## Download/Installation
