@@ -81,7 +81,7 @@ echo -e "${G}Done.${NC}"
 #-----------------------------------------------------------------
 
 #
-### cd into homedir and download thunderhub git repository /home/satoshi
+### cd into homedir and download btc-rpc-explorer git repository into /home/satoshi
 #
 echo
 echo -e "${Y}Cd into ${HOME_DIR} and clone the Explorer git repository...${NC}"
@@ -186,7 +186,7 @@ echo -e "${G}Done.${NC}"
 #-----------------------------------------------------------------
 
 #
-### change permissions of the explorer dir to user satoshi
+### change permissions of the explorer dir for user satoshi
 #
 echo
 echo -e "${Y}Change permissions of ${EXPLORER_DIR} to user ${USER}...${NC}"
@@ -196,7 +196,7 @@ echo -e "${G}Done.${NC}"
 #-----------------------------------------------------------------
 
 #
-### create systemd service for for Thunderhub
+### create systemd service for btc-rpc-explorer
 #
 echo
 echo -e "${Y}Create systemd service file for Explorer...${NC}"
