@@ -116,7 +116,7 @@ SPARROW_SYM_LINK="/usr/local/bin/Sparrow"
 
 # Bisq (headless) config
 BISQ_VERSION="1.9.14"
-BISQ_JAVA_VERSION="11"
+BISQ_JAVA_VERSION="17"
 BISQ_DOWNLOAD_DIR="${DOWNLOAD_DIR}/Bisq"
 BISQ_APP_DIR="${HOME_DIR}/bisq"
 BISQ_DATA_DIR="${HOME_DIR}/bisq-data"
