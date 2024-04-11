@@ -100,7 +100,7 @@ echo -e "${G}Done.${NC}"
 echo
 echo -e "${Y}Download Fulcrum release files...${NC}"
 cd "${FULCRUM_DOWNLOAD_DIR}"
-# bitcoind release
+# fulcrum release
 wget -O Fulcrum-"${FULCRUM_VERSION}"-x86_64-linux.tar.gz \
         https://github.com/cculianu/Fulcrum/releases/download/v"${FULCRUM_VERSION}"/Fulcrum-"${FULCRUM_VERSION}"-x86_64-linux.tar.gz
 wget -O Fulcrum-"${FULCRUM_VERSION}"-shasums.txt.asc \
