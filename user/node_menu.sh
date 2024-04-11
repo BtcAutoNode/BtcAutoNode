@@ -77,7 +77,7 @@ function execute_service() {
 function edit_config() {
    echo; echo
    # check_go_and_abort
-   echo -e "${LG}Press any key to continue / ${LR}q${NC}to abort${NC}"
+   echo -e "${LG}Press any key to continue / ${LR}q${NC} to abort${NC}"
    read -n 1 -s -r input
    if [ "q" = "$input" ]; then
      echo; echo
