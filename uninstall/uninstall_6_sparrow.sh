@@ -41,7 +41,7 @@ echo
 echo -e "${LB}The following steps will be executed in the process:${NC}"
 echo "- Kill tmux sparrow session (sparrow_server)"
 echo "- Delete sparrow download dir (${SPARROW_DOWNLOAD_DIR})"
-echo "- Delete sparrow base dir (${SPARROW_DIR})"
+echo "- Delete sparrow data dir (${SPARROW_DIR})"
 echo "- Delete sparrow app dir (${SPARROW_APP_DIR})"
 echo "- Delete sparrow symlink (${SPARROW_SYM_LINK})"
 echo
