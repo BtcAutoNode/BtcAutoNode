@@ -56,9 +56,9 @@ echo "- Download of the release from sparrowwallet.com/download/"
 echo "- Verify the release file"
 echo "- Extract release and move extracted folder to /opt/Sparrow"
 echo "- Create symbolic link in /usr/local/bin to Sparrow application in /opt"
-echo "- Create .sparrow base dir in ${USER} home dir (${HOME_DIR})"
+echo "- Create .sparrow data dir in ${USER} home dir (${HOME_DIR})"
 echo "- Edit config file in .sparrow to connect to fulcrum ssl"
-echo "- Change permission of Sparrow download and base dir for ${USER}"
+echo "- Change permission of Sparrow download and data dir for ${USER}"
 echo
 echo -e "${LR}Press ${NC}<enter>${LR} key to continue, or ${NC}ctrl-c${LR} to exit${NC}"
 read -r
