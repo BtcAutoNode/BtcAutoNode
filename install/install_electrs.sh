@@ -277,7 +277,7 @@ echo -e "${G}Done.${NC}"
 ### nginx electrs reverse proxy ssl config
 #
 echo
-echo -e "${Y}Write nginx Electrs reverse proxy ssl config (${ELCTRS_NGINX_SSL_CONF})...${NC}"
+echo -e "${Y}Write nginx Electrs reverse proxy ssl config (${ELECTRS_NGINX_SSL_CONF})...${NC}"
 cat > "${ELECTRS_NGINX_SSL_CONF}"<< EOF
 upstream electrs {
   server 127.0.0.1:50001;
