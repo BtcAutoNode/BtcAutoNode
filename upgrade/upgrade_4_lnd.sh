@@ -140,7 +140,7 @@ wget -O lnd-linux-amd64-v"${LND_VERSION}".tar.gz \
         https://github.com/lightningnetwork/lnd/releases/download/v"${LND_VERSION}"/lnd-linux-amd64-v"${LND_VERSION}".tar.gz
 wget -O manifest-roasbeef-v"${LND_VERSION}".sig \
         https://github.com/lightningnetwork/lnd/releases/download/v"${LND_VERSION}"/manifest-roasbeef-v"${LND_VERSION}".sig
-wget -O manifest-v${LND_VERSION}.txt \
+wget -O manifest-v"${LND_VERSION}".txt \
         https://github.com/lightningnetwork/lnd/releases/download/v"${LND_VERSION}"/manifest-v"${LND_VERSION}".txt
 echo -e "${G}Done.${NC}"
 
