@@ -172,7 +172,6 @@ cat > "${BITCOIN_CONF_FILE}"<< EOF
 server=1
 txindex=1
 daemon=1
-dbcache=450
 
 # Connections
 rpcport=8332
@@ -210,6 +209,12 @@ mempoolfullrbf=0
 
 # Bisq
 peerbloomfilters=1
+
+# Optimizations only for the initial sync of the blockchain
+# Comment out after initial sync and restart bitcoind (dbcache default is then 450MB)
+#dbcache=2000
+#blocksonly=1
+
 EOF
 echo -e "${G}Done.${NC}"
 
@@ -266,20 +271,20 @@ Wants=network-online.target
 
 [Service]
 ExecStart=/usr/local/bin/bitcoind -daemon \\
-                                  -pid=/run/bitcoind/bitcoind.pid \\
-                                  -conf=/home/${USER}/.bitcoin/bitcoin.conf \\
-                                  -datadir=/home/${USER}/.bitcoin \\
-                                  -startupnotify="chmod g+r /home/${USER}/.bitcoin/.cookie"
+                            -pid=/run/bitcoind/bitcoind.pid \\
+                            -conf=/home/${USER}/.bitcoin/bitcoin.conf \\
+                            -datadir=/home/${USER}/.bitcoin
+
+ExecStop=/usr/local/bin/bitcoin-cli stop
 
 # Process management
 ####################
 Type=forking
 PIDFile=/run/bitcoind/bitcoind.pid
+
 Restart=on-failure
-TimeoutSec=300
-RestartSec=30
-TimeoutStartSec=2s
-TimeoutStopSec=600s
+TimeoutStartSec=infinity
+TimeoutStopSec=600
       
 # Directory creation and permissions
 ####################################
