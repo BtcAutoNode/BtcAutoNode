@@ -200,6 +200,17 @@ ELECTRS_NGINX_SSL_CONF="${NGINX_STREAMS_DIR}/electrs-ssl.conf"
 
 #-----------------------------------------------------------------
 
+# Ride the Lightning (RTL) config
+RTL_VERSION="0.15.0"
+RTL_DIR="${HOME_DIR}/RTL"
+RTL_CONF_FILE="${RTL_DIR}/RTL-Config.json"
+RTL_SERVICE="rtl.service"
+RTL_SERVICE_FILE="/etc/systemd/system/${RTL_SERVICE}"
+RTL_NGINX_SSL_CONF="${NGINX_STREAMS_DIR}/rtl-ssl.conf"
+RTL_SSL_PORT="4010"
+
+#-----------------------------------------------------------------
+
 # bash colors
 # https://www.shellhacks.com/bash-colors/
 # bash colors
