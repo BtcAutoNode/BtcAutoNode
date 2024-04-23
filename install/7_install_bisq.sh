@@ -52,20 +52,20 @@ echo -e "${Y}This script will download, verify and install Bisq (headless)...${N
 echo
 echo -e "${LB}The following steps will be executed in the process:${NC}"
 echo "- Upgrade system to newest software (apt-get update / apt-get upgrade)"
-echo "- Add xpra repository and install xpra via apt"
+echo "- Add Xpra repository and install Xpra via apt"
 echo "- Install Java, version ${BISQ_JAVA_VERSION}"
 echo "- Create Bisq download dir (${BISQ_DOWNLOAD_DIR})"
 echo "- Download the release, verify, extract and move to ${BISQ_APP_DIR} dir"
 echo "- Change permissions of ${BISQ_APP_DIR} dir for user ${USER}"
 echo "- Build Bisq application"
 echo "- Create SSL certs for xpra (place into ${BISQ_APP_DIR} dir)"
-echo "- Query for xpra session password (by user interaction)"
+echo "- Query for Xpra session password (by user interaction)"
 echo "- Create start/stop scripts for Bisq xpra"
 echo "- Change permissions of file for user ${USER}"
 echo "- Disable and stop avahi daemon"
 echo "- Kill running jvm processes / stop Bisq gradle server(s)"
 echo "- Create symbolic link for Bisq (${BISQ_SYM_LINK})"
-#echo "- Allow Inbound connections in ${TORSOCKS_CONF} file"
+#echo "- Allow Inbound connections in ${TORSOCKS_CONF_FILE} file"
 echo
 echo -e "${LR}Press ${NC}<enter>${LR} key to continue, or ${NC}ctrl-c${LR} to exit${NC}"
 read -r
@@ -102,7 +102,7 @@ echo -e "${G}Done.${NC}"
 #-----------------------------------------------------------------
 
 #
-### refresh repositories
+### refresh apt repositories
 #
 echo
 echo -e "${Y}Updating system via apt with new xpra repository...${NC}"
@@ -112,10 +112,10 @@ echo -e "${G}Done.${NC}"
 #-----------------------------------------------------------------
 
 #
-### install XPRA
+### install xpra
 #
 echo
-echo -e "${Y}Install XPRA...${NC}"
+echo -e "${Y}Install Xpra...${NC}"
 apt-get install xpra -y
 echo -e "${G}Done.${NC}"
 
@@ -125,7 +125,7 @@ echo -e "${G}Done.${NC}"
 ### verify xpra version (to see that it is installed)
 #
 echo
-echo -e "${Y}Check XPRA version to check that installation worked...${NC}"
+echo -e "${Y}Check Xpra version to check that installation worked...${NC}"
 xpra --version
 echo -e "${G}Done.${NC}"
 
@@ -342,42 +342,11 @@ echo -e "${G}Done.${NC}"
 #-----------------------------------------------------------------
 
 #
-### disable and stop avahi-daemon
+# allow Inbound connections in /etc/tor/torsocks config file
 #
 #echo
-#echo -e "${Y}Disable and stop avahi-daemon...${NC}"
-#systemctl disable avahi-daemon
-#systemctl stop avahi-daemon
-#echo -e "${G}Done.${NC}"
-
-#-----------------------------------------------------------------
-
-#
-### kill some jvm processes if still running
-#
-#echo
-#echo -e "${Y}Kill some jvm processes if still running...${NC}"
-#for pid in $(ps -ef | grep "jvm" | awk '{print $2}'); do kill -9 $pid; done
-#echo -e "${G}Done.${NC}"
-
-#-----------------------------------------------------------------
-
-#
-### stop bisq gradle server(s) running
-#
-#echo
-#echo -e "${Y}Stop bisq xpra server...${NC}"
-#gradle --stop
-#echo -e "${G}Done.${NC}"
-
-#-----------------------------------------------------------------
-
-#
-# allow Inbound connections in /etc/tor/torsocks file
-#
-#echo
-#echo -e "${Y}Allow Inbound connections in ${TORSOCKS_CONF} file...${NC}"
-#sed -i "s/^#AllowInbound.*/AllowInbound 1/g" "${TORSOCKS_CONF}"
+#echo -e "${Y}Allow Inbound connections in ${TORSOCKS_CONF_FILE} file...${NC}"
+#sed -i "s/^#AllowInbound.*/AllowInbound 1/g" "${TORSOCKS_CONF_FILE}"
 #echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
@@ -393,7 +362,7 @@ echo -e " ${BISQ_DOWNLOAD_DIR} + - Bisq download directory\n" \
         "${BISQ_START_SCRIPT} + - Bisq xpra start script\n" \
         "${BISQ_STOP_SCRIPT} + - Bisq xpra stop script\n" \
         "${BISQ_LIST_FILE} + - file for Xpra deb archive links\n" \
-        "${TORSOCKS_CONF} + - tor proxy config file" | column -t -s "+"
+        "${TORSOCKS_CONF_FILE} + - tor proxy config file" | column -t -s "+"
 echo
 echo -e "${LB}Use the start script ( ${NC}./start_bisq_xpra.sh${LB} ) to start Bisq in a xpra session... ${NC}"
 echo -e "${LB} which can be accessed via a web browser (start script shows URL and passwd).${NC}"
@@ -405,4 +374,3 @@ echo
 echo -e "${LB}Here are more information on how to find it:${NC}"
 echo " https://bisq.wiki/Data_directory"
 echo
-
