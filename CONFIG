@@ -104,7 +104,7 @@ THH_SSL_PORT="4001"
 #-----------------------------------------------------------------
 
 # Sparrow config
-SPARROW_VERSION="1.8.5"
+SPARROW_VERSION="1.8.6"
 SPARROW_DIR="${HOME_DIR}/.sparrow"
 SPARROW_DOWNLOAD_DIR="${DOWNLOAD_DIR}/Sparrow"
 SPARROW_CONF_FILE="${SPARROW_DIR}/config"
