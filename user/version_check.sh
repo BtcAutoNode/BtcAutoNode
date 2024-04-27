@@ -32,7 +32,6 @@ MEMPOOL_NAM="Mempool"
 MEMPOOL_GIT=$(curl -sL https://api.github.com/repos/mempool/mempool/releases/latest | grep tag_name | head -1 | cut -d '"' -f4 | cut -c2-)
 MEMPOOL_LOC=$(jq -r ".version" "${MEMPOOL_BACKEND_DIR}"/package.json 2>/dev/null)
 
-
 LND_NAM="LND"
 LND_GIT=$(curl -sL https://github.com/lightningnetwork/lnd/releases/latest | grep "<title>Release" | cut -d ' ' -f 5 | cut -c2-)
 LND_LOC=$(lncli --version 2>/dev/null | cut -d ' ' -f 3)
@@ -69,10 +68,17 @@ LNVIS_NAM="LN-Visualizer"
 LNVIS_GIT=$(curl -sL https://github.com/MaxKotlan/LN-Visualizer/releases/latest | grep "<title>Release" | cut -d ' ' -f 4 | cut -c2-)
 LNVIS_LOC=$(jq -r ".version" "$LNVIS_DIR"/package.json 2>/dev/null)
 
+ELECTRS_NAM="Electrs"
+ELECTRS_GIT=$(curl -sL https://github.com/romanz/electrs/releases/latest | grep "<title>Release" | cut -d ' ' -f 4 | cut -c2-)
+ELECTRS_LOC=$(electrs --version 2>/dev/null | cut -c2-)
 
-NAMS=("$BITCOIN_NAM" "$FULCRUM_NAM" "$MEMPOOL_NAM" "$LND_NAM" "$THH_NAM" "$SPARROW_NAM" "$BISQ_NAM" "$GLANCES_NAM" "$RPCEX_NAM" "$BITFEED_NAM" "$LNVIS_NAM")
-GITS=("$BITCOIN_GIT" "$FULCRUM_GIT" "$MEMPOOL_GIT" "$LND_GIT" "$THH_GIT" "$SPARROW_GIT" "$BISQ_GIT" "$GLANCES_GIT" "$RPCEX_GIT" "$BITFEED_GIT" "$LNVIS_GIT")
-LOCS=("$BITCOIN_LOC" "$FULCRUM_LOC" "$MEMPOOL_LOC" "$LND_LOC" "$THH_LOC" "$SPARROW_LOC" "$BISQ_LOC" "$GLANCES_LOC" "$RPCEX_LOC" "$BITFEED_LOC" "$LNVIS_LOC")
+RTL_NAM="Ride the Lightning"
+RTL_GIT=$(curl -sL https://github.com/Ride-The-Lightning/RTL/releases/latest | grep "<title>Release" | cut -d ' ' -f5 | cut -d'-' -f1 | cut -c2-)
+RTL_LOC=$(jq -r ".version" "$RTL_DIR"/package.json 2>/dev/null | cut -d'-' -f1)
+
+NAMS=("$BITCOIN_NAM" "$FULCRUM_NAM" "$MEMPOOL_NAM" "$LND_NAM" "$THH_NAM" "$SPARROW_NAM" "$BISQ_NAM" "$GLANCES_NAM" "$RPCEX_NAM" "$BITFEED_NAM" "$LNVIS_NAM" "$ELECTRS_NAM" "$RTL_NAM")
+GITS=("$BITCOIN_GIT" "$FULCRUM_GIT" "$MEMPOOL_GIT" "$LND_GIT" "$THH_GIT" "$SPARROW_GIT" "$BISQ_GIT" "$GLANCES_GIT" "$RPCEX_GIT" "$BITFEED_GIT" "$LNVIS_GIT" "$ELECTRS_GIT" "$RTL_GIT")
+LOCS=("$BITCOIN_LOC" "$FULCRUM_LOC" "$MEMPOOL_LOC" "$LND_LOC" "$THH_LOC" "$SPARROW_LOC" "$BISQ_LOC" "$GLANCES_LOC" "$RPCEX_LOC" "$BITFEED_LOC" "$LNVIS_LOC" "$ELECTRS_LOC" "$RTL_LOC")
 
 # loop over arrays and print version info
 len=${#NAMS[@]}
