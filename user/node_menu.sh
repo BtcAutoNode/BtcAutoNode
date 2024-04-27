@@ -53,24 +53,25 @@ function execute_service() {
    # service operations
    echo; echo
    if [ "$mode" = "start" ]; then
-     echo -e "${LP} Trying to start service...${NC}" # light magenta
+     echo -e "${LP} Trying to start ${service} ...${NC}" # light magenta
      sudo systemctl start "$service"
    fi
    if [ "$mode" = "stop" ]; then
-     echo -e "${LP} Trying to stop service...${NC}" # light magenta
+     echo -e "${LP} Trying to stop ${service} ...${NC}" # light magenta
      sudo systemctl stop "$service"
    fi
    if [ "$mode" = "status" ]; then
-     echo -e "${LP} Status of service...${NC}" # light magenta
+     echo -e "${LP} Status of ${service} ...${NC}" # light magenta
      sudo systemctl status "$service"
    fi
    if [ "$mode" = "restart" ]; then
-     echo -e "${LP} Trying to restart service...${NC}" # light magenta
+     echo -e "${LP} Trying to restart ${service} ...${NC}" # light magenta
      sudo systemctl restart "$service"
    fi
    echo -e "${LP} Done.${NC}" # light magenta
    check_continue
 }
+
 #
 # function to handle log file editing
 #
@@ -129,6 +130,10 @@ function sys_info() {
    check_continue
 }
 
+function logo() {
+   toilet -f future  "  BtcAutoNode "
+}
+
 #-------------------------------------------------------------------------------------------
 
 ### Submenus
@@ -147,7 +152,11 @@ bitcoindmenu() {
  while true
   do
     clear
-    echo; echo; echo; echo;
+    echo;
+    echo -e "${G}---------------------------------------------------------${NC}"
+    echo
+    logo
+    echo
     echo -e "${G}---------------------------------------------------------"
     echo -e "${G}  Full Node Control - Bitcoind Menu"
     echo -e "${G}---------------------------------------------------------"
@@ -207,7 +216,11 @@ fulcrummenu() {
  while true
   do
     clear
-    echo; echo; echo; echo;
+    echo;
+    echo -e "${G}---------------------------------------------------------${NC}"
+    echo
+    logo
+    echo
     echo -e "${G}---------------------------------------------------------"
     echo -e "${G}  Full Node Control - Fulcrum Menu"
     echo -e "${G}---------------------------------------------------------"
@@ -269,7 +282,11 @@ mempoolmenu() {
  while true
   do
     clear
-    echo; echo; echo; echo;
+    echo;
+    echo -e "${G}---------------------------------------------------------${NC}"
+    echo
+    logo
+    echo
     echo -e "${G}---------------------------------------------------------"
     echo -e "${G}  Full Node Control - Mempool Menu"
     echo -e "${G}---------------------------------------------------------"
@@ -319,6 +336,7 @@ mempoolmenu() {
   done
 }
 
+
 lndmenu() {
  lndmenuoptions=(
          "     [  1  ] -=  Start Service      =-$menusep"
@@ -335,7 +353,11 @@ lndmenu() {
  while true
   do
     clear
-    echo; echo; echo; echo;
+    echo;
+    echo -e "${G}---------------------------------------------------------${NC}"
+    echo
+    logo
+    echo
     echo -e "${G}---------------------------------------------------------"
     echo -e "${G}  Full Node Control - LND Menu"
     echo -e "${G}---------------------------------------------------------"
@@ -398,7 +420,11 @@ thunderhubmenu() {
  while true
   do
     clear
-    echo; echo; echo; echo;
+    echo;
+    echo -e "${G}---------------------------------------------------------${NC}"
+    echo
+    logo
+    echo
     echo -e "${G}---------------------------------------------------------"
     echo -e "${G}  Full Node Control - Thunderhub Menu"
     echo -e "${G}---------------------------------------------------------"
@@ -469,7 +495,11 @@ glancesmenu() {
  while true
   do
     clear
-    echo; echo; echo; echo;
+    echo;
+    echo -e "${G}---------------------------------------------------------${NC}"
+    echo
+    logo
+    echo
     echo -e "${G}---------------------------------------------------------"
     echo -e "${G}  Full Node Control - Glances Menu"
     echo -e "${G}---------------------------------------------------------"
@@ -531,7 +561,11 @@ bitfeedmenu() {
  while true
   do
     clear
-    echo; echo; echo; echo;
+    echo;
+    echo -e "${G}---------------------------------------------------------${NC}"
+    echo
+    logo
+    echo
     echo -e "${G}---------------------------------------------------------"
     echo -e "${G}  Full Node Control - Bitfeed Menu"
     echo -e "${G}---------------------------------------------------------"
@@ -593,7 +627,11 @@ explorermenu() {
  while true
   do
     clear
-    echo; echo; echo; echo;
+    echo;
+    echo -e "${G}---------------------------------------------------------${NC}"
+    echo
+    logo
+    echo
     echo -e "${G}---------------------------------------------------------"
     echo -e "${G}  Full Node Control - RPC-Explorer Menu"
     echo -e "${G}---------------------------------------------------------"
@@ -655,7 +693,11 @@ nodestatusmenu() {
  while true
   do
     clear
-    echo; echo; echo; echo;
+    echo;
+    echo -e "${G}---------------------------------------------------------${NC}"
+    echo
+    logo
+    echo
     echo -e "${G}---------------------------------------------------------"
     echo -e "${G}  Full Node Control - Node Status Menu"
     echo -e "${G}---------------------------------------------------------"
@@ -701,6 +743,72 @@ nodestatusmenu() {
   done
 }
 
+rtlmenu() {
+ rtlmenuoptions=(
+         "     [  1  ] -=  Start Service      =-$menusep"
+         "     [  2  ] -=  Stop Service       =-"
+         "     [  3  ] -=  Status Service     =-"
+         "     [  4  ] -=  Restart Service    =-"
+         "     [  -  ] -=  -----------------  =-"
+         "     [  5  ] -=  Tail Journal Log   =-"
+         "     [  6  ] -=  Show Web URL       =-"
+         "     [  -  ] -=  -----------------  =-"
+         "     [  q  ] -=  Back to Main Menu  =-"
+ )
+
+ while true
+  do
+    clear
+    echo;
+    echo -e "${G}---------------------------------------------------------${NC}"
+    echo
+    logo
+    echo
+    echo -e "${G}---------------------------------------------------------"
+    echo -e "${G}  Full Node Control - Ride the Lightning Menu"
+    echo -e "${G}---------------------------------------------------------"
+    echo -e "${NC}Please enter your choice:"
+    echo -e "${BR}"
+    select reply in "${rtlmenuoptions[@]}";
+    do
+      echo -e "${NC}" # reset color
+      case $REPLY in
+        1) # Start Service
+           execute_service "start" "${RTL_SERVICE}"
+           break
+           ;;
+        2) # Stop Service
+           execute_service "stop" "${RTL_SERVICE}"
+           break
+           ;;
+        3) # Status Service
+           execute_service "status" "${RTL_SERVICE}"
+           break
+           ;;
+        4) # Restart Service
+           execute_service "restart" "${RTL_SERVICE}"
+           break
+           ;;
+        5) # Tail Journal Log
+           additional_info "log"
+           show_journal "${RTL_SERVICE}"
+           break
+           ;;
+        6) # Show Web URL
+           echo; echo -e "Web URL (CTRL-Click): \e[1;35mhttps://${LOCAL_IP}:${RTL_SSL_PORT}/rtl/login\e[0m"
+           check_continue
+           break
+           ;;
+        q) # back to main menu
+           break 2
+           ;;
+        *) echo 'Please select an option.' >&2
+      esac
+      break
+    done
+  done
+}
+
 #-------------------------------------------------------------------------------------------
 
 # START SCRIPT
@@ -710,7 +818,11 @@ nodestatusmenu() {
 while true
 do
 clear
-echo; echo; echo; echo;
+echo;
+echo -e "${G}---------------------------------------------------------${NC}"
+echo
+logo
+echo
 echo -e "${G}---------------------------------------------------------"
 echo -e "${G}  Full Node Control - Main Menu"
 echo -e "${G}---------------------------------------------------------"
@@ -725,6 +837,7 @@ options=("     [  1  ]  -=   Bitcoind...      =-$menusep"
          "     [  7  ]  -=   Bitfeed...       =-"
          "     [  8  ]  -=   RPC-Explorer...  =-"
          "     [  9  ]  -=   Node Status...   =-"
+         "     [ 10  ]  -=   RTL...           =-"
          "     [  -  ]  -=   ---------------  =-"
          "     [  s  ]  -=   System Info      =-"
          "     [  v  ]  -=   Version Check    =-"
@@ -769,6 +882,10 @@ do
             ;;
          9) # node status menu
             nodestatusmenu
+            break
+            ;;
+         10) # rtl menu
+            rtlmenu
             break
             ;;
          s) # sys info
