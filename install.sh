@@ -34,6 +34,12 @@ fi
 echo
 echo -e "${Y}########################################################################${NC}"
 echo
+echo "                  ┏┓ ╺┳╸┏━╸┏━┓╻ ╻╺┳╸┏━┓┏┓╻┏━┓╺┳┓┏━╸   "
+echo "                  ┣┻┓ ┃ ┃  ┣━┫┃ ┃ ┃ ┃ ┃┃┗┫┃ ┃ ┃┃┣╸    "
+echo "                  ┗━┛ ╹ ┗━╸╹ ╹┗━┛ ╹ ┗━┛╹ ╹┗━┛╺┻┛┗━╸   "
+echo
+echo -e "${Y}########################################################################${NC}"
+echo
 echo -e "${Y}  Install script checks if git is available  and installs it if not.${NC}"
 echo -e "${Y}  Then the repository will be cloned/updated into ${REPO_DIR}.${NC}"
 echo
