@@ -47,6 +47,7 @@ It's a good idea to follow the videos and read the guide to understand what is b
 - ***Lightning Network Visualizer*** - A graph visualization tool to draw the lightning network
 - ***Electrs*** - Electrum Server in Rust (Fulcrum alternative)
 - ***Ride the Lightning*** - Web interface to manage Lightning node operations (similar to Thunderhub)
+- ***JoinMarket + Jam*** - Tool to create CoinJoin transactions + Jam WebUI
 <br><br>
 
 ## Prerequisites

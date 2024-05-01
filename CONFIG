@@ -26,7 +26,7 @@ KEYRINGS_DIR="/etc/apt/keyrings"
 NODEJS_VERSION="20"
 NODEJS_LIST_FILE="${APT_SOURCES_DIR}/nodesource.list"
 NODEJS_KEYRING_FILE="${KEYRINGS_DIR}/nodesource.gpg"
-NPM_UPD_VER="10.5.2"
+NPM_UPD_VER="10.7.0"
 TOR_LIST_FILE="${APT_SOURCES_DIR}/tor.list"
 TOR_KEYRING_FILE="${KEYRINGS_DIR}/tor-archive-keyring.gpg"
 TORRC_CONF_FILE="/etc/tor/torrc"
@@ -211,6 +211,27 @@ RTL_SSL_PORT="4010"
 
 #-----------------------------------------------------------------
 
+# JoinMarket / Jam config
+JM_VERSION="0.9.11"
+JM_PKGS="python3-dev python3-pip python3-virtualenv python3-venv build-essential automake pkg-config libtool libffi-dev libssl-dev libsodium-dev"
+JM_DOWNLOAD_DIR="${DOWNLOAD_DIR}/Joinmarket"
+JM_DIR="${HOME_DIR}/joinmarket"
+JM_DATA_DIR="${HOME_DIR}/.joinmarket"
+JM_CONF_FILE="${JM_DATA_DIR}/joinmarket.cfg"
+JM_WALLETD_SERVICE="jmwalletd.service"
+JM_OBWATCHER_SERVICE="obwatcher.service"
+JM_WALLETD_SERVICE_FILE="/etc/systemd/system/${JM_WALLETD_SERVICE}"
+JM_OBWATCHER_SERVICE_FILE="/etc/systemd/system/${JM_OBWATCHER_SERVICE}"
+# ----------
+JAM_VERSION="0.2.0"
+JAM_DIR="${HOME_DIR}/jam"
+JAM_CONF_FILE="${HOME_DIR}/jam/.env"
+JAM_SERVICE="jam.service"
+JAM_SERVICE_FILE="/etc/systemd/system/${JAM_SERVICE}"
+JAM_NGINX_SSL_CONF="${NGINX_STREAMS_DIR}/jam-ssl.conf"
+JAM_SSL_PORT="4020"
+
+#-----------------------------------------------------------------
 # bash colors
 # https://www.shellhacks.com/bash-colors/
 # bash colors
