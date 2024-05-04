@@ -232,6 +232,30 @@ JAM_NGINX_SSL_CONF="${NGINX_STREAMS_DIR}/jam-ssl.conf"
 JAM_SSL_PORT="4020"
 
 #-----------------------------------------------------------------
+
+# BTCPay Server config
+BTCPAY_DOTNET_VERSION="8.0"
+BTCPAY_DOTNET_DIR="${HOME_DIR}/.dotnet"
+BTCPAY_NBX_VERSION="2.4.3"
+BTCPAY_NBX_DIR="${HOME_DIR}/NBXplorer"
+BTCPAY_NBX_DATA_DIR="${HOME_DIR}/.nbxplorer"
+BTCPAY_NBX_CONF_FILE="${BTCPAY_NBX_DATA_DIR}/Main/settings.config"
+BTCPAY_NBX_SERVICE="nbxplorer.service"
+BTCPAY_NBX_SERVICE_FILE="/etc/systemd/system/${BTCPAY_NBX_SERVICE}"
+# ----------
+BTCPAY_VERSION="1.13.1"
+BTCPAY_PKGS="postgresql postgresql-contrib"
+BTCPAY_DIR="${HOME_DIR}/btcpayserver"
+BTCPAY_DATA_DIR="${HOME_DIR}/.btcpayserver"
+BTCPAY_CONF_FILE="${BTCPAY_DATA_DIR}/Main/settings.config"
+BTCPAY_LIST_FILE="${APT_SOURCES_DIR}/pgdg.list"
+BTCPAY_SERVICE="btcpay.service"
+BTCPAY_SERVICE_FILE="/etc/systemd/system/${BTCPAY_SERVICE}"
+BTCPAY_NGINX_SSL_CONF="${NGINX_STREAMS_DIR}/btcpay-ssl.conf"
+BTCPAY_SSL_PORT="4030"
+
+#-----------------------------------------------------------------
+
 # bash colors
 # https://www.shellhacks.com/bash-colors/
 # bash colors
