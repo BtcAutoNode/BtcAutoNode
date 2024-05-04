@@ -48,6 +48,7 @@ It's a good idea to follow the videos and read the guide to understand what is b
 - ***Electrs*** - Electrum Server in Rust (Fulcrum alternative)
 - ***Ride the Lightning*** - Web interface to manage Lightning node operations (similar to Thunderhub)
 - ***JoinMarket + Jam*** - Tool to create CoinJoin transactions + Jam WebUI
+- ***BTCPay Server*** - FOSS Bitcoin payment processor
 <br><br>
 
 ## Prerequisites
