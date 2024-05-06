@@ -113,6 +113,15 @@ function additional_info()
 }
 
 #
+# show some mempool information calling memp.sh script
+#
+function mempool_info() {
+   clear
+   "${HOME_DIR}"/mempool_info.sh
+   check_continue
+}
+
+#
 # check app versions calling version_check.sh script
 #
 function check_versions() {
@@ -839,6 +848,7 @@ options=("     [  1  ]  -=   Bitcoind...      =-$menusep"
          "     [  9  ]  -=   Node Status...   =-"
          "     [ 10  ]  -=   RTL...           =-"
          "     [  -  ]  -=   ---------------  =-"
+         "     [  m  ]  -=   Mempool Info     =-"
          "     [  s  ]  -=   System Info      =-"
          "     [  v  ]  -=   Version Check    =-"
          "     [  -  ]  -=   ---------------  =-"
@@ -886,6 +896,10 @@ do
             ;;
          10) # rtl menu
             rtlmenu
+            break
+            ;;
+         m) # mempool info
+            mempool_info
             break
             ;;
          s) # sys info
