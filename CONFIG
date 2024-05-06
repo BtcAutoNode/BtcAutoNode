@@ -251,7 +251,7 @@ BTCPAY_CONF_FILE="${BTCPAY_DATA_DIR}/Main/settings.config"
 BTCPAY_LIST_FILE="${APT_SOURCES_DIR}/pgdg.list"
 BTCPAY_SERVICE="btcpay.service"
 BTCPAY_SERVICE_FILE="/etc/systemd/system/${BTCPAY_SERVICE}"
-BTCPAY_NGINX_SSL_CONF="${NGINX_STREAMS_DIR}/btcpay-ssl.conf"
+BTCPAY_NGINX_SSL_CONF="/etc/nginx/sites-available/btcpay-ssl.conf"
 BTCPAY_SSL_PORT="4030"
 
 #-----------------------------------------------------------------
