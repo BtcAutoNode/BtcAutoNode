@@ -205,6 +205,7 @@ echo -e "${G}Done.${NC}"
 echo
 echo -e "${Y}Delete BTCPAY Server nginx ssl config (${BTCPAY_NGINX_SSL_CONF})...${NC}"
 rm -f "${BTCPAY_NGINX_SSL_CONF}"
+rm -f "/etc/nginx/sites-enabled/btcpay-ssl.conf"
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
@@ -222,4 +223,3 @@ echo -e "${G}Done.${NC}"
 echo
 echo -e "${Y}Uninstallation all done!${NC}"
 echo
-

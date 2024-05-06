@@ -417,16 +417,67 @@ echo
 echo -e "${Y}Write nginx BTCPay Server reverse proxy ssl config (${BTCPAY_NGINX_SSL_CONF})...${NC}"
 cat > "${BTCPAY_NGINX_SSL_CONF}"<< EOF
 
-upstream btcpay {
-  server 127.0.0.1:23000;
+# btcpay ssl conf, put into sites-availabe
+
+# Needed to allow very long URLs to prevent issues while signing PSBTs
+server_names_hash_bucket_size 128;
+proxy_buffer_size          128k;
+proxy_buffers              4 256k;
+proxy_busy_buffers_size    256k;
+client_header_buffer_size 500k;
+large_client_header_buffers 4 500k;
+
+# Needed websocket support (used by Ledger hardware wallets)
+map \$http_upgrade \$connection_upgrade {
+default upgrade;
+''      close;
 }
+
+upstream btcpay {
+    server 127.0.0.1:23000;
+}
+
 server {
-  listen 4030 ssl;
-  listen [::]:4030 ssl;
-  proxy_pass btcpay;
+    listen ${BTCPAY_SSL_PORT} ssl;
+    listen [::]:${BTCPAY_SSL_PORT} ssl;
+    server_name _;
+
+    ssl_certificate /etc/ssl/certs/nginx-selfsigned.crt;
+    ssl_certificate_key /etc/ssl/private/nginx-selfsigned.key;
+    ssl_session_timeout 4h;
+    ssl_protocols TLSv1.3;
+    ssl_prefer_server_ciphers on;
+
+    root /var/www/html;
+    index index.html index.htm index.nginx-debian.html;
+    server_name _;
+
+  location / {
+
+    # URL of BTCPay Server
+    proxy_pass http://127.0.0.1:23000;
+
+    proxy_set_header Host \$http_host;
+    proxy_set_header X-Forwarded-Proto \$scheme;
+    proxy_set_header X-Real-IP \$remote_addr;
+    proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+
+    # For websockets (used by Ledger hardware wallets)
+    proxy_set_header Upgrade \$http_upgrade;
+  }
 }
 
 EOF
+echo -e "${G}Done.${NC}"
+
+#-----------------------------------------------------------------
+
+#
+### create symbolic link from nginx/sites-available to sites-enabled
+#
+echo
+echo -e "${Y}Create symbolic link for btcpay-ssl.conf in /etc/nginx/sites-enabled...${NC}"
+ln -sf "${BTCPAY_NGINX_SSL_CONF}" /etc/nginx/sites-enabled/
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
@@ -513,4 +564,3 @@ echo
 echo -e "3) ${LB}Open the BTCPay Server page in your browser via the following URL: ${NC}"
 echo " https://${LOCAL_IP}:${BTCPAY_SSL_PORT}"
 echo
-
