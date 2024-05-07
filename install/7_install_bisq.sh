@@ -65,6 +65,7 @@ echo "- Change permissions of file for user ${USER}"
 echo "- Disable and stop avahi daemon"
 echo "- Kill running jvm processes / stop Bisq gradle server(s)"
 echo "- Create symbolic link for Bisq (${BISQ_SYM_LINK})"
+echo "- Delete dirs/files remaining after installation"
 #echo "- Allow Inbound connections in ${TORSOCKS_CONF_FILE} file"
 echo
 echo -e "${LR}Press ${NC}<enter>${LR} key to continue, or ${NC}ctrl-c${LR} to exit${NC}"
@@ -242,7 +243,7 @@ echo -e "${G}Done.${NC}"
 echo
 echo -e "${Y}Create SSL certificate for xpra...${NC}"
 cd "${BISQ_APP_DIR}"
-openssl req -new -x509 -nodes -out cert.pem -keyout cert.pem -subj "/C=/ST=/L=/O=/OU=/CN=localhost"
+openssl req -new -x509 -nodes -days 3650 -out cert.pem -keyout cert.pem -subj "/C=/ST=/L=/O=/OU=/CN=localhost"
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
@@ -337,6 +338,19 @@ echo -e "${Y}Create a symbolic link for Bisq (${BISQ_SYM_LINK})...${NC}"
 # create symbolic link /usr/local/bin/Bisq
 # this is only needed for the node_status app to know that Bisq is installed
 ln -sf ' ' "${BISQ_SYM_LINK}"
+echo -e "${G}Done.${NC}"
+
+#-----------------------------------------------------------------
+
+#
+### delete dirs/files remaining after installation
+#
+echo
+echo -e "${Y}Delete dirs/files remaining after installation...${NC}"
+rm -rf /root/.local/share/Bisq
+rm -rf /root/.gradle
+rm -rf /root/.config/xpra
+rm -rf /root/.openjfx/
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------

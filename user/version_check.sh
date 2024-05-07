@@ -46,7 +46,7 @@ SPARROW_LOC=$(Sparrow --version 2>/dev/null | cut -d ' ' -f 3)
 
 BISQ_NAM="Bisq"
 BISQ_GIT=$(curl -sL https://github.com/bisq-network/bisq/releases/latest | grep "<title>Release" | cut -d ' ' -f 4 | cut -c2-)
-BISQ_LOC=$("${BISQ_APP_DIR}"/desktop/build/app/bin/desktop --help 2>/dev/null | grep -e "Bisq Desktop version" | cut -d ' ' -f 4)
+BISQ_LOC=$("${BISQ_APP_DIR}"/desktop/build/app/bin/bisq-desktop --help 2>/dev/null | grep -e "Bisq Desktop version" | cut -d ' ' -f 4)
 
 GLANCES_NAM="Glances"
 # latest release

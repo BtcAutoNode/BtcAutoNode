@@ -45,11 +45,10 @@ echo "- Delete bisq download dir (${BISQ_DOWNLOAD_DIR})"
 echo "- Delete bisq app dir (${BISQ_APP_DIR})"
 echo "- Delete bisq data dir (${BISQ_DATA_DIR})"
 echo "- Delete bisq start/stop script files in ${HOME_DIR}"
-echo "- Delete .gradle dir in ${HOME_DIR}"
-echo "- Delete .xpra dir in ${HOME_DIR}"
 echo "- Uninstall xpra package via apt-get"
 echo "- Delete xpra apt sources config file (${BISQ_LIST_FILE})"
 echo "- Delete symbolic link (${BISQ_SYM_LINK})"
+echo "- Delete additional dirs in ${USER} home dir"
 echo
 echo -e "${LR}Press ${NC}<enter>${LR} key to continue, or ${NC}ctrl-c${LR} to exit${NC}"
 read -r
@@ -118,26 +117,6 @@ echo -e "${G}Done.${NC}"
 #-----------------------------------------------------------------
 
 #
-# delete .gradle dir in users home dir
-#
-echo
-echo -e "${Y}Delete .gradle dir in ${USER} home dir...${NC}"
-rm -rf "${HOME_DIR}/.gradle"
-echo -e "${G}Done.${NC}"
-
-#-----------------------------------------------------------------
-
-#
-# delete .xpra dir in users home dir
-#
-echo
-echo -e "${Y}Delete .xpra dir in ${USER} home dir...${NC}"
-rm -rf "${HOME_DIR}/.xpra"
-echo -e "${G}Done.${NC}"
-
-#-----------------------------------------------------------------
-
-#
 # uninstall xpra via apt
 #
 echo
@@ -166,6 +145,23 @@ echo -e "${G}Done.${NC}"
 echo
 echo -e "${Y}Delete Bisq symbolic link (${BISQ_SYM_LINK})...${NC}"
 rm -f "${BISQ_SYM_LINK}"
+echo -e "${G}Done.${NC}"
+
+#-----------------------------------------------------------------
+
+#
+# delete additional dirs in users home dir
+#
+echo
+echo -e "${Y}Delete additional dirs in ${USER} home dir...${NC}"
+rm -rf "${HOME_DIR}/.gradle"
+rm -rf "${HOME_DIR}/.xpra"
+rm -rf "${HOME_DIR}/.config/xpra"
+rm -rf "${HOME_DIR}/.openjfx"
+rm -rf "${HOME_DIR}/.bus"
+rm -rf "${HOME_DIR}/.config/ibus"
+rm -rf "${HOME_DIR}/.cache/ibus"
+rm -rf "${HOME_DIR}/.local/share/Bisq"
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
