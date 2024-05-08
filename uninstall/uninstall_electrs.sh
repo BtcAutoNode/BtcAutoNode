@@ -101,20 +101,6 @@ echo -e "${G}Done.${NC}"
 #-----------------------------------------------------------------
 
 #
-### uninstall rust
-#
-echo
-echo -e "${Y}Uninstall rust...${NC}"
-# uninstall rust
-/root/.cargo/bin/rustup self uninstall -y
-# delete dirs in /root
-rm -rf /root/.cargo
-rm -rf /root/.rustup
-echo -e "${G}Done.${NC}"
-
-#-----------------------------------------------------------------
-
-#
 # delete electrs base dir
 #
 echo

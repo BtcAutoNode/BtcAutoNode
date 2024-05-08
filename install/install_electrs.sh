@@ -319,6 +319,17 @@ echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
 
+#
+### uninstall rust
+#
+echo
+echo -e "${Y}Uninstall rust...${NC}"
+# uninstall rust
+/root/.cargo/bin/rustup self uninstall -y
+echo -e "${G}Done.${NC}"
+
+#-----------------------------------------------------------------
+
 echo
 echo -e "${Y}Installation all done!${NC}"
 echo
