@@ -184,6 +184,16 @@ echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
 
+#
+### remove files/folders left from installation
+#
+echo
+echo -e "${Y}Remove files/folders left from installation...${NC}"
+rm -rf /root/.cache/pip
+echo -e "${G}Done.${NC}"
+
+#-----------------------------------------------------------------
+
 echo
 echo -e "${Y}Installation all done!${NC}"
 echo
