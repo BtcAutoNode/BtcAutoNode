@@ -129,7 +129,7 @@ BISQ_SYM_LINK="/usr/local/bin/Bisq"
 #-----------------------------------------------------------------
 
 # Glances (system monitor) config
-GLANCES_VERSION="3.4.0.5"
+GLANCES_VERSION="4.0.2"
 GLANCES_APP_DIR="/usr/local/bin"
 GLANCES_SERVICE="glances.service"
 GLANCES_SERVICE_FILE="/etc/systemd/system/${GLANCES_SERVICE}"
