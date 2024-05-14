@@ -84,5 +84,6 @@ If you want to log the script output into a log file too, execute the scripts li
 </pre>
 
 ## Telegram Group
+Join the Telegram group and feel free to ask any questions:<br>
 https://t.me/BtcAutoNode
 <br>
