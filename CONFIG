@@ -129,7 +129,7 @@ BISQ_SYM_LINK="/usr/local/bin/Bisq"
 #-----------------------------------------------------------------
 
 # Glances (system monitor) config
-GLANCES_VERSION="4.0.4"
+GLANCES_VERSION="4.0.5"
 GLANCES_APP_DIR="/usr/local/bin"
 GLANCES_SERVICE="glances.service"
 GLANCES_SERVICE_FILE="/etc/systemd/system/${GLANCES_SERVICE}"
@@ -189,7 +189,7 @@ LNVIS_SSL_PORT="4071"
 #-----------------------------------------------------------------
 
 # Electrs config
-ELECTRS_VERSION="0.10.4"
+ELECTRS_VERSION="0.10.5"
 ELECTRS_PKGS="clang cmake build-essential"
 ELECTRS_DIR="${HOME_DIR}/electrs"
 ELECTRS_DATA_DIR="${HOME_DIR}/electrs_db"
