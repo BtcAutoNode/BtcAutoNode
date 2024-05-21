@@ -136,6 +136,7 @@ echo
 echo -e "${Y}Update the Thunderhub application...${NC}"
 echo -e "${LB}This can take several minutes!${NC}"
 # update
+git fetch
 git config --global --add safe.directory "${THH_DIR}"
 cd "${THH_DIR}"
 # update thunderhub
