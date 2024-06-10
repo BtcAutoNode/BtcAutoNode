@@ -50,7 +50,7 @@ BITCOIN_SERVICE_FILE="/etc/systemd/system/${BITCOIN_SERVICE}"
 #-----------------------------------------------------------------
 
 # Fulcrum config
-FULCRUM_VERSION="1.10.0"
+FULCRUM_VERSION="1.11.0"
 FULCRUM_DOWNLOAD_DIR="${DOWNLOAD_DIR}/Fulcrum"
 FULCRUM_DIR="${HOME_DIR}/fulcrum"
 FULCRUM_DATA_DIR="${HOME_DIR}/fulcrum_db"
@@ -129,7 +129,7 @@ BISQ_SYM_LINK="/usr/local/bin/Bisq"
 #-----------------------------------------------------------------
 
 # Glances (system monitor) config
-GLANCES_VERSION="4.0.7"
+GLANCES_VERSION="4.0.8"
 GLANCES_APP_DIR="/usr/local/bin"
 GLANCES_SERVICE="glances.service"
 GLANCES_SERVICE_FILE="/etc/systemd/system/${GLANCES_SERVICE}"
