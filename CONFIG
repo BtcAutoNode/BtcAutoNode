@@ -26,7 +26,7 @@ KEYRINGS_DIR="/etc/apt/keyrings"
 NODEJS_VERSION="20"
 NODEJS_LIST_FILE="${APT_SOURCES_DIR}/nodesource.list"
 NODEJS_KEYRING_FILE="${KEYRINGS_DIR}/nodesource.gpg"
-NPM_UPD_VER="10.8.0"
+NPM_UPD_VER="10.8.1"
 TOR_LIST_FILE="${APT_SOURCES_DIR}/tor.list"
 TOR_KEYRING_FILE="${KEYRINGS_DIR}/tor-archive-keyring.gpg"
 TORRC_CONF_FILE="/etc/tor/torrc"
@@ -201,7 +201,7 @@ ELECTRS_NGINX_SSL_CONF="${NGINX_STREAMS_DIR}/electrs-ssl.conf"
 #-----------------------------------------------------------------
 
 # Ride the Lightning (RTL) config
-RTL_VERSION="0.15.0"
+RTL_VERSION="0.15.1"
 RTL_DIR="${HOME_DIR}/RTL"
 RTL_CONF_FILE="${RTL_DIR}/RTL-Config.json"
 RTL_SERVICE="rtl.service"
