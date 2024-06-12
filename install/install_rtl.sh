@@ -172,7 +172,8 @@ cat > "${RTL_CONF_FILE}"<< EOF
         "swapServerUrl": "https://127.0.0.1:8081",
         "boltzServerUrl": "https://127.0.0.1:9003",
         "fiatConversion": false,
-        "unannouncedChannels": false
+        "unannouncedChannels": false,
+        "blockExplorerUrl": "https://127.0.0.1:${MEMPOOL_SSL_PORT}/en/"
       }
     }
   ]
@@ -193,7 +194,7 @@ cd "${RTL_DIR}"
 # update npm (based on warnings)
 npm install -g npm@"${NPM_UPD_VER}"
 # build
-npm install --omit=dev
+npm install --omit=dev --legacy-peer-deps
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
@@ -206,7 +207,7 @@ echo -e "${Y}Clean npm caches from build...${NC}"
 # clean the npm cache and delete npm cache dir
 npm cache clean --force
 # npm prune to free some space
-npm prune --omit=dev
+npm prune --omit=dev --legacy-peer-deps
 rm -rf "$(npm get cache)"
 echo -e "${G}Done.${NC}"
 
