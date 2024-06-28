@@ -78,7 +78,7 @@ MEMPOOL_SSL_PORT="4080"
 #-----------------------------------------------------------------
 
 # LND config
-LND_VERSION="0.18.0-beta"
+LND_VERSION="0.18.1-beta"
 LND_DIR="${HOME_DIR}/.lnd"
 LND_DOWNLOAD_DIR="${DOWNLOAD_DIR}/Lnd"
 LND_CONF_FILE="${LND_DIR}/lnd.conf"
@@ -115,7 +115,7 @@ SPARROW_SYM_LINK="/usr/local/bin/Sparrow"
 #-----------------------------------------------------------------
 
 # Bisq (headless) config
-BISQ_VERSION="1.9.16"
+BISQ_VERSION="1.9.17"
 BISQ_JAVA_VERSION="17"
 BISQ_DOWNLOAD_DIR="${DOWNLOAD_DIR}/Bisq"
 BISQ_APP_DIR="${HOME_DIR}/bisq"
@@ -201,7 +201,7 @@ ELECTRS_NGINX_SSL_CONF="${NGINX_STREAMS_DIR}/electrs-ssl.conf"
 #-----------------------------------------------------------------
 
 # Ride the Lightning (RTL) config
-RTL_VERSION="0.15.1"
+RTL_VERSION="0.15.2"
 RTL_DIR="${HOME_DIR}/RTL"
 RTL_CONF_FILE="${RTL_DIR}/RTL-Config.json"
 RTL_SERVICE="rtl.service"
