@@ -54,7 +54,6 @@ echo -e "${LB}The following steps will be executed in the process:${NC}"
 echo "- Upgrade system to newest software (apt-get update / apt-get upgrade)"
 echo "- Clone Mempool Github repository, version ${MEMPOOL_VERSION}"
 echo "- Generate mysql password, create mempool db and grant priviledges"
-echo "- Query rpcuser / rpcpass for backend config (by user interaction)"
 echo "- Change Mempool backend config ${MEMPOOL_BACKEND_CONF}"
 echo "- Build the Mempool backend part"
 echo "- Build the Mempool frontend part"
@@ -82,6 +81,21 @@ clear
 echo
 echo -e "${Y}Updating the system via apt-get...${NC}"
 apt-get -q update && apt-get upgrade -y
+echo -e "${G}Done.${NC}"
+
+#-----------------------------------------------------------------
+
+
+#
+### install latest rust
+#
+echo
+echo -e "${Y}Install latest rust...${NC}"
+# https://rustup.rs/
+wget -O /tmp/rustup.sh https://sh.rustup.rs
+chmod +x /tmp/rustup.sh
+/tmp/rustup.sh -y
+rm /tmp/rustup.sh
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
@@ -134,17 +148,6 @@ echo -e "${G}Done.${NC}"
 #-----------------------------------------------------------------
 
 #
-### request rpcuser and rpcpass from user again for the backend config
-#
-echo
-echo -e "${LR}Please enter your ${NC}rpcuser${LR} used in bitcoind script and press the ${NC}<enter>${LR} key (for backend config):${NC}"
-read -r RPCUSER
-echo -e "${LR}Please enter your ${NC}rpcpass${LR} used in bitcoind script and press the ${NC}<enter>${LR} key (for backend config):${NC}"
-read -r RPCPASS
-
-#-----------------------------------------------------------------
-
-#
 ### create mempool backend config
 #
 echo
@@ -171,8 +174,11 @@ cat > "${MEMPOOL_BACKEND_CONF}"<< EOF
   "CORE_RPC": {
     "HOST": "127.0.0.1",
     "PORT": 8332,
-    "USERNAME": "${RPCUSER}",
-    "PASSWORD": "${RPCPASS}"
+    "USERNAME": "",
+    "PASSWORD": "",
+    "TIMEOUT": 60000,
+    "COOKIE": true,
+    "COOKIE_PATH": "/home/satoshi/.bitcoin/.cookie"
   },
   "ELECTRUM": {
     "HOST": "127.0.0.1",
@@ -232,6 +238,9 @@ echo -e "${LB}This can take several minutes!${NC}"
 # set config
 npm config set registry=https://registry.npmjs.com/
 # install/build
+cd "${MEMPOOL_DIR}"/rust/gbt
+export PATH="$PATH:/root/.cargo/bin/"
+cargo update
 cd "${MEMPOOL_BACKEND_DIR}"
 # update npm (based on warnings)
 npm install -g npm@"${NPM_UPD_VER}"
@@ -523,6 +532,17 @@ echo -e "${G}Done.${NC}"
 echo
 echo -e "${Y}Restart Nginx web server...${NC}"
 systemctl restart nginx
+echo -e "${G}Done.${NC}"
+
+#-----------------------------------------------------------------
+
+#
+### uninstall rust
+#
+echo
+echo -e "${Y}Uninstall rust...${NC}"
+# uninstall rust
+/root/.cargo/bin/rustup self uninstall -y
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
