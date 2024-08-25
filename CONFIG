@@ -26,7 +26,7 @@ KEYRINGS_DIR="/etc/apt/keyrings"
 NODEJS_VERSION="20"
 NODEJS_LIST_FILE="${APT_SOURCES_DIR}/nodesource.list"
 NODEJS_KEYRING_FILE="${KEYRINGS_DIR}/nodesource.gpg"
-NPM_UPD_VER="10.8.1"
+NPM_UPD_VER="10.8.2"
 TOR_LIST_FILE="${APT_SOURCES_DIR}/tor.list"
 TOR_KEYRING_FILE="${KEYRINGS_DIR}/tor-archive-keyring.gpg"
 TORRC_CONF_FILE="/etc/tor/torrc"
@@ -61,7 +61,7 @@ FULCRUM_SERVICE_FILE="/etc/systemd/system/${FULCRUM_SERVICE}"
 #-----------------------------------------------------------------
 
 # Mempool config
-MEMPOOL_VERSION="2.5.0"
+MEMPOOL_VERSION="3.0.0"
 MEMPOOL_DIR="${HOME_DIR}/mempool"
 MEMPOOL_DB="mempool"
 MEMPOOL_BACKEND_DIR="${MEMPOOL_DIR}/backend"
@@ -78,7 +78,7 @@ MEMPOOL_SSL_PORT="4080"
 #-----------------------------------------------------------------
 
 # LND config
-LND_VERSION="0.18.1-beta"
+LND_VERSION="0.18.2-beta"
 LND_DIR="${HOME_DIR}/.lnd"
 LND_DOWNLOAD_DIR="${DOWNLOAD_DIR}/Lnd"
 LND_CONF_FILE="${LND_DIR}/lnd.conf"
@@ -129,7 +129,7 @@ BISQ_SYM_LINK="/usr/local/bin/Bisq"
 #-----------------------------------------------------------------
 
 # Glances (system monitor) config
-GLANCES_VERSION="4.1.1"
+GLANCES_VERSION="4.1.2"
 GLANCES_APP_DIR="/usr/local/bin"
 GLANCES_SERVICE="glances.service"
 GLANCES_SERVICE_FILE="/etc/systemd/system/${GLANCES_SERVICE}"
