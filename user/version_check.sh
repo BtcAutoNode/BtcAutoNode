@@ -50,10 +50,10 @@ BISQ_LOC=$("${BISQ_APP_DIR}"/desktop/build/app/bin/bisq-desktop --help 2>/dev/nu
 
 GLANCES_NAM="Glances"
 # latest release
-###GLANCES_GIT=$(curl -sL https://github.com/nicolargo/glances/releases/latest | grep "<title>Release" | cut -d ' ' -f4 | cut -c 2-)
+GLANCES_GIT=$(curl -sL https://github.com/nicolargo/glances/releases/latest | grep "<title>Release" | cut -d ' ' -f5)
 # install script installs latest tag, not release.
 # latest tag
-GLANCES_GIT=$(curl -sL "https://api.github.com/repos/nicolargo/glances/tags" | jq -r '.[0].name' | cut -c2-)
+###GLANCES_GIT=$(curl -sL "https://api.github.com/repos/nicolargo/glances/tags" | jq -r '.[0].name' | cut -c2-)
 GLANCES_LOC=$(glances --version 2>/dev/null | grep "Glances version" | cut -d':' -f 2 | cut -c2-)
 
 RPCEX_NAM="BTC-RPC-Explorer"

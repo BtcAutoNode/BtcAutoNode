@@ -123,6 +123,20 @@ read -r
 #-----------------------------------------------------------------
 
 #
+### install latest rust
+#
+echo
+echo -e "${Y}Install latest rust...${NC}"
+# https://rustup.rs/
+wget -O /tmp/rustup.sh https://sh.rustup.rs
+chmod +x /tmp/rustup.sh
+/tmp/rustup.sh -y
+rm /tmp/rustup.sh
+echo -e "${G}Done.${NC}"
+
+#-----------------------------------------------------------------
+
+#
 ### update the mempool application
 #
 echo
@@ -132,8 +146,14 @@ echo -e "${LB}This can take several minutes!${NC}"
 git config --global --add safe.directory "${MEMPOOL_DIR}"
 cd "${MEMPOOL_DIR}"
 git fetch
-git checkout "v${latest_version}"
+git -c advice.detachedHead=false checkout "v${latest_version}"
 # build backend
+# set config
+npm config set registry=https://registry.npmjs.com/
+# install/build
+cd "${MEMPOOL_DIR}"/rust/gbt
+export PATH="$PATH:/root/.cargo/bin/"
+cargo update
 cd "${MEMPOOL_BACKEND_DIR}"
 # update npm (based on warnings)
 npm install -g npm@"${NPM_UPD_VER}"
@@ -178,6 +198,17 @@ echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
 
+#
+### uninstall rust
+#
+echo
+echo -e "${Y}Uninstall rust...${NC}"
+# uninstall rust
+/root/.cargo/bin/rustup self uninstall -y
+echo -e "${G}Done.${NC}"
+
+#-----------------------------------------------------------------
+
 echo
 echo -e "${Y}Upgrade all done!${NC}"
 echo
@@ -185,4 +216,3 @@ echo -e "${LB}Start Mempool service again via:${NC}"
 echo " systemctl start ${MEMPOOL_SERVICE} (as root)"
 echo " sudo systemctl start ${MEMPOOL_SERVICE} (as satoshi)"
 echo
-
