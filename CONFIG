@@ -39,7 +39,7 @@ NGINX_WEBROOT_DIR="/var/www/html"
 #-----------------------------------------------------------------
 
 # Bitcoind config
-BITCOIN_VERSION="27.1"
+BITCOIN_VERSION="28.0"
 BITCOIN_DOWNLOAD_DIR="${DOWNLOAD_DIR}/Bitcoin"
 BITCOIN_DIR="${HOME_DIR}/.bitcoin"
 BITCOIN_CONF_FILE="${BITCOIN_DIR}/bitcoin.conf"
@@ -50,7 +50,7 @@ BITCOIN_SERVICE_FILE="/etc/systemd/system/${BITCOIN_SERVICE}"
 #-----------------------------------------------------------------
 
 # Fulcrum config
-FULCRUM_VERSION="1.11.0"
+FULCRUM_VERSION="1.11.1"
 FULCRUM_DOWNLOAD_DIR="${DOWNLOAD_DIR}/Fulcrum"
 FULCRUM_DIR="${HOME_DIR}/fulcrum"
 FULCRUM_DATA_DIR="${HOME_DIR}/fulcrum_db"
@@ -78,7 +78,7 @@ MEMPOOL_SSL_PORT="4080"
 #-----------------------------------------------------------------
 
 # LND config
-LND_VERSION="0.18.2-beta"
+LND_VERSION="0.18.3-beta"
 LND_DIR="${HOME_DIR}/.lnd"
 LND_DOWNLOAD_DIR="${DOWNLOAD_DIR}/Lnd"
 LND_CONF_FILE="${LND_DIR}/lnd.conf"
