@@ -189,7 +189,7 @@ LNVIS_SSL_PORT="4071"
 #-----------------------------------------------------------------
 
 # Electrs config
-ELECTRS_VERSION="0.10.5"
+ELECTRS_VERSION="0.10.6"
 ELECTRS_PKGS="clang cmake build-essential"
 ELECTRS_DIR="${HOME_DIR}/electrs"
 ELECTRS_DATA_DIR="${HOME_DIR}/electrs_db"
