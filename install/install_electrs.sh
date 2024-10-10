@@ -179,7 +179,7 @@ db_dir = "${HOME_DIR}/electrs_db"
 
 # Logging
 log_filters = "INFO"
-timestamp = true
+#timestamp = true
 EOF
 echo -e "${G}Done.${NC}"
 
