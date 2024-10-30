@@ -15,6 +15,10 @@
 #   chmod +x install_sparrow_tails.sh
 #   ./install_sparrow_tails.sh
 #
+# To see an application shortcut in the Applications menu, you need to activate the dotfiles. When persistent storage was activated,
+# on the Desktop go to Applications --> Tails --> Persistent Storage and activate it from there (switch on). Next boot this is still 
+# activated and the Sparrow app icon can be seen in the Applications menu.
+#
 
 #------------------------------------------------------
 # config
@@ -70,6 +74,7 @@ echo "- Download the release from sparrowwallet.com/download/ into the downloads
 echo "- Verify the release file(s)"
 echo "- Extract the release and move the extracted content to the persistent Sparrow app dir"
 echo "- Create a start script in the Persistent directory to launch the Sparrow Wallet app"
+echo "- Create a start icon in the Applications menu to launch the app"
 echo
 echo -e "${LR}Press ${NC}<enter>${LR} key to continue, or ${NC}ctrl-c${LR} to exit${NC}"
 read -r
@@ -78,6 +83,14 @@ read -r
 
 # clear screen
 clear
+
+#-----------------------------------------------------------------
+
+# enter sudo password once and resuse it later when needed
+echo
+echo -e "${Y}Enter sudo password once and resuse it later when needed...${NC}"
+read -r -s -p "Enter password for sudo:" sudoPW
+echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
 
@@ -160,6 +173,41 @@ echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
 
+# create dotfiles dirs for the persistent application icon (if not already there)
+echo
+echo -e "${Y}Create dotfiles dirs for the persistent application icon (if not already there)...${NC}"
+echo "$sudoPW" | sudo -S mkdir -p /live/persistence/TailsData_unlocked/dotfiles/.local/share/applications
+echo -e "${G}Done.${NC}"
+
+# create .desktop app file for the Sparrow Wallet app (to be able to start via application menu)
+echo
+echo -e "${Y}Create .desktop app file for the Sparrow Wallet app (to start via application menu)...${NC}"
+cat > "desktop"<< EOF
+[Desktop Entry]
+Name=Sparrow
+Comment=Sparrow
+Exec=/home/amnesia/Persistent/Sparrow/bin/Sparrow -d /home/amnesia/Persistent/Programas/Sparrow/data %U
+Icon=/home/amnesia/Persistent/Sparrow/lib/Sparrow.png
+Terminal=false
+Type=Application
+Categories=Unknown
+MimeType=application/psbt;application/bitcoin-transaction;x-scheme-handler/bitcoin;x-scheme-handler/auth47;x-scheme-handler/lightning
+EOF
+echo -e "${G}Done.${NC}"
+
+#-----------------------------------------------------------------
+
+echo
+echo -e "${Y}Copy/move the .desktop file to .local/share/applications dir in dotfiles and home dir...${NC}"
+# cp the desktop file into the dotfiles dir (to persist the app icon in the Applications menu)
+echo "$sudoPW" | sudo -S mv desktop /live/persistence/TailsData_unlocked/dotfiles/.local/share/applications/Sparrow_Wallet.desktop
+
+# move to amnesia's applications dir to see the app icon immediately
+echo "$sudoPW" | sudo -S cp /live/persistence/TailsData_unlocked/dotfiles/.local/share/applications/Sparrow_Wallet.desktop /home/${USER}/.local/share/applications/
+echo -e "${G}Done.${NC}"
+
+#-----------------------------------------------------------------
+
 echo
 echo -e "${Y}Installation all done!${NC}"
 echo
@@ -171,6 +219,9 @@ echo -e " ${DOWNLOAD_DIR} + - Persistent download dir (contains release files)\n
         "${SPARROW_START_SCRIPT} + - Start script to launch the application" | column -t -s "+"
 echo
 echo -e "${LB}You can now start Sparrow Wallet via:${NC}"
+echo " 1."
 echo "  cd /home/amnesia/Persistent"
 echo "  ./start_sparrow.sh"
+echo " 2."
+echo "  via the icon in the Applications menu (which then starts the start script)"
 echo
