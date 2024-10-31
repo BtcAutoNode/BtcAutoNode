@@ -184,10 +184,10 @@ echo
 echo -e "${Y}Create .desktop app file for the Sparrow Wallet app (to start via application menu)...${NC}"
 cat > "desktop"<< EOF
 [Desktop Entry]
-Name=Sparrow
-Comment=Sparrow
-Exec=/home/amnesia/Persistent/Sparrow/bin/Sparrow -d /home/amnesia/Persistent/Programas/Sparrow/data %U
-Icon=/home/amnesia/Persistent/Sparrow/lib/Sparrow.png
+Name=Sparrow Wallet
+Comment=Sparrow Wallet
+Exec=${SPARROW_START_SCRIPT}
+Icon=${SPARROW_APP_DIR}/lib/Sparrow.png
 Terminal=false
 Type=Application
 Categories=Unknown
