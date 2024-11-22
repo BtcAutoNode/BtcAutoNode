@@ -104,7 +104,7 @@ THH_SSL_PORT="4001"
 #-----------------------------------------------------------------
 
 # Sparrow config
-SPARROW_VERSION="1.9.1"
+SPARROW_VERSION="2.0.0"
 SPARROW_DIR="${HOME_DIR}/.sparrow"
 SPARROW_DOWNLOAD_DIR="${DOWNLOAD_DIR}/Sparrow"
 SPARROW_CONF_FILE="${SPARROW_DIR}/config"
@@ -129,7 +129,7 @@ BISQ_SYM_LINK="/usr/local/bin/Bisq"
 #-----------------------------------------------------------------
 
 # Glances (system monitor) config
-GLANCES_VERSION="4.1.2"
+GLANCES_VERSION="4.2.1"
 GLANCES_APP_DIR="/usr/local/bin"
 GLANCES_SERVICE="glances.service"
 GLANCES_SERVICE_FILE="/etc/systemd/system/${GLANCES_SERVICE}"
@@ -189,7 +189,7 @@ LNVIS_SSL_PORT="4071"
 #-----------------------------------------------------------------
 
 # Electrs config
-ELECTRS_VERSION="0.10.6"
+ELECTRS_VERSION="0.10.7"
 ELECTRS_PKGS="clang cmake build-essential"
 ELECTRS_DIR="${HOME_DIR}/electrs"
 ELECTRS_DATA_DIR="${HOME_DIR}/electrs_db"
