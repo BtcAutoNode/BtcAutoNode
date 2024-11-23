@@ -201,7 +201,7 @@ ELECTRS_NGINX_SSL_CONF="${NGINX_STREAMS_DIR}/electrs-ssl.conf"
 #-----------------------------------------------------------------
 
 # Ride the Lightning (RTL) config
-RTL_VERSION="0.15.2"
+RTL_VERSION="0.15.4"
 RTL_DIR="${HOME_DIR}/RTL"
 RTL_CONF_FILE="${RTL_DIR}/RTL-Config.json"
 RTL_SERVICE="rtl.service"
