@@ -108,7 +108,7 @@ clear
 echo
 echo -e "${Y}Enter sudo password once and resuse it later when needed...${NC}"
 read -r -s -p "Enter password for sudo:" sudoPW
-echo -e "${G}Done.${NC}"
+echo -e "\n${G}Done.${NC}"
 
 #-----------------------------------------------------------------
 
