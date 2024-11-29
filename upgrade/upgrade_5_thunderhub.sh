@@ -138,12 +138,13 @@ echo -e "${LB}This can take several minutes!${NC}"
 # update
 git config --global --add safe.directory "${THH_DIR}"
 cd "${THH_DIR}"
+git reset --hard
 git fetch
 # update thunderhub
 git -c advice.detachedHead=false checkout "${latestrelease}"
 # update npm (based on warnings)
 npm install -g npm@"${NPM_UPD_VER}"
-npm run update
+npm run update --omit=dev
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
