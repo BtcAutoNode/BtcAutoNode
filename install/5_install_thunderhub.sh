@@ -170,6 +170,8 @@ echo -e "${Y}Build the Thunderhub application...${NC}"
 echo -e "${LB}This can take several minutes!${NC}"
 # opt out from Next.js Telemetry data collection
 npx --yes next telemetry disable
+# update browserlist db
+npx --yes update-browserslist-db@latest
 # install/build
 cd "${THH_DIR}"
 # update npm (based on warnings)
