@@ -193,7 +193,6 @@ gc-canceled-invoices-on-the-fly=true
 
 alias=<your_alias>
 
-bitcoin.active=true
 bitcoin.mainnet=true
 bitcoin.node=bitcoind
 bitcoin.defaultchanconfs=3
@@ -330,14 +329,10 @@ echo -e " ${LND_DOWNLOAD_DIR} + - Lnd download directory\n" \
          "+\n" \
          "${LND_SERVICE_FILE} + - Lnd systemd service file" | column -t -s "+"
 echo
-echo -e "${LB}Start Lnd via service. Create a wallet with: lncli start${NC}"
+echo -e "${LB}Start Lnd via service. Create a wallet with: lncli create${NC}"
 echo -e "${LB}Follow the instructions and note down your wallet password and seed words!${NC}"
 echo -e "${LB}Unlock the wallet with: lncli unlock (and then entering the wallet password).${NC}"
 echo -e "${LB}Each time Lnd is started or restarted you need to unlock manually (if not changed in the config file).${NC}"
-echo
-echo -e "${LB}To enable Lightning in Mempool, go to mempool backend config (${MEMPOOL_BACKEND_CONF}) ...${NC}"
-echo -e "${LB} and change 'ENABLED: false' to true for MAXMIND and LIGHTNING sections.${NC}"
-echo -e "${LB}Then restart the mempool service.${NC}"
 echo
 echo -e "${LB}A guide for Lnd can be found here:${NC}"
 echo " https://docs.lightning.engineering/lightning-network-tools/lnd/"
