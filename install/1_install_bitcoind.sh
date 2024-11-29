@@ -178,6 +178,9 @@ rpcport=8332
 rpcauth=<rpc user>:<auth hash>
 rpcbind=127.0.0.1
 rpcallowip=127.0.0.1
+# For issues with apps together with bitcoin core v28.0 (e.g. lnd):
+# (comment out for bitcoin core versions other than v28.0)
+deprecatedrpc=warnings
 
 zmqpubrawblock=tcp://127.0.0.1:28332
 zmqpubrawtx=tcp://127.0.0.1:28333
