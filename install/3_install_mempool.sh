@@ -203,7 +203,7 @@ cat > "${MEMPOOL_BACKEND_CONF}"<< EOF
     "ENABLED": false,
     "GEOLITE2_CITY": "${MEMPOOL_DIR}/GeoIP/GeoLite2-City.mmdb",
     "GEOLITE2_ASN": "${MEMPOOL_DIR}/GeoIP/GeoLite2-ASN.mmdb",
-    "GEOIP2_ISP": "${MEMPOOL_DIR}/GeoIP/GeoIP2-ISP.mmdb"
+    "GEOIP2_ISP": ""
   },
   "LIGHTNING": {
     "ENABLED": false,
@@ -321,7 +321,6 @@ mkdir -p GeoIP
 cd GeoIP/
 wget -O GeoLite2-City.mmdb https://raw.githubusercontent.com/mempool/geoip-data/master/GeoLite2-City.mmdb
 wget -O GeoLite2-ASN.mmdb https://raw.githubusercontent.com/mempool/geoip-data/master/GeoLite2-ASN.mmdb
-wget -O GeoIP2-ISP.mmdb https://github.com/naaanazar/geoIpInfo/raw/master/GeoIP2-ISP.mmdb
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
