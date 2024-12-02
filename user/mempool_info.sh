@@ -34,20 +34,31 @@ function get_block() {
    block_fee_range=$(echo "${block}" | jq -cr ".extras.feeRange")
    fee_min=$(echo "${block_fee_range}" | cut -d',' -f2)
    fee_max=$(echo "${block_fee_range}" | cut -d',' -f7 | cut -d']' -f1)
+   pool=$(echo "${block}" | jq -r ".extras.pool.name")
+   total_fees=$(echo "${block}" | jq -r ".extras.totalFees")
    #---------------------------------------------------------------------------------
    blkmedfee=$(echo "$block_median_fee" | xargs printf "     %.*f sat/vB\n" "0")
    feerange=$(printf "  % 3s-%3s sat/vB\n" $(echo "${fee_min}" | xargs printf "%.*f\n" "0") $(echo "${fee_max}" | xargs printf "%.*f\n" "0"))
    blksize=$(echo "${block_size}" | awk '{$1/=1000*1000;printf "     % 3.2f MB\n",$1}')
    txs=$(printf " % 3s transactions\n" "$block_tx_count")
    mins=$(printf "  % 2s minute(s) ago\n" $(("${time_diff}" / 60)))
+   # center pool
+   width=$(wc -L <<< "$pool")
+   printf -v pad "%$(( (20 - width) / 2 ))s"
+   pad="${pad// / }"
+   pool=$(printf '%s%.*s\n' "$pad$pool$pad" "$(((COLUMNS-width)%2))")
+   total_fees=$(bc -l <<< "${total_fees}/100000000" | xargs printf "%.3f\n")
    echo -e "${LB} --------------------${NC}\n" \
            "${CY}${bo}       ${block_height}${NC}\n" \
            "${LB}--------------------${NC}\n" \
            "${blkmedfee}\n" \
            "${BR}${feerange}${NC}\n" \
+           "${bo}     ${total_fees} BTC${NC}\n" \
            "${bo}${blksize}${NC}\n" \
            "${txs}\n" \
            "${mins}\n" \
+           "${LB}--------------------${NC}\n" \
+           "${pool}\n" \
            "${LB}--------------------${NC}"
 }
 
