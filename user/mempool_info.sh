@@ -35,9 +35,8 @@ function get_block() {
    fee_min=$(echo "${block_fee_range}" | cut -d',' -f2)
    fee_max=$(echo "${block_fee_range}" | cut -d',' -f7 | cut -d']' -f1)
    #---------------------------------------------------------------------------------
-
-   blkmedfee=$(printf "     % 2s sat/vB\n" "$block_median_fee")
-   feerange=$(printf "  % 3s-%s sat/vB\n" "${fee_min}" "${fee_max}")
+   blkmedfee=$(echo "$block_median_fee" | xargs printf "     %.*f sat/vB\n" "0")
+   feerange=$(printf "  % 3s-%3s sat/vB\n" $(echo "${fee_min}" | xargs printf "%.*f\n" "0") $(echo "${fee_max}" | xargs printf "%.*f\n" "0"))
    blksize=$(echo "${block_size}" | awk '{$1/=1000*1000;printf "     % 3.2f MB\n",$1}')
    txs=$(printf " % 3s transactions\n" "$block_tx_count")
    mins=$(printf "  % 2s minute(s) ago\n" $(("${time_diff}" / 60)))
@@ -151,8 +150,7 @@ function show_progress {
 echo -e "${LG}  Difficulty Adjustment:${NC}"
 show_progress "$diff_exp_blocks" "2016"
 echo -e "                    ${bo}~${avg_blktime} minutes                     ${change} %                     In ~${rem_time} days${NC}"
-echo -e "                    Average block time             Previous: ${prev_retarget} %               ${est_date}"
+echo -e "                    Average block time           Previous: ${prev_retarget} %               ${est_date}"
 echo
 echo -e "${LB}------------------------------------------------------------------------------------------------------------------------------------${NC}"
 echo
-
