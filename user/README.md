@@ -2,6 +2,9 @@
 ## User Scripts
 
 The scripts in the **btcautonode/user** folder are used by user **satoshi** to help to operate the fullnode.  
+
+<br>
+
 They can be called individually or via the node menu (node_menu.sh).  
 
 <br>
