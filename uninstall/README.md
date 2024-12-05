@@ -38,6 +38,7 @@ cd ../install					(enter the install scripts folder)
 
 <details>
 <summary><h4>Asciinema Recordings - view scripts in action (click to elapse or collapse):</h4></summary>
+  
 [uninstall_1_bitcoind.sh](https://asciinema.org/a/3ezewSeAnqhaxZEYA1qS8s4yS) (Script runtime: 00:24)
 
 [uninstall_2_fulcrum.sh](https://asciinema.org/a/Xyk1oemh266vJgaiAoZa1ZLLw) (Script runtime: 00:22)
