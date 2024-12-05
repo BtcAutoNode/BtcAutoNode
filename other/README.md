@@ -3,6 +3,9 @@
 
 The scripts in the **btcautonode/other** folder are not part of the btcautonode fullnode setup but scripts for something else (other).  
 
+<br>
+
+---
 
 <br>
 
