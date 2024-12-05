@@ -42,6 +42,7 @@ Script is used to install the desktop Sparrow Wallet app in TailsOS (Persistent 
 
 <details>
 <summary><h4>Asciinema Recordings - view scripts in action (click to elapse or collapse):</h4></summary>
+  
 [install_seedsigner_emu_tails.sh](https://asciinema.org/a/cybRYezWLgLCl08FFTCSeXput) (application gui is not shown here, only console output at the end of the video)
 </details>
 

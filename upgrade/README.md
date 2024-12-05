@@ -39,6 +39,7 @@ If there is no upgrade script available for an installed application, use the un
 
 <details>
 <summary><h4>Example Asciinema Recording - view scripts in action (click to elapse or collapse):</h4></summary>
+  
 [upgrade_1_bitcoin.sh](https://asciinema.org/a/IhKCIAmkEb0OSpdoNwrjtxqlX) (Script runtime: 00:24)
 </details>
 
