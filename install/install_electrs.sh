@@ -215,7 +215,7 @@ echo -e "${G}Done.${NC}"
 #
 echo
 echo -e "${Y}Create Electrs data dir (electrs_db) in ${HOME_DIR}...${NC}"
-mkdir -p "${ELECTRS_DATA_DIR}"
+mkdir -p "$(realpath ${ELECTRS_DATA_DIR})"
 echo -e "${G}Done.${NC}"
 
 #-----------------------------------------------------------------
