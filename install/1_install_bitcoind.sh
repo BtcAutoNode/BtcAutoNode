@@ -191,10 +191,13 @@ zmqpubsequence=tcp://127.0.0.1:28335
 whitelist=127.0.0.1
 
 # Network / tor
-proxy=127.0.0.1:9050
 listen=1
-bind=127.0.0.1
 onlynet=onion
+# Use separate SOCKS5 proxy to reach peers via Tor
+proxy=127.0.0.1:9050
+bind=127.0.0.1
+# allow inbound peers in bitcoin core versions 28+
+bind=127.0.0.1:8334=onion
 
 # Don't let bitcoin core get peers using clearnet dns servers
 dnsseed=0
