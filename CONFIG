@@ -26,7 +26,7 @@ KEYRINGS_DIR="/etc/apt/keyrings"
 NODEJS_VERSION="20"
 NODEJS_LIST_FILE="${APT_SOURCES_DIR}/nodesource.list"
 NODEJS_KEYRING_FILE="${KEYRINGS_DIR}/nodesource.gpg"
-NPM_UPD_VER="10.9.2"
+NPM_UPD_VER="11.2.0"
 TOR_LIST_FILE="${APT_SOURCES_DIR}/tor.list"
 TOR_KEYRING_FILE="${KEYRINGS_DIR}/tor-archive-keyring.gpg"
 TORRC_CONF_FILE="/etc/tor/torrc"
@@ -253,6 +253,17 @@ BTCPAY_SERVICE="btcpay.service"
 BTCPAY_SERVICE_FILE="/etc/systemd/system/${BTCPAY_SERVICE}"
 BTCPAY_NGINX_SSL_CONF="/etc/nginx/sites-available/btcpay-ssl.conf"
 BTCPAY_SSL_PORT="4030"
+
+#-----------------------------------------------------------------
+
+# Uptime Kuma config
+KUMA_VERSION="1.23.16"
+KUMA_DIR="${HOME_DIR}/uptime-kuma"
+KUMA_SERVICE="uptime-kuma.service"
+KUMA_SERVICE_FILE="/etc/systemd/system/${KUMA_SERVICE}"
+KUMA_NGINX_SSL_CONF="/etc/nginx/sites-available/uptime-kuma-ssl.conf"
+KUMA_NGINX_SSL_CONF_LINK="/etc/nginx/sites-enabled/uptime-kuma-ssl.conf"
+KUMA_SSL_PORT="4090"
 
 #-----------------------------------------------------------------
 
