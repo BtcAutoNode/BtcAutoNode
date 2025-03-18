@@ -240,7 +240,7 @@ npm config set registry=https://registry.npmjs.com/
 # install/build
 cd "${MEMPOOL_DIR}"/rust/gbt
 export PATH="$PATH:/root/.cargo/bin/"
-cargo update
+##cargo update
 cd "${MEMPOOL_BACKEND_DIR}"
 # update npm (based on warnings)
 npm install -g npm@"${NPM_UPD_VER}"
