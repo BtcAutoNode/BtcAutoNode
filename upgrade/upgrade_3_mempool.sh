@@ -146,6 +146,7 @@ echo -e "${LB}This can take several minutes!${NC}"
 git config --global --add safe.directory "${MEMPOOL_DIR}"
 cd "${MEMPOOL_DIR}"
 git fetch
+git reset --hard
 git -c advice.detachedHead=false checkout "v${latest_version}"
 # build backend
 # set config

@@ -61,7 +61,7 @@ FULCRUM_SERVICE_FILE="/etc/systemd/system/${FULCRUM_SERVICE}"
 #-----------------------------------------------------------------
 
 # Mempool config
-MEMPOOL_VERSION="3.0.0"
+MEMPOOL_VERSION="3.2.1"
 MEMPOOL_DIR="${HOME_DIR}/mempool"
 MEMPOOL_DB="mempool"
 MEMPOOL_BACKEND_DIR="${MEMPOOL_DIR}/backend"
