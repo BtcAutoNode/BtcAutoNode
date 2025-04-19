@@ -145,10 +145,12 @@ echo -e "${Y}Verify the release files...${NC}"
 #  exit
 #fi
 # download gpg key
-wget -O AdamGibson.asc https://raw.githubusercontent.com/JoinMarket-Org/joinmarket-clientserver/master/pubkeys/AdamGibson.asc
+#wget -O AdamGibson.asc https://raw.githubusercontent.com/JoinMarket-Org/joinmarket-clientserver/master/pubkeys/AdamGibson.asc
+wget -O belcher.asc https://raw.githubusercontent.com/JoinMarket-Org/joinmarket-clientserver/master/pubkeys/belcher.asc
 wget -O KristapsKaupe.asc https://raw.githubusercontent.com/JoinMarket-Org/joinmarket-clientserver/master/pubkeys/KristapsKaupe.asc
 # import into gpg
-gpg --import -q AdamGibson.asc || true
+#gpg --import -q AdamGibson.asc || true
+gpg --import -q belcher.asc || true
 gpg --import -q KristapsKaupe.asc || true
 # verify
 if ! gpg --verify joinmarket-clientserver-${JM_VERSION}.tar.gz.asc; then
