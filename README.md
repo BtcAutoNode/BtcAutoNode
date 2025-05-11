@@ -50,6 +50,7 @@ It's a good idea to follow the videos and read the guide to understand what is b
 - ***JoinMarket + Jam*** - Tool to create CoinJoin transactions + Jam WebUI
 - ***BTCPay Server*** - FOSS Bitcoin payment processor
 - ***Uptime Kuma*** - Easy-to-use self-hosted monitoring tool
+- ***UTXOracle*** - Decentralized alternative to knowing the price of bitcoin
 <br><br>
 
 ## Prerequisites
