@@ -39,7 +39,7 @@ NGINX_WEBROOT_DIR="/var/www/html"
 #-----------------------------------------------------------------
 
 # Bitcoind config
-BITCOIN_VERSION="29.0"
+BITCOIN_VERSION="28.1"
 BITCOIN_DOWNLOAD_DIR="${DOWNLOAD_DIR}/Bitcoin"
 BITCOIN_DIR="${HOME_DIR}/.bitcoin"
 BITCOIN_CONF_FILE="${BITCOIN_DIR}/bitcoin.conf"
@@ -264,6 +264,17 @@ KUMA_SERVICE_FILE="/etc/systemd/system/${KUMA_SERVICE}"
 KUMA_NGINX_SSL_CONF="/etc/nginx/sites-available/uptime-kuma-ssl.conf"
 KUMA_NGINX_SSL_CONF_LINK="/etc/nginx/sites-enabled/uptime-kuma-ssl.conf"
 KUMA_SSL_PORT="4090"
+
+#-----------------------------------------------------------------
+
+# UTXOracle config
+UTXORACLE_VERSION="9"
+UTXORACLE_DIR="${HOME_DIR}/UTXOracle"
+UTXORACLE_SCRIPT_FILE="UTXOracle.py"
+UTXORACLE_SERVER_FILE="UTXOracle_server.py"
+UTXORACLE_SERVICE="utxoracle.service"
+UTXORACLE_SERVICE_FILE="/etc/systemd/system/${UTXORACLE_SERVICE}"
+UTXORACLE_SSL_PORT="4003"
 
 #-----------------------------------------------------------------
 
