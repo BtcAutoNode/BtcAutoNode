@@ -39,7 +39,7 @@ NGINX_WEBROOT_DIR="/var/www/html"
 #-----------------------------------------------------------------
 
 # Bitcoind config
-BITCOIN_VERSION="28.1"
+BITCOIN_VERSION="29.0"
 BITCOIN_DOWNLOAD_DIR="${DOWNLOAD_DIR}/Bitcoin"
 BITCOIN_DIR="${HOME_DIR}/.bitcoin"
 BITCOIN_CONF_FILE="${BITCOIN_DIR}/bitcoin.conf"
