@@ -171,7 +171,7 @@ echo -e "${Y}Create UTXOracle systemd service file...${NC}"
 cat > "${UTXORACLE_SERVICE_FILE}"<< EOF
 #
 # UTXOracle systemd service file
-# Homepage: https://utxo.live/oracle/explain.php                                                             
+# Homepage: https://utxo.live/oracle/explain.php
 #
 [Unit]
 Description=Job to run a python SimpleHTTPServer for the html output of UTXOracle app
@@ -184,7 +184,7 @@ User=${USER}
 Group=${USER}
 WorkingDirectory=${UTXORACLE_DIR}
 ExecStart=/bin/bash -c '/usr/bin/python3 ${UTXORACLE_SERVER_FILE}'
-ExecStop=/bin/kill \`/bin/ps aux | /bin/grep ${UTXORACLE_SERVER_FILE} | /bin/grep -v grep | /usr/bin/awk '{ print $2 }'\`
+ExecStop=/bin/kill \`/bin/ps aux | /bin/grep ${UTXORACLE_SERVER_FILE} | /bin/grep -v grep | /usr/bin/awk '{ print \$2 }'\`
 
 [Install]
 WantedBy=multi-user.target
